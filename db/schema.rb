@@ -10,10 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_164852) do
+ActiveRecord::Schema.define(version: 2019_03_26_172842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "list_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_favourites_on_list_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
+  create_table "list_places", force: :cascade do |t|
+    t.text "comments"
+    t.bigint "list_id"
+    t.bigint "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_list_places_on_list_id"
+    t.index ["place_id"], name: "index_list_places_on_place_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "likes"
+    t.bigint "user_id"
+    t.boolean "is_public"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "category"
+    t.decimal "rating"
+    t.string "country"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +65,16 @@ ActiveRecord::Schema.define(version: 2019_03_26_164852) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "location"
+    t.boolean "is_admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favourites", "lists"
+  add_foreign_key "favourites", "users"
+  add_foreign_key "list_places", "lists"
+  add_foreign_key "list_places", "places"
+  add_foreign_key "lists", "users"
 end
