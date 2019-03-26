@@ -10,14 +10,16 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @place = Place.new
   end
 
   def create
     @list = List.new(list_params)
+    #@place = Place.new(place_params)
     @list.user = current_user
     #authorize @list
     if @list.save
-      redirect_to list_path(@list)
+      redirect_to new_list_place_path(@list)
     else
       render :new
     end
@@ -41,5 +43,9 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:name, :description, :is_public)
+  end
+
+  def place_params
+    params.require(:list).permit(:place_name, :address, :comment)
   end
 end

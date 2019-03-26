@@ -4,3 +4,11 @@
 <div><%= @list.name %></div>
 <div><%= @list.description %></div>
 <div><%= @list.is_public %></div>
+
+<% @list.places.each do |place| %>
+<p><%= place.name %> -
+  <%= place.address %></p>
+<% end %>
+
+
+
