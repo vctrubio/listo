@@ -4,9 +4,22 @@
 <%= simple_form_for(@list) do |f| %>
   <!-- [...] -->
   <%= f.input :name %>
-  <%= f.input :is_public %>
   <%= f.input :description %>
+  <%= f.input :is_public %>
+
+  <p>This is a new place:</p>
+  <%= f.simple_fields_for :places do |h| %>
+       <%= h.input :name %>
+       <%= h.input :address %>
+   <% end %>
+
+<button type='button' id="insertForm" onclick='getElementById("insertForm").insertAdjacentHTML("beforebegin", `<%= render "lists/form", f: f %>`)'>Add a new place
+</button>
+
   <br>
-  <%= f.submit 'Next', class: 'btn btn-info'%>
+  <%= f.submit 'Submit', class: 'btn btn-info'%>
   <!-- [...] -->
 <% end %>
+
+
+
