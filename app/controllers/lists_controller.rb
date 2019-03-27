@@ -9,32 +9,17 @@ class ListsController < ApplicationController
   end
 
   def new
-    @list = List.new
-    @list.places.build
-    @list.list_places.build
+    @list = List.new#(list_params)
+    @list.list_places.build.build_place
+    #@list.places.build
   end
 
   def create
-
-    @list = List.new(list_params.except(:places_attributes, :list_places_attributes))
+    @list = List.new(list_params)
     @list.user = current_user
-    @list.save
-
-    place_hash = {}
-    list_params[:places_attributes].each do |k, v|
-      place_hash[k] = Place.create(v)
-    end
-    list_params[:list_places_attributes].each do |k, v|
-      list_place = ListPlace.create(v)
-      list_place.list = @list
-      list_place.place = place_hash[k]
-      list_place.save
-    end
-
     #authorize @list
     #raise
-
-    if @list.save!
+    if @list.save
       #raise
       redirect_to list_path(@list)
     else
@@ -59,6 +44,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :description, :is_public, places_attributes: [:places, :name, :address], list_places_attributes: [:comments])
+    params.require(:list).permit(:name, :description, :is_public, list_places_attributes: [:comments, place_attributes: [:name, :address] ])#, places_attributes: [:places, :name, :address])
   end
 end
