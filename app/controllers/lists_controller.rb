@@ -11,10 +11,11 @@ class ListsController < ApplicationController
   def new
     @list = List.new
     @list.places.build
-    @test = 'Test string'
+    @list.list_places.build
   end
 
   def create
+    raise
     @list = List.new(list_params)
     @list.user = current_user
     #authorize @list
@@ -42,6 +43,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :description, :is_public, places_attributes: [:places, :name, :address])
+    params.require(:list).permit(:name, :description, :is_public, places_attributes: [:places, :name, :address], list_places_attributes: [:comments])
   end
 end

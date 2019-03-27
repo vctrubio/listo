@@ -5,4 +5,5 @@ class List < ApplicationRecord
   has_many :places, through: :list_places
   has_many :favourites, dependent: :destroy
   accepts_nested_attributes_for :places
+  accepts_nested_attributes_for :list_places
 end

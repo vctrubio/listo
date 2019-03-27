@@ -12,6 +12,9 @@
        <%= h.input :name %>
        <%= h.input :address %>
    <% end %>
+   <%= f.simple_fields_for :list_places do |j| %>
+       <%= j.input :comments %>
+   <% end %>
 
 <button type='button' id="insertForm" onclick='getElementById("insertForm").insertAdjacentHTML("beforebegin", `<%= render "lists/form", f: f %>`)'>Add a new place
 </button>
