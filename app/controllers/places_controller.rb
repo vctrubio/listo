@@ -7,12 +7,6 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new(place_params)
-    @list = List.find(params[:list_id])
-    #authorize @place
-    @place.save
-    ListPlace.create({place: @place, list: @list})
-    redirect_to list_path(@list)
   end
 
   def update
