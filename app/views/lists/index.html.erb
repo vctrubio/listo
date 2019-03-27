@@ -1,5 +1,49 @@
-<h1>Lists#index</h1>
-<p>Find me in app/views/lists/index.html.erb</p>
+
+
+
+<div  style="width: 100%">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" id ="navbar-banner-lewagon" >
+  <%= link_to lists_path, class: "navbar-brand" do %>
+    <p id= "banner-headline-hl">lista</p>
+    <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="banner-headline-hl">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Create a list", new_list_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Home", "#", class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "My Profile", "#", class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+   <div class="home-banner" style="background-image: linear-gradient(-90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.4) 50%), url('<%= image_path 'LISTA-BANNER-1.jpg' %>');">
+    <div class="banner-content">
+      <h1>Share Your Favorite Places</h1>
+    </div>
+  </div>
+</div>
+
+
 
   <% @lists.each do |list| %>
       <p><%= link_to list.name, list_path(list) %></p>
