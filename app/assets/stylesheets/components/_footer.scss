@@ -1,0 +1,22 @@
+.footer {
+  background: #F1F3F4;
+  height: 40px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 10px;
+  .footer-copyright {
+  }
+  .footer-links {
+    a {
+      color: black;
+      opacity: 0.15;
+      padding: 10px;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
