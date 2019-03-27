@@ -3,7 +3,7 @@
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
   background-size: cover !important;
   background-position: center;
-  color: white;
+  color: black;
   position: relative;
   border-width: .3px;
   border-color: black;
@@ -32,7 +32,7 @@
   bottom: 10px;
   left: 10px;
   z-index: 2;
-  color: white;
+  color: black;
 }
 .card-description h2 {
   font-size: 24px;
@@ -42,6 +42,14 @@
   opacity: 0.8;
   font-weight: lighter;
 }
+
+
+.card-likes{
+position: absolute;
+justify-content: flex-end;
+}
+
+
 .card-link {
   position: absolute;
   top: 0;
@@ -54,7 +62,7 @@
 }
  .card-link:hover {
    opacity: 0.5;
-   transition-delay: 30ms;
+   transition-delay: 100ms;
  }
 
 
@@ -63,6 +71,6 @@
   &:hover {
     color: red;
     text-decoration: none;
-    transition-delay: 30ms;
+    transition-delay: 100ms;
   }
 }
