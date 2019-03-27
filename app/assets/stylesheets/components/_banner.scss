@@ -1,0 +1,31 @@
+
+.home-banner {
+  background-image: url(LISTA-BANNER-1.jpg);
+  color: white;
+  text-align: center;
+  height: 400px;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  background-position: 0px -105px;
+  border-bottom: solid 1px rgba(0,0,0,0.2);
+}
+
+.banner h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+.banner p {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  color: rgb(255, 255, 255);
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
+
+
+

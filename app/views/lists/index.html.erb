@@ -1,5 +1,11 @@
-<h1>Lists#index</h1>
-<p>Find me in app/views/lists/index.html.erb</p>
+   <div class="home-banner" style="background-image: linear-gradient(-90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.4) 50%), url('<%= image_path 'LISTA-BANNER-1.jpg' %>');">
+    <div class="banner-content">
+      <h1>Share Your Favorite Places</h1>
+    </div>
+  </div>
+</div>
+
+
 
   <% @lists.each do |list| %>
       <p><%= link_to list.name, list_path(list) %></p>
