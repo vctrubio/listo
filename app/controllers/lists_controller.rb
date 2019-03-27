@@ -15,11 +15,27 @@ class ListsController < ApplicationController
   end
 
   def create
-    raise
-    @list = List.new(list_params)
+
+    @list = List.new(list_params.except(:places_attributes, :list_places_attributes))
     @list.user = current_user
+    @list.save
+
+    place_hash = {}
+    list_params[:places_attributes].each do |k, v|
+      place_hash[k] = Place.create(v)
+    end
+    list_params[:list_places_attributes].each do |k, v|
+      list_place = ListPlace.create(v)
+      list_place.list = @list
+      list_place.place = place_hash[k]
+      list_place.save
+    end
+
     #authorize @list
-    if @list.save
+    #raise
+
+    if @list.save!
+      #raise
       redirect_to list_path(@list)
     else
       render :new
