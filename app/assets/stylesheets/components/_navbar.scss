@@ -4,6 +4,9 @@
   position: fixed;
   min-width: 100%;
   border-bottom: none !important;
+  p{
+    color: white;
+  }
   .nav-link{
     color: white;
   }
@@ -32,8 +35,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  .nav-link{
-    color: $my-green;
+  .nav-link-create-list{
+    color: $my-green !important;
   }
 
   >div{
@@ -52,11 +55,18 @@
   }
 }
 
+
+.nav-link-create-list{
+    color: $my-green !important; &:hover {
+      color: rgba (2, 148, 165, 0.5);
+    }
+  }
+
+
 .navbar-lewagon {
   justify-content: space-between;
   a {
    // display: inline;
-   color: black;
    margin-right: 20px; &:hover {
    color: black;
    transition-delay: 30ms;
@@ -78,7 +88,9 @@ align-items: center;
 margin:20px;
 }
 
-
+.nav-item{
+  color: $my-green;
+}
 
 
 /* Right section */
