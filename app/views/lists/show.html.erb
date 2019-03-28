@@ -1,25 +1,21 @@
 
 <div class = "list-show-wrapper">
   <div class="list-show-container">
-<h1><%= @list.name %></h1>
-<br>
-<p><%= @list.description %></p>
-<p><% @list.is_public %></p>
-<p><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></p>
+    <h1><%= @list.name %></h1>
+    <br>
+    <p><%= @list.description %></p>
+    <p><% @list.is_public %></p>
 
-<% @list.places.each do |place| %>
-<p><%= place.name %> -
-  <%= place.address %></p>
-<p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>g
-  <p> <%= @list.list_places.find(place_id = place.id).comments%></p>
-<% end %>
-
+    <% @list.places.each do |place| %>
+      <p><%= place.name %> -
+      <%= place.address %></p>
+      <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>g
+      <p> <%= @list.list_places.find(place_id = place.id).comments%></p>
+    <% end %>
 
   </div>
 
   <div class = 'map-lists-container'>
     <h1>THIS IS WHERE THE MAP WILL GO</h1>
   </div>
-
 </div>
-
