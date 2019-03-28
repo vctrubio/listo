@@ -1,18 +1,23 @@
 
-<div class = "lists-container">
-  <div class="list-container">
+<div class = "list-show-wrapper">
+  <div class="list-show-container">
 <h1><%= @list.name %></h1>
 <br>
-<ul><%= @list.description %></ul>
-<ul><%= @list.is_public %></ul>
-<ul><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></ul>
+<p><%= @list.description %></p>
+<p><% @list.is_public %></p>
+<p><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></p>
 
 <% @list.places.each do |place| %>
 <p><%= place.name %> -
   <%= place.address %></p>
+  <p> <%= @list.list_places.find(place_id = place.id).comments%></p>
 <% end %>
 
 
+  </div>
+
+  <div class = 'map-lists-container'>
+    <h1>THIS IS WHERE THE MAP WILL GO</h1>
   </div>
 
 </div>
