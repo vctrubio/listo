@@ -24,11 +24,10 @@
   <%= f.submit 'Submit', class: 'btn btn-info'%>
 <% end %>
 
-    <input type="text" id="autocomplete"/>
-
     <script>
       var input = document.getElementById('autocomplete');
       var autocomplete = new google.maps.places.Autocomplete(input);
+      console.log(autocomplete)
     </script>
 
 
