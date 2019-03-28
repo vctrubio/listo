@@ -9,7 +9,9 @@
 
 <% @list.places.each do |place| %>
 <p><%= place.name %> -
-  <%= place.address %></p>
+  <%= place.address %>
+  <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
+  </p>
   <p> <%= @list.list_places.find(place_id = place.id).comments%></p>
 <% end %>
 
