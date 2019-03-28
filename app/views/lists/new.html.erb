@@ -3,10 +3,9 @@
 <%= simple_form_for(@list) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :is_public %>
-
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
+  <%= f.input :is_public %>
 
   <p>This is a new place:</p>
   <%= f.simple_fields_for :list_places do |h| %>
