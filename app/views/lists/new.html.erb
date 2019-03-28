@@ -1,22 +1,25 @@
 <h1>Create a list</h1>
 
-
 <%= simple_form_for(@list) do |f| %>
   <!-- [...] -->
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :is_public %>
 
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+
   <p>This is a new place:</p>
-  <%= f.simple_fields_for :places do |h| %>
-       <%= h.input :name %>
-       <%= h.input :address %>
+  <%= f.simple_fields_for :places do |place| %>
+       <%= place.input :name %>
+       <%= place.input :address %>
    <% end %>
 
 <button type='button' id="insertForm" onclick='getElementById("insertForm").insertAdjacentHTML("beforebegin", `<%= render "lists/form", f: f %>`)'>Add a new place
 </button>
 
   <br>
+
   <%= f.submit 'Submit', class: 'btn btn-info'%>
   <!-- [...] -->
 <% end %>
