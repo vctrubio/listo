@@ -1,12 +1,15 @@
-.container{
-  display:flex;
-  position:absolute;
+.list-container{
+  display: flex;
+  position:relative;
+    justify-content: center;
+
 }
 
 
 .lists-container{
-  position:relative;
-  justify-content: flex-start;
+  position:absolute;
+  justify-content: center;
+  padding: 15px;
 
 }
 
