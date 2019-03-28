@@ -1,11 +1,11 @@
 
-<div class = "container">
+<div class = "lists-container">
   <div class="list-container">
 <h1><%= @list.name %></h1>
 <br>
-<div><%= @list.description %></div>
-<div><%= @list.is_public %></div>
-<div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
+<ul><%= @list.description %></ul>
+<ul><%= @list.is_public %></ul>
+<ul><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></ul>
 
 <% @list.places.each do |place| %>
 <p><%= place.name %> -

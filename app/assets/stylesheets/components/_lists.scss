@@ -1,8 +1,7 @@
 .list-container{
   display: flex;
   position:relative;
-    justify-content: center;
-
+  justify-content: center;
 }
 
 
@@ -10,7 +9,7 @@
   position:absolute;
   justify-content: center;
   padding: 15px;
-
+  flex-direction: column;
 }
 
 
