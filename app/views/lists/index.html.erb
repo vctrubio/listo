@@ -1,11 +1,8 @@
-   <div class="home-banner" style="background-image: linear-gradient(-90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 50%), url('<%= image_path 'LISTA-BANNER-1.jpg' %>');">
-    <div class="banner-content">
-      <h1>share your favorite places</h1>
-    </div>
+<div class="home-banner" style="background-image: linear-gradient(-90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 50%), url('<%= image_path 'LISTA-BANNER-1.jpg' %>');">
+  <div class="banner-content">
+    <h1>share your favorite places</h1>
   </div>
 </div>
-
-
 
 
 <div class="container">
@@ -13,11 +10,12 @@
     <% @lists.each do |list| %>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <%= link_to "", list_path(list)%>
-      <div class="card">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')">
         <%= link_to "", list_path(list), class: 'card-link' %>
         <div class="card-description" class ="card-label">
           <%= list.name %>
-          <div class="card-likes"></div>
+          <div class="card-likes">
+          </div>
         </div>
       </div>
     </div>
