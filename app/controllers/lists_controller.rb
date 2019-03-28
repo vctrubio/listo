@@ -5,20 +5,21 @@ class ListsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
-    @list = List.new
-    @list.places.build
-    @test = 'Test string'
+    @list = List.new # (list_params)
+    @list.list_places.build.build_place
+    # @list.places.build
   end
 
   def create
     @list = List.new(list_params)
     @list.user = current_user
-    #authorize @list
+    # authorize @list
+    # raise
     if @list.save
+      # raise
       redirect_to list_path(@list)
     else
       render :new
@@ -38,10 +39,10 @@ class ListsController < ApplicationController
 
   def find_list
     @list = List.find(params[:id])
-    #authorize @list
+    # authorize @list
   end
 
   def list_params
-    params.require(:list).permit(:name, :description, :is_public, :photo, places_attributes: [:places, :name, :address])
+    params.require(:list).permit(:name, :description, :is_public, :photo, list_places_attributes: [:comments, place_attributes: [:name, :address]]) # , places_attributes: [:places, :name, :address])
   end
 end
