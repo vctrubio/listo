@@ -4,6 +4,26 @@
 <div><%= @list.name %></div>
 <div><%= @list.description %></div>
 <div><%= @list.is_public %></div>
+<div>
+  <% if !@list.favourites.nil? %>
+    <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
+    <% if pre_like %>
+      <%= button_to 'Unlike', list_favourite_path(@list, pre_like), method: :delete %>
+    <% else %>
+      <%= button_to 'Like', list_favourites_path(@list), method: :post %>
+    <% end %>
+  <% else %>
+    <%= button_to 'Like', list_favourites_path(@list), method: :post %>
+  <% end %>
+</div>
+
+
+
+
+<p><% if @list.favourites.nil? %> 0 Likes <% else %>
+  <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+    <% end %>
+  </p>
 <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
 
 <% @list.places.each do |place| %>
