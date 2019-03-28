@@ -1,0 +1,16 @@
+.container{
+  display:flex;
+  position:absolute;
+}
+
+
+.lists-container{
+  position:relative;
+  justify-content: flex-start;
+
+}
+
+
+.map-lists-container{
+  justify-content: flex-end;
+}
