@@ -1,13 +1,25 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+
+<div class = "list-show-wrapper">
+  <div class="list-show-container">
+<h1><%= @list.name %></h1>
 <br>
-<div><%= @list.name %></div>
-<div><%= @list.description %></div>
-<div><%= @list.is_public %></div>
-<div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
+<p><%= @list.description %></p>
+<p><% @list.is_public %></p>
+<p><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></p>
 
 <% @list.places.each do |place| %>
 <p><%= place.name %> -
-  <%= place.address %>
-  <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
+  <%= place.address %></p>
+<p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>g
+  <p> <%= @list.list_places.find(place_id = place.id).comments%></p>
 <% end %>
+
+
+  </div>
+
+  <div class = 'map-lists-container'>
+    <h1>THIS IS WHERE THE MAP WILL GO</h1>
+  </div>
+
+</div>
+
