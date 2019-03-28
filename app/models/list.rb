@@ -1,4 +1,5 @@
 class List < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   attr_accessor :place_name, :address, :comment
   belongs_to :user
   has_many :list_places, dependent: :destroy, inverse_of: :list

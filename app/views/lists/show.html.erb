@@ -4,11 +4,9 @@
 <div><%= @list.name %></div>
 <div><%= @list.description %></div>
 <div><%= @list.is_public %></div>
+<div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
 
 <% @list.places.each do |place| %>
 <p><%= place.name %> -
   <%= place.address %></p>
 <% end %>
-
-
-
