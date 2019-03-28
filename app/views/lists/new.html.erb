@@ -4,27 +4,33 @@
   <div class="list-container">
 <h1>Create a list</h1>
 
-
 <%= simple_form_for(@list) do |f| %>
-  <!-- [...] -->
   <%= f.input :name %>
   <%= f.input :description %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
   <%= f.input :is_public %>
 
   <p>This is a new place:</p>
-  <%= f.simple_fields_for :places do |h| %>
-       <%= h.input :name %>
-       <%= h.input :address %>
-   <% end %>
+  <%= f.simple_fields_for :list_places do |h| %>
+    <%= h.simple_fields_for :place do |j| %>
+      <%= j.input :name %>
+      <%= j.input :address %>
+      <% end %>
+    <%= h.input :comments %>
+  <% end %>
 
-<button type='button' id="insertForm" onclick='getElementById("insertForm").insertAdjacentHTML("beforebegin", `<%= render "lists/form", f: f %>`)'>Add a new place
-</button>
+  <button type='button' id="insertForm" onclick='getElementById("insertForm").insertAdjacentHTML("beforebegin", `<%= render "lists/form", f: f %>`)'>Add a new place
+  </button>
 
   <br>
+
   <%= f.submit 'Submit', class: 'btn btn-info'%>
-  <!-- [...] -->
 <% end %>
 
 
+<<<<<<< HEAD
 </div>
 </div>
+=======
+>>>>>>> master
