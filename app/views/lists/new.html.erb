@@ -16,8 +16,10 @@
     <%= h.input :comments %>
   <% end %>
 
-  <button type='button' id="insertForm" onclick='getElementById("insertForm").insertAdjacentHTML("beforebegin", `<%= render "lists/form", f: f %>`)'>Add a new place
+<% forms = (1..10).map { render "lists/form", f: f  } %>
+    <button type='button' id="insertForm" data-forms="<%= forms.join('$$$$$') %>">Add a new place
   </button>
+
 
   <br>
 
