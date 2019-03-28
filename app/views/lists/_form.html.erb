@@ -1,8 +1,8 @@
 <p>This is a new place:</p>
-<%= f.simple_fields_for :places do |h| %>
-     <%= h.input :name %>
-     <%= h.input :address %>
- <% end %>
- <%= f.simple_fields_for :list_places do |j| %>
-     <%= j.input :comments %>
- <% end %>
+<%= f.simple_fields_for :list_places do |h| %>
+  <%= h.simple_fields_for :place do |j| %>
+    <%= j.input :name %>
+    <%= j.input :address %>
+  <% end %>
+  <%= h.input :comments %>
+<% end %>
