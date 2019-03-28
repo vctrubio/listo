@@ -41,4 +41,13 @@
   flex: display;
 }
 
+.user-wrapper{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
 
+.user-profile-container{
+display: flex;
+  flex-direction: column;
+}
