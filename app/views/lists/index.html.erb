@@ -5,27 +5,26 @@
 </div>
 
 <div class="container">
- <div class="row">
-   <% @lists.each do |list| %>
-   <div class="col-xs-12 col-sm-6 col-md-3">
-     <%= link_to "", list_path(list)%>
-
-     <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
-      <%= link_to "", list_path(list), class: 'card-link' %>
-      <div class = "card-text-bottom">
-      <div class="card-avatar"></div>
-      <div class="card-content" style="">
-        <%= list.name %>
-      </div>
+  <div class="row">
+    <% @lists.each do |list| %>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <%= link_to "", list_path(list)%>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
+        <%= link_to "", list_path(list), class: 'card-link' %>
+        <div class = "card-text-bottom">
+          <div class="card-avatar"></div>
+          <div class="card-content" style="">
+            <%= list.name %>
+          </div>
           <div class="card-likes">
             <span class="glyphicon glyphicon-heart"><% if @list.nil? %> 0 Likes <% else %>
-            <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
-            <% end %></span>
+              <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+              <% end %>
+            </span>
           </div>
-         </div>
         </div>
       </div>
-    <% end %>
     </div>
+    <% end %>
   </div>
 </div>
