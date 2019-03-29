@@ -1,9 +1,13 @@
 <div class = "list-container user-profile-container user-wrapper">
-  <div class = "user-profile-inner-container d-inline-flex">
-    <h1></h1>
+  <h2>My profile</h2>
 
-    <p><strong>Username:</strong> <%=@user.username %></p>
-    <p><strong>Email:</strong> <%=@user.email %></p>
+  <div class = "user-profile-inner-container d-inline-flex">
+
+    <p><strong>Username:  </strong>  <%=@user.username %></p>
+    <p><strong>Name:  </strong>  <%=@user.full_name %></p>
+    <p><strong>Bio:  </strong>  <%=@user.bio %></p>
+    <p><strong>Social Media:  </strong>  <%=@user.instagram%> <%=@user.facebook%> <%=@user.twitter%></p>
+    <p><strong>Personal Website: </strong>  <%=@user.website %></p>
     <p><%= cl_image_tag(current_user.photo.url, width: 300, height: 300, crop: :fill) unless current_user.photo.url.nil? %></p>
 
     <%= link_to "Edit user", edit_user_path %>
@@ -33,6 +37,7 @@
       </div>
     </div>
     <% end %>
+
   </div>
 </div>
 
@@ -41,7 +46,7 @@
 
 
 <div class="container headline-container">
-  <h2>My favorites</h2>
+  <strong><p>My favorites</p></strong>
   <div class="row">
     <% @user.favourites.each do |fav| %>
     <% list = fav.list%>
