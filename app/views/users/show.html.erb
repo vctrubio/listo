@@ -1,13 +1,14 @@
-
-
 <div class = "list-container user-wrapper">
   <div class="lists-container user-profile-container">
-<h1></h1>
+    <h1></h1>
 
-<p><strong>Email:</strong> <%=@user.email %></p>
-<p><%= @user.photo %></p>
+    <p><strong>Username:</strong> <%=@user.username %></p>
+    <p><strong>Email:</strong> <%=@user.email %></p>
+    <p><%= cl_image_tag(current_user.photo.url, width: 300, height: 300, crop: :fill) unless current_user.photo.url.nil? %></p>
 
-<div><%= render 'follow_form' if user_signed_in? %></div>
+    <%= link_to "Edit user", edit_user_path %>
 
-</div>
+  <div><%= render 'follow_form' if user_signed_in? %></div>
+
+  </div>
 </div>
