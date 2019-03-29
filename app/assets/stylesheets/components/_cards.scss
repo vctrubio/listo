@@ -12,8 +12,11 @@
 }
 
 #card-custom-attributes{
- border-radius: 50%;
+ border-radius: 3px;
  border: none;
+ // box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+ box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+ transition: box-shadow 0.1s ease-in-out;
 }
 .card-user {
   position: absolute;
@@ -54,7 +57,7 @@ right: 3px;
   text-align: center;
   bottom: 10px;
   left: 10px;
-  z-index: 2;
+  // z-index: 1;
   color: black;
 }
 .card-description h2 {
@@ -67,10 +70,12 @@ right: 3px;
 }
 
 .card-text-bottom{
-  z-index:2;
+  // z-index:2;
 }
 
-
+.image{
+  border-radius:3px;
+}
 
 .card-link {
   position: absolute;
@@ -82,17 +87,21 @@ right: 3px;
   background: black;
   opacity: 0;
 }
- .card-link:hover {
-   opacity: 0.5;
-   transition-delay: 100ms;
+ #card-custom-attributes:hover {
+   // opacity: 0.1;
+   box-shadow: 0 1px 5px 0px rgba(0,0,0,0.3);
+   transition-delay: 20ms;
+  //  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  // transition: box-shadow 0.3s ease-in-out;
  }
+
 
 
 .card a {
   color: #f2ebe1;
   &:hover {
-    color: red;
-    text-decoration: none;
-    transition-delay: 100ms;
+    // box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    // text-decoration: none;
+    transition-delay: 50ms;
   }
 }
