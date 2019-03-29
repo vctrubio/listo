@@ -22,7 +22,7 @@
       <%= h.input :comments %>
       <% end %>
 
-      <% forms = (1..10).map { render "lists/form", f: f  } %>
+      <% forms = (1..10).map { render "lists/form" , f: f  } %>
       <button type='button' id="insertForm" data-forms="<%= forms.join('$$$$$') %>">Add a new place
       </button>
 

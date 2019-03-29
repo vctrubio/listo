@@ -10,6 +10,7 @@ const autocomplete = () => {
     function fillInAddress() {
   // Get the place details from the autocomplete object.
   var place = autocomplete.getPlace();
+  console.log(place);
   var full_address = "";
   for (var i in place.address_components) {
     var component = place.address_components[i];
