@@ -43,6 +43,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :description, :is_public, :photo, list_places_attributes: [:comments, place_attributes: [:name, :address]]) # , places_attributes: [:places, :name, :address])
+    params.require(:list).permit(:name, :description, :is_public, :photo, list_places_attributes: [:comments, place_attributes: [:name, :address, :photo]]) # , places_attributes: [:places, :name, :address])
   end
 end
