@@ -1,8 +1,11 @@
-  <p>This is a new place:</p>
-  <%= f.simple_fields_for :list_places do |h| %>
-    <%= h.simple_fields_for :place do |j| %>
-      <%= j.input :name %>
-      <%= j.input :address %>
-      <% end %>
+
+<p>This is a new place:</p>
+<%= f.simple_fields_for :list_places do |h| %>
+  <%= h.simple_fields_for :place do |j| %>
+    <%= j.input :name %>
+    <%= j.input :address %>
+    <%= j.input :photo %>
+    <%= j.input :photo_cache, as: :hidden %>
+          <% end %>
     <%= h.input :comments %>
   <% end %>

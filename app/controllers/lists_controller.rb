@@ -16,7 +16,6 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.user = current_user
-    raise
     # authorize @list
     # raise
     if @list.save
@@ -44,6 +43,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :description, :is_public, :photo, list_places_attributes: [:comments, place_attributes: [:name, :address]]) # , places_attributes: [:places, :name, :address])
+    params.require(:list).permit(:name, :description, :is_public, :photo, list_places_attributes: [:comments, place_attributes: [:name, :address, :photo]]) # , places_attributes: [:places, :name, :address])
   end
 end
