@@ -15,7 +15,7 @@
       <%= f.simple_fields_for :list_places do |h| %>
       <%= h.simple_fields_for :place do |j| %>
       <%= j.input :name, :input_html => { :id => "autocomplete" }%>
-      <%= j.input :address %>
+      <%= j.input :address, :input_html => { :id => "route" } %>
       <%= j.input :photo %>
       <%= j.input :photo_cache, as: :hidden %>
       <% end %>
@@ -34,18 +34,4 @@
 
   </div>
 </div>
-
-<script>
-  var input = document.getElementById('autocomplete');
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    fillInAddress();
-  });
-
-  function fillInAddress() {
-  // Get the place details from the autocomplete object.
-  var place = autocomplete.getPlace();
-  console.log(place);
-}
-</script>
 
