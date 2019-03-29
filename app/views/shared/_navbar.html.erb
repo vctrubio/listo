@@ -13,6 +13,9 @@
         <li class="nav-item">
           <%= link_to "create a list", new_list_path, class: "nav-link nav-link-create-list" %>
         </li>
+        <li class="nav-item active nav-link">
+          <%= current_user.username? ? current_user.username : current_user.email %>
+        </li>
         <li class="nav-item dropdown">
           <% cloud = "https://www.civhc.org/wp-content/uploads/2018/10/question-mark.png" %>
           <img src="<%=image_url current_user.photo.url || cloud %>" alt="" id="navbarDropdown" data-toggle="dropdown" aria-haspopup aria-expanded="false" class="avatar dropdown-toggle">
