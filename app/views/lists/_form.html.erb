@@ -1,11 +1,16 @@
-
 <p>This is a new place:</p>
 <%= f.simple_fields_for :list_places do |h| %>
   <%= h.simple_fields_for :place do |j| %>
-    <%= j.input :name %>
-    <%= j.input :address %>
+    <%= j.input :name, :input_html => { :id => "autocomplete" } %>
+    <%= j.input :address, :input_html => { :id => "full_address" } %>
     <%= j.input :photo %>
     <%= j.input :photo_cache, as: :hidden %>
           <% end %>
     <%= h.input :comments %>
   <% end %>
+
+<!-- <script src="../javascript/packs/form/autocomplete.js"></script> -->
+<!-- <script src="code/ndelagex/lista/app/javascript/packs/form"></script> -->
+
+
+<!-- <script>autocomplete();</script> -->
