@@ -15,7 +15,7 @@
       <%= f.simple_fields_for :list_places do |h| %>
       <%= h.simple_fields_for :place do |j| %>
       <%= j.input :name, :input_html => { :id => "autocomplete" }%>
-      <%= j.input :address, :input_html => { :id => "route" } %>
+      <%= j.input :address, :input_html => { :id => "full_address" } %>
       <%= j.input :photo %>
       <%= j.input :photo_cache, as: :hidden %>
       <% end %>
