@@ -11,11 +11,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(list_params)
+    @user.update(user_params)
     if @user.save
       redirect_to current_user
     else
-      render :new
+      render :edit
     end
   end
 
@@ -32,7 +32,8 @@ class UsersController < ApplicationController
     # authorize @user
   end
 
-  def list_params
-    params.require(:user).permit(:username, :photo)
+  def user_params
+    params.require(:user).permit(:username, :photo,
+                                 :full_name, :email, :location, :bio, :twitter, :facebook, :instagram, :website)
   end
 end
