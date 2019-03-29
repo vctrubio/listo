@@ -5,13 +5,29 @@
     <p><%= @list.description %></p>
     <p><% @list.is_public %></p>
 
-    <% @list.places.each do |place| %>
-      <p><%= place.name %> -
-      <%= place.address %></p>
-      <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
-      <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
+    <% if !@list.favourites.nil? %>
+    <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
+    <% if pre_like %>
+    <%= button_to 'Unlike', list_favourite_path(@list, pre_like), method: :delete %>
+    <% else %>
+    <%= button_to 'Like', list_favourites_path(@list), method: :post %>
+    <% end %>
+    <% else %>
+    <%= button_to 'Like', list_favourites_path(@list), method: :post %>
     <% end %>
 
+  <p><% if @list.favourites.nil? %> 0 Likes <% else %>
+    <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+    <% end %>
+  </p>
+  <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
+
+  <% @list.places.each do |place| %>
+  <p><%= place.name %> -
+    <%= place.address %></p>
+    <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
+    <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
+    <% end %>
   </div>
 
   <div class = 'map-lists-container'>
