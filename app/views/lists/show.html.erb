@@ -10,7 +10,7 @@
       <p><%= place.name %> -
       <%= place.address %></p>
       <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
-      <p> <%= @list.list_places.find(place_id = place.id).comments%></p>
+      <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
     <% end %>
 
   </div>
