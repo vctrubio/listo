@@ -1,16 +1,20 @@
-
+#form-container{
+  margin-top: 1rem;
+}
 .list-container{
   display: flex;
   justify-content: center;
   // flex-direction: column;
 }
 
+.headline-container{
+  justify-content:center;
+}
 
 .lists-container{
-  justify-content: center;
+  justify-content: space-around;
   padding: 15px;
   text-align: center;
-  padding: 15px;
 }
 
 
@@ -56,5 +60,12 @@ justify-content: space-between;
 
 .user-profile-container{
 display: flex;
+padding: 15px;
+justify-content: space-around;
   flex-direction: column;
 }
+
+.user-profile-inner-container{
+  justify-content:space-around;
+}
+

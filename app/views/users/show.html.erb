@@ -1,5 +1,5 @@
-<div class = "list-container user-wrapper">
-  <div class="lists-container user-profile-container">
+<div class = "list-container user-profile-container user-wrapper">
+  <div class = "user-profile-inner-container d-inline-flex">
     <h1></h1>
 
     <p><strong>Username:</strong> <%=@user.username %></p>
@@ -9,6 +9,69 @@
     <%= link_to "Edit user", edit_user_path %>
 
   <div><%= render 'follow_form' if user_signed_in? %></div>
+</div>
+  <div class="container">
+  <div class="row">
+    <% @user.lists.each do |list| %>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <%= link_to "", list_path(list)%>
+      <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
+        <%= link_to "", list_path(list), class: 'card-link' %>
+        <div class = "card-text-bottom">
+          <div class="card-avatar"></div>
+          <div class="card-content" style="">
+            <%= list.name %>
+          </div>
+          <div class="card-likes">
+            <span class="glyphicon glyphicon-heart"><% if list.favourites.nil? %> 0 Likes <% else %>
+              <%= list.favourites.count %> <%= (list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+              <% end %>
+            </span>
+          </div>
+        </div>
 
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
+
+ <br><br><br><br>
+
+
+
+<div class="container headline-container">
+  <h2>My favorites</h2>
+  <div class="row">
+    <% @user.favourites.each do |fav| %>
+    <% list = fav.list%>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <%= link_to "", list_path(list)%>
+      <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
+        <%= link_to "", list_path(list), class: 'card-link' %>
+        <div class = "card-text-bottom">
+          <div class="card-avatar"></div>
+          <div class="card-content" style="">
+            <%= list.name %>
+          </div>
+          <div class="card-likes">
+            <span class="glyphicon glyphicon-heart"><% if list.favourites.nil? %> 0 Likes <% else %>
+              <%= list.favourites.count %> <%= (list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+              <% end %>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+  <!-- </div> -->
+</div>
+
+
+
+

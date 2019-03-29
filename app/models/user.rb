@@ -4,7 +4,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :favorites, dependent: :destroy
+  has_many :favourites, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
