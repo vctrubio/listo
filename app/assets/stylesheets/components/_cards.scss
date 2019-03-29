@@ -105,3 +105,14 @@ right: 3px;
     transition-delay: 50ms;
   }
 }
+
+
+.button-link{
+  background-color: $my-green;
+  text-decoration: none;
+}
+ .button-link:hover {
+   opacity: 0.5;
+   transition-delay: 30ms;
+  text-decoration: none;
+ }
