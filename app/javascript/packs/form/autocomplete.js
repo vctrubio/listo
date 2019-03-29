@@ -31,6 +31,8 @@ const autocomplete = () => {
   }
   document.querySelectorAll('#full_address')[index].value = full_address;
   document.querySelectorAll('#autocomplete')[index].value = place.name;
+  document.querySelectorAll('#latitude')[index].value = place.geometry.location.lat();
+  document.querySelectorAll('#longitude')[index].value = place.geometry.location.lon();
   //document.getElementById('full_address').value = full_address;
   //document.getElementById('autocomplete').value = place.name;
 }
