@@ -1,3 +1,5 @@
+import autocomplete from './autocomplete';
+
 const insert = () => {
   const trigger = document.getElementById('insertForm');
   const forms = trigger.dataset.forms.split('$$$$$');
@@ -5,6 +7,7 @@ const insert = () => {
   trigger.addEventListener('click', event => {
     event.target.insertAdjacentHTML("beforebegin", forms[counter]);
     counter++;
+    autocomplete();
   })
 }
 

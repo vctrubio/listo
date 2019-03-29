@@ -1,14 +1,15 @@
 const autocomplete = () => {
-  var input = document.getElementById('autocomplete');
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    fillInAddress();
-  });
+  //var input = document.getElementById('autocomplete');
+  var inputs = document.querySelectorAll('#autocomplete');
+  inputs.forEach((input, index) => {
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      fillInAddress();
+    });
 
-  function fillInAddress() {
+    function fillInAddress() {
   // Get the place details from the autocomplete object.
   var place = autocomplete.getPlace();
-  console.log(place);
   var full_address = "";
   for (var i in place.address_components) {
     var component = place.address_components[i];
@@ -26,10 +27,13 @@ const autocomplete = () => {
     // }
 
   }
-  console.log(full_address);
-  document.getElementById('full_address').value = full_address;
-  document.getElementById('autocomplete').value = place.name;
+  document.querySelectorAll('#full_address')[index].value = full_address;
+  document.querySelectorAll('#autocomplete')[index].value = place.name;
+  //document.getElementById('full_address').value = full_address;
+  //document.getElementById('autocomplete').value = place.name;
 }
+});
+
 }
 
 export default autocomplete;
