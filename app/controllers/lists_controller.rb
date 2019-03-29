@@ -5,6 +5,14 @@ class ListsController < ApplicationController
   end
 
   def show
+    @places = @list.places.where.not(latitude: nil, longitude: nil)
+
+    @markers = @places.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude
+      }
+    end
   end
 
   def new
@@ -43,6 +51,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :description, :is_public, :photo, list_places_attributes: [:comments, place_attributes: [:name, :address, :photo]]) # , places_attributes: [:places, :name, :address])
+    params.require(:list).permit(:name, :description, :is_public, :photo, list_places_attributes: [:comments, place_attributes: [:name, :address, :photo, :latitude, :longitude]]) # , places_attributes: [:places, :name, :address])
   end
 end
