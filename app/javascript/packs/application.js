@@ -1,6 +1,11 @@
-import "bootstrap";
-import insert from './form/insertForm';
-import autocomplete from './form/autocomplete';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
-insert();
-autocomplete();
+import "bootstrap";
+//import insert from './form/insertForm';
+//import autocomplete from './form/autocomplete';
+import { initMapbox } from './plugins/init_mapbox';
+
+
+//insert();
+//autocomplete();
+initMapbox();

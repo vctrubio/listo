@@ -16,22 +16,25 @@
     <%= button_to 'Like', list_favourites_path(@list), method: :post %>
     <% end %>
 
-  <p><% if @list.favourites.nil? %> 0 Likes <% else %>
-    <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
-    <% end %>
-  </p>
-  <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
+    <p><% if @list.favourites.nil? %> 0 Likes <% else %>
+      <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+      <% end %>
+    </p>
+    <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
 
-  <% @list.places.each do |place| %>
-  <p><%= place.name %> -
-    <%= place.address %></p>
-    <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
-    <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
-    <% end %>
-  </div>
+    <% @list.places.each do |place| %>
+    <p><%= place.name %> -
+      <%= place.address %></p>
+      <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
+      <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
+      <% end %>
+    </div>
 
-  <div class = 'map-lists-container'>
-    <%= cl_image_tag("wgfi1sftwwvsyt7bzidd",
-      width: 700, height: 800, crop: :fill) %>
+    <div class = 'map-lists-container'>
+      <div
+      id="map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+    </div>
   </div>
-</div>
