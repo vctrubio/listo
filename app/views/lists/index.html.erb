@@ -24,7 +24,9 @@
         <%= list.name %>
       </div>
       <div class="card-likes">
-       <span class="glyphicon glyphicon-heart">Likes</span>
+       <span class="glyphicon glyphicon-heart"><% if @list.nil? %> 0 Likes <% else %>
+ <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+   <% end %></span>
       </div>
       </div>
     </div>
@@ -33,3 +35,5 @@
   </div>
 </div>
 </div>
+
+
