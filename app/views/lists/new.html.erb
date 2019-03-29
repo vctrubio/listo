@@ -4,39 +4,31 @@
     <h1>Create a list</h1>
 
     <%= simple_form_for(@list) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.input :is_public %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <%= f.input :is_public %>
 
     <div class = "list-newplace-container" >
       <strong><p>Add a new place</p></strong>
       <%= f.simple_fields_for :list_places do |h| %>
-      <%= h.simple_fields_for :place do |j| %>
-      <%= j.input :name, :input_html => { :id => "autocomplete" }%>
-      <%= j.input :address, :input_html => { :id => "full_address" } %>
-      <%= j.input :latitude, :input_html => { :id => "latitude" } , as: :hidden%>
-      <%= j.input :longitude, :input_html => { :id => "longitude" } , as: :hidden%>
-      <%= j.input :photo %>
-      <%= j.input :photo_cache, as: :hidden %>
-      <% end %>
-      <%= h.input :comments %>
+        <%= h.simple_fields_for :place do |j| %>
+          <%= j.input :name %>
+          <%= j.input :address %>
+          <%= j.input :photo %>
+          <%= j.input :photo_cache, as: :hidden %>
+          <% end %>
+        <%= h.input :comments %>
       <% end %>
 
-      <% forms = (1..10).map { render "lists/form" , f: f  } %>
-      <button type='button' id="insertForm" data-forms="<%= forms.join('$$$$$') %>">Add a new place
-      </button>
+<% forms = (1..10).map { render "lists/form", f: f  } %>
+    <button type='button' id="insertForm" data-forms="<%= forms.join('$$$$$') %>">Add a new place
+  </button>
 
       <br>
     </div>
-
     <%= f.submit 'Submit', class: 'btn btn-info'%>
     <% end %>
-
   </div>
 </div>
-
-<%= javascript_pack_tag 'form/autocomplete' %>
-<%= javascript_pack_tag 'form/insertForm' %>
-
