@@ -16,11 +16,12 @@
     <%= button_to 'Like', list_favourites_path(@list), method: :post %>
     <% end %>
 
-  <p><% if @list.favourites.nil? %> 0 Likes <% else %>
-    <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
-    <% end %>
-  </p>
-  <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
+    <p><% if @list.favourites.nil? %> 0 Likes <% else %>
+      <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+      <% end %>
+    </p>
+    <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
+
 
   <% @list.places.each do |place| %>
   <div><p><%= place.name %> -
@@ -31,7 +32,12 @@
     <% end %>
   </div>
 
-  <div class = 'map-lists-container'>
-    <h1>THIS IS WHERE THE MAP WILL GO</h1>
+
+    <div class = 'map-lists-container'>
+      <div
+      id="map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+    </div>
   </div>
-</div>

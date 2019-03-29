@@ -3,6 +3,8 @@
   <%= h.simple_fields_for :place do |j| %>
     <%= j.input :name, :input_html => { :id => "autocomplete" } %>
     <%= j.input :address, :input_html => { :id => "full_address" } %>
+    <%= j.input :latitude, :input_html => { :id => "latitude" } , as: :hidden%>
+    <%= j.input :longitude, :input_html => { :id => "longitude" } , as: :hidden%>
     <%= j.input :photo %>
     <%= j.input :photo_cache, as: :hidden %>
           <% end %>
