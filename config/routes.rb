@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :lists
+  resources :lists do
+    resources :favourites
+  end
   resources :places, only: [:show, :update, :edit, :destroy]
   resources :users, only: [:show, :new, :create, :update, :edit, :destroy]
   resources :listplaces, only: [:new, :create, :destroy]
