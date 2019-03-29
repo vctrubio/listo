@@ -13,7 +13,7 @@
 <div class="container">
  <div class="row">
    <% @lists.each do |list| %>
-   <div class="col-xs-12 col-sm-6 col-md-3">
+   <div class="col-xs-12 col-sm-6 col-md-4">
      <%= link_to "", list_path(list)%>
 
      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
@@ -23,10 +23,10 @@
       <div class="card-content" style="">
         <%= list.name %>
       </div>
-      <div class="card-likes">
-       <span class="glyphicon glyphicon-heart"><% if @list.nil? %> 0 Likes <% else %>
+      <div class="card-likes" id= "font-likes" >
+       <i class="fas fa-heart"><% if @list.nil? %> 0 Likes <% else %>
  <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
-   <% end %></span>
+   <% end %></i>
       </div>
       </div>
     </div>

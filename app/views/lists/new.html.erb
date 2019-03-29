@@ -1,6 +1,6 @@
 
 <div class = "list-container">
-  <div class="lists-container">
+  <div class="lists-container" >
     <h1>Create a list</h1>
 
     <%= simple_form_for(@list) do |f| %>
@@ -10,8 +10,8 @@
       <%= f.input :photo_cache, as: :hidden %>
       <%= f.input :is_public %>
 
-    <div class = "list-newplace-container">
-      <p>This is a new place:</p>
+    <div class = "list-newplace-container" >
+      <strong><p>Add a new place</p></strong>
       <%= f.simple_fields_for :list_places do |h| %>
         <%= h.simple_fields_for :place do |j| %>
           <%= j.input :name %>
