@@ -1,15 +1,22 @@
 .card {
-  height: 175px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  height: 225px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
   background-size: cover !important;
   background-position: center;
   color: black;
   position: relative;
-  border-width: .3px;
-  border-color: black;
-  border-style: solid;
+  // border-bottom: solid gray 1px;
+  // box-shadow: 1px 1px #888888;
   margin:12px;
   position: relative;
+}
+
+#card-custom-attributes{
+ border-radius: 3px;
+ border: none;
+ // box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+ box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+ transition: box-shadow 0.1s ease-in-out;
 }
 .card-user {
   position: absolute;
@@ -32,22 +39,25 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  padding: 5px;
   background-color: white;
-  // height: 100px;
-  display:flex;
 }
 .card-likes{
 // justify-content: flex-end;
 position:absolute;
-bottom: 1px;
-right: 1px;
+bottom: 4px;
+right: 3px;
+}
+
+#font-likes{
+  font-family: kano;
 }
 .card-description {
   position: absolute;
   text-align: center;
   bottom: 10px;
   left: 10px;
-  z-index: 2;
+  // z-index: 1;
   color: black;
 }
 .card-description h2 {
@@ -59,9 +69,13 @@ right: 1px;
   font-weight: lighter;
 }
 
+.card-text-bottom{
+  // z-index:2;
+}
 
-
-
+.image{
+  border-radius:3px;
+}
 
 .card-link {
   position: absolute;
@@ -73,17 +87,32 @@ right: 1px;
   background: black;
   opacity: 0;
 }
- .card-link:hover {
-   opacity: 0.5;
-   transition-delay: 100ms;
+ #card-custom-attributes:hover {
+   // opacity: 0.1;
+   box-shadow: 0 1px 5px 0px rgba(0,0,0,0.3);
+   transition-delay: 20ms;
+  //  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  // transition: box-shadow 0.3s ease-in-out;
  }
+
 
 
 .card a {
   color: #f2ebe1;
   &:hover {
-    color: red;
-    text-decoration: none;
-    transition-delay: 100ms;
+    // box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    // text-decoration: none;
+    transition-delay: 50ms;
   }
 }
+
+
+.button-link{
+  background-color: $my-green;
+  text-decoration: none;
+}
+ .button-link:hover {
+   opacity: 0.5;
+   transition-delay: 30ms;
+  text-decoration: none;
+ }
