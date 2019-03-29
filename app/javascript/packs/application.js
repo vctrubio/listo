@@ -9,3 +9,6 @@ import { initMapbox } from './plugins/init_mapbox';
 //insert();
 //autocomplete();
 initMapbox();
+
+// import { initUpdateNavbarOnScroll } from '../components/navbar';
+// initUpdateNavbarOnScroll();
