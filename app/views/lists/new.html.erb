@@ -1,27 +1,37 @@
-<h1>Create a list</h1>
 
-<%= simple_form_for(@list) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.input :is_public %>
+<div class = "list-container">
+  <div class="lists-container">
+    <h1>Create a list</h1>
 
-  <p>This is a new place:</p>
-  <%= f.simple_fields_for :list_places do |h| %>
-    <%= h.simple_fields_for :place do |j| %>
-      <%= j.input :name %>
-      <%= j.input :address %>
+    <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.input :is_public %>
+
+    <div class = "list-newplace-container">
+      <p>This is a new place:</p>
+      <%= f.simple_fields_for :list_places do |h| %>
+      <%= h.simple_fields_for :place do |j| %>
+      <%= j.input :name, :input_html => { :id => "autocomplete" }%>
+      <%= j.input :address, :input_html => { :id => "full_address" } %>
       <%= j.input :photo %>
       <%= j.input :photo_cache, as: :hidden %>
       <% end %>
-    <%= h.input :comments %>
-  <% end %>
+      <%= h.input :comments %>
+      <% end %>
 
-  <button type='button' id="insertForm" onclick='getElementById("insertForm").insertAdjacentHTML("beforebegin", `<%= render "lists/form", f: f %>`)'>Add a new place
-  </button>
+      <% forms = (1..10).map { render "lists/form" , f: f  } %>
+      <button type='button' id="insertForm" data-forms="<%= forms.join('$$$$$') %>">Add a new place
+      </button>
 
-  <br>
+      <br>
+    </div>
 
-  <%= f.submit 'Submit', class: 'btn btn-info'%>
-<% end %>
+    <%= f.submit 'Submit', class: 'btn btn-info'%>
+    <% end %>
+
+  </div>
+</div>
+

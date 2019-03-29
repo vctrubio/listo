@@ -8,11 +8,14 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+     <%cle = ENV["GOOGLE_MAPS_API_KEY"]%>
+     <script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=<%=cle%>&libraries=places'></script>
+
   </head>
   <body>
     <%= render 'shared/navbar'  %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <main><%= yield %></main>
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
