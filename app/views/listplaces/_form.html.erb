@@ -1,0 +1,9 @@
+<%= simple_form_for([ list, list_place]) do |form| %>
+
+  <%= form.simple_fields_for :place do |j| %>
+      <%= j.input :name%>
+<% end %>
+  <%= form.input :comments, as: :text %>
+  <%= form.submit 'Add new place' %>
+
+<% end %>

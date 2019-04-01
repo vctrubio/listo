@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   resources :lists do
     resources :favourites
+    resources :list_places, only: [:create, :destroy]
   end
 
   resources :places, only: [:show, :update, :edit, :destroy]

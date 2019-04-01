@@ -1,2 +1,15 @@
-<h1>Lists#edit</h1>
-<p>Find me in app/views/lists/edit.html.erb</p>
+<h1><%= @list.name %></h1>
+
+<%= render 'listplaces/form', list: @list, list_place: @list_place %>
+
+<% @list.list_places.each_with_index do |lp, index| %>
+<%= (index+1).to_s + " place: "%>
+<br>
+<%=lp.place.name%>
+<p> comment: <%= lp.comments%></p>
+<p><%= render 'listplaces/delete', list_place: lp, list: @list%></p>
+<br>
+<% end %>
+
+
+<%= link_to "Save list", list_path(@list)%>
