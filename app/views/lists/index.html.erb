@@ -2,6 +2,15 @@
   <div class="banner-content">
     <h1>share your favorite places</h1>
   </div>
+  <div class="banner-search">
+    <%= form_tag lists_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        # class: "form-control",
+        placeholder: "Search a list"
+      %>
+    <% end %>
+  </div>
 </div>
 
 <div class="container">
@@ -23,7 +32,6 @@
             </span>
           </div>
         </div>
-
       </div>
     </div>
     <% end %>

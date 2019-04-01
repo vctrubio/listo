@@ -1,7 +1,20 @@
 class ListsController < ApplicationController
   before_action :find_list, only: [:show, :edit, :update, :destroy]
   def index
-    @lists = List.all
+    # @lists = List.all
+    if params[:query].present?
+      sql_query = "\
+      name ILIKE :query \
+      OR likes::text ILIKE :query \
+      OR description ILIKE :query \
+      OR is_public::text ILIKE :query \
+      "
+      @lists = List.where(sql_query, query: "%#{params[:query]}%")
+      # @lists = policy_scope(List).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @lists = List.all
+      # @lists = policy_scope(List).order(created_at: :desc)
+    end
   end
 
   def show

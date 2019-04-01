@@ -4,6 +4,12 @@
     <br>
     <p><%= @list.description %></p>
     <p><% @list.is_public %></p>
+    <div>
+      <% if @list.user_id != current_user.id %>
+        <% @user = current_user %>
+        <p>List created by: <%= link_to @user.full_name, user_path(@user) %></p>
+      <% end %>
+    </div>
 
     <!-- button that shows 'like' or 'unlike' depending on relationship to current user -->
     <% if !@list.favourites.nil? %>
@@ -37,8 +43,8 @@
 
     <!-- the collection of places that are included in the list -->
     <% @list.places.each do |place| %>
-      <div><p><%= place.name %> -
-        <%= place.address %></p>
+      <div class="form form-list-show"> <h3><strong><%= place.name %></strong></h3>
+        <p><%= place.address %></p>
         <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
         <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
       </div>
