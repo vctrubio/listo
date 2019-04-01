@@ -35,12 +35,15 @@ class ListsController < ApplicationController
   end
 
   def update
+    puts "THIS WAS A PATCH REQUEST"
   end
 
   def edit
   end
 
   def destroy
+    @list.destroy
+    redirect_to lists_path
   end
 
   private
