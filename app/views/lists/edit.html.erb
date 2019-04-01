@@ -1,3 +1,6 @@
+<div class="container">
+<div class="row">
+<div class="col-lg-6">
 <h1><%= @list.name %></h1>
 
 <%= simple_form_for(@list, method: :patch) do |f| %>
@@ -7,10 +10,12 @@
 <%= f.input :is_public %>
 <%= f.submit 'Save list' %>
 <% end %>
-
-<%= render 'listplaces/form', list: @list, list_place: @list_place %>
-
 <br>
+<h3>Time to add new places!</h3>
+<%= render 'listplaces/form', list: @list, list_place: @list_place %>
+</div>
+<div class="col-lg-6">
+
 
 <% @list.list_places.each_with_index do |lp, index| %>
 <p><%=lp.place.name%></p>
@@ -19,6 +24,9 @@
 <p><%= render 'listplaces/delete', list_place: lp, list: @list%></p>
 <br>
 <% end %>
+</div>
+</div>
+</div>
 
 <%= javascript_pack_tag 'form/autocomplete' %>
 

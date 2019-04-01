@@ -5,8 +5,11 @@
       <%= j.input :address, label_html: { class: 'form' }, :input_html => { :id => "full_address" } , as: :hidden%>
       <%= j.input :latitude, label_html: { class: 'form' },  :input_html => { :id => "latitude" } , as: :hidden%>
       <%= j.input :longitude, label_html: { class: 'form' }, :input_html => { :id => "longitude" } , as: :hidden%>
-<% end %>
+
   <%= form.input :comments, as: :text %>
+  <%= j.input :photo %>
+      <%= j.input :photo_cache, as: :hidden %>
+<% end %>
   <%= form.submit 'Add new place' %>
 
 <% end %>
