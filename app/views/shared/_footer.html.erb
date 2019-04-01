@@ -1,6 +1,6 @@
 <!-- <footer class="fixed-bottom"> -->
 <!-- <br><br><br> -->
-<div class="footer">
+<div class="footer" <%= ("id=footer-list-show" if current_page?(list_path(@list))) if @list %> >
   <div class="footer-copyright">
     © 2019 lista
   </div>
