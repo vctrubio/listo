@@ -1,4 +1,4 @@
-class ListplacesController < ApplicationController
+class ListPlacesController < ApplicationController
   def create
     raise
     @list = List.find(params[:list_id])
