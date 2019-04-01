@@ -1,0 +1,33 @@
+.btn{
+color: white;
+}
+
+.btn-info{
+  a{
+    text-decoration: none;
+  padding: 0.375rem 0.75rem;
+}
+}
+
+// .btn-info{ &:hover {
+//   a:hover{
+//     background-color: #fb7268;
+//     color: gray;}
+// }
+
+.btn-render{
+  margin-top:1rem;
+  margin-bottom:1rem;
+  padding: 0.375rem 0.75rem;
+  background-color: white !important;
+  color: black !important;
+}
+
+.btn-render{
+  a{
+    &:hover{
+      // background-color: #fb7268;
+    color: gray;
+                }
+    }
+}

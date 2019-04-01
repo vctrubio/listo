@@ -4,39 +4,58 @@
     <br>
     <p><%= @list.description %></p>
     <p><% @list.is_public %></p>
+    <div>
+      <% if @list.user_id != current_user.id %>
+        <% @user = current_user %>
+        <p>List created by: <%= link_to @user.full_name, user_path(@user) %></p>
+      <% end %>
+    </div>
 
+    <!-- button that shows 'like' or 'unlike' depending on relationship to current user -->
     <% if !@list.favourites.nil? %>
-    <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
-    <% if pre_like %>
-    <%= button_to 'Unlike', list_favourite_path(@list, pre_like), method: :delete %>
-    <% else %>
-    <%= button_to 'Like', list_favourites_path(@list), method: :post %>
-    <% end %>
-    <% else %>
-    <%= button_to 'Like', list_favourites_path(@list), method: :post %>
+      <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
+      <% if pre_like %>
+        <%= button_to 'Unlike', list_favourite_path(@list, pre_like), method: :delete %>
+        <% else %>
+        <%= button_to 'Like', list_favourites_path(@list), method: :post %>
+      <% end %>
+      <% else %>
+      <%= button_to 'Like', list_favourites_path(@list), method: :post %>
     <% end %>
 
+    <!-- shows the current number of likes that the list has -->
     <p><% if @list.favourites.nil? %> 0 Likes <% else %>
-      <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+      <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes' %>
       <% end %>
     </p>
 
+    <!-- button to delete the list - only visible if the current user owns the list -->
+    <div class='delete-link form-group'>
+      <% if @list.user_id == current_user.id %>
+        <%= link_to 'Delete List', list_path(@list),
+              method: :delete,
+              data: { confirm: "Are you sure?" } , class: 'btn btn-info' %>
+      <% end %>
+    </div>
 
-  <% @list.places.each do |place| %>
-  <div><p><%= place.name %> -
-    <%= place.address %></p>
-    <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
-    <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
-  </div>
+    <!-- list image -->
+    <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
+
+    <!-- the collection of places that are included in the list -->
+    <% @list.places.each do |place| %>
+      <div class="form form-list-show"> <h3><strong><%= place.name %></strong></h3>
+        <p><%= place.address %></p>
+        <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
+        <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
+      </div>
     <% end %>
   </div>
 
-
-    <div class = 'map-lists-container'>
-      <div
-      id="map"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
-    </div>
+  <div class = 'map-lists-container'>
+    <div
+    id="map"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
   </div>
+</div>
