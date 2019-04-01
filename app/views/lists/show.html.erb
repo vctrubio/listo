@@ -24,7 +24,7 @@
 
 
   <% @list.places.each do |place| %>
-  <div class="form"> <h3><strong><%= place.name %></strong></h3>
+  <div class="form form-list-show"> <h3><strong><%= place.name %></strong></h3>
     <p><%= place.address %></p>
     <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
     <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
