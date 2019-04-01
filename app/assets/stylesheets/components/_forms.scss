@@ -50,5 +50,13 @@
 
 .form{
 margin: 10px;
-border-bottom: 1px solid $my-green;
+justify-content: start;
+}
+
+.form-control{
+  border: transparent;
+  border-bottom: 1px solid $my-green !important;
+  font-weight: bold;
+  text-align: left;
+  padding: 0 !important;
 }
