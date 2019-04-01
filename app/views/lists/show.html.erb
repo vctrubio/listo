@@ -15,9 +15,13 @@
     <% if !@list.favourites.nil? %>
       <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
       <% if pre_like %>
-        <%= button_to 'Unlike', list_favourite_path(@list, pre_like), method: :delete %>
+        <%= link_to list_favourite_path(@list, pre_like), method: :delete  do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
         <% else %>
-        <%= button_to 'Like', list_favourites_path(@list), method: :post %>
+        <%= link_to list_favourites_path(@list), method: :post do%>
+          <i class="far fa-heart"></i>
+        <% end %>
       <% end %>
       <% else %>
       <%= button_to 'Like', list_favourites_path(@list), method: :post %>
@@ -39,7 +43,7 @@
     </div>
 
     <!-- list image -->
-    <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
+   <!--  <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div> -->
 
     <!-- the collection of places that are included in the list -->
     <% @list.places.each do |place| %>
