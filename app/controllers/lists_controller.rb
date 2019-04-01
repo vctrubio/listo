@@ -48,7 +48,6 @@ class ListsController < ApplicationController
   end
 
   def update
-    puts "THIS WAS A PATCH REQUEST"
   end
 
   def edit
