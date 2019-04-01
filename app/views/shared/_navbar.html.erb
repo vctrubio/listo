@@ -1,7 +1,16 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" <%= "id=navbar-banner-lewagon" if current_page?(lists_path) || current_page?(root_path) %> >
-  <%= link_to lists_path, class: "navbar-brand" do %>
-    <p>lista</p>
-    <% end %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" <%= "id=navbar-banner-lewagon" if current_page?(root_path) %> >
+  <%= link_to root_path, class: "navbar-brand" do %> <span>lista</span> <% end %>
+
+  <% if !current_page?(root_path) && !current_page?(new_user_session_path) && !current_page?(new_user_registration_path) && !current_page?(new_user_password_path ) %>
+    <div class="search-bar">
+      <%= form_tag lists_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          placeholder: "Search for a list"
+        %>
+      <% end %>
+    </div>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,8 +26,8 @@
           <%= current_user.username || current_user.email %>
         </li>
         <li class="nav-item dropdown">
-          <% question_pic = "https://www.civhc.org/wp-content/uploads/2018/10/question-mark.png" %>
-          <img src="<%=image_url current_user.photo.url || question_pic %>" alt="" id="navbarDropdown" data-toggle="dropdown" aria-haspopup aria-expanded="false" class="avatar dropdown-toggle">
+          <% profile_placeholder = "https://bankwatch.org/wp-content/uploads/2018/03/Portrait_Placeholder-300x300.png" %>
+          <img src="<%=image_url current_user.photo.url || profile_placeholder %>" alt="" id="navbarDropdown" data-toggle="dropdown" aria-haspopup aria-expanded="false" class="avatar dropdown-toggle">
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "My Profile", current_user, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
