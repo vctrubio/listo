@@ -1,6 +1,5 @@
 class ListPlacesController < ApplicationController
   def create
-    raise
     @list = List.find(params[:list_id])
     @list_place = ListPlace.new(listplace_params)
     @list_place.list = @list

@@ -49,6 +49,8 @@ class ListsController < ApplicationController
   end
 
   def update
+    @list.update(list_params)
+    redirect_to list_path(@list)
   end
 
   def edit

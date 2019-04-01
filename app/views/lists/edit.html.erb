@@ -1,15 +1,31 @@
 <h1><%= @list.name %></h1>
 
+<%= simple_form_for(@list, method: :patch) do |f| %>
+<%= f.input :description , label_html: { class: 'form' } %>
+<%= f.input :photo , label_html: { class: 'form' } %>
+<%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
+<%= f.input :is_public %>
+<%= f.submit 'Save list' %>
+<% end %>
+
 <%= render 'listplaces/form', list: @list, list_place: @list_place %>
+
+<br>
 
 <% @list.list_places.each_with_index do |lp, index| %>
 <%= (index+1).to_s + " place: "%>
 <br>
 <%=lp.place.name%>
+<%=lp.place.address%>
 <p> comment: <%= lp.comments%></p>
 <p><%= render 'listplaces/delete', list_place: lp, list: @list%></p>
 <br>
 <% end %>
 
+<%= javascript_pack_tag 'form/autocomplete' %>
 
-<%= link_to "Save list", list_path(@list)%>
+
+
+
+
+

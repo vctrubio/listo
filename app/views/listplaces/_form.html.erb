@@ -1,7 +1,10 @@
-<%= simple_form_for([ list, list_place]) do |form| %>
+<%= simple_form_for([ list, list_place], method: :post) do |form| %>
 
   <%= form.simple_fields_for :place do |j| %>
-      <%= j.input :name%>
+      <%= j.input :name, label_html: { class: 'form' }, :input_html => { :id => "autocomplete" }%>
+      <%= j.input :address, label_html: { class: 'form' }, :input_html => { :id => "full_address" } , as: :hidden%>
+      <%= j.input :latitude, label_html: { class: 'form' },  :input_html => { :id => "latitude" } , as: :hidden%>
+      <%= j.input :longitude, label_html: { class: 'form' }, :input_html => { :id => "longitude" } , as: :hidden%>
 <% end %>
   <%= form.input :comments, as: :text %>
   <%= form.submit 'Add new place' %>
