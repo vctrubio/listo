@@ -13,10 +13,8 @@
 <br>
 
 <% @list.list_places.each_with_index do |lp, index| %>
-<%= (index+1).to_s + " place: "%>
-<br>
-<%=lp.place.name%>
-<%=lp.place.address%>
+<p><%=lp.place.name%></p>
+<p><%=lp.place.address%></p>
 <p> comment: <%= lp.comments%></p>
 <p><%= render 'listplaces/delete', list_place: lp, list: @list%></p>
 <br>
