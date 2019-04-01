@@ -1,34 +1,42 @@
 <div class="container">
-<div class="row">
-<div class="col-lg-6">
-<h1><%= @list.name %></h1>
+  <div class="row">
+    <div class="col-lg-6" id = "left-part">
+      <h1><%= @list.name %></h1>
 
-<%= simple_form_for(@list, method: :patch) do |f| %>
-<%= f.input :description , label_html: { class: 'form' } %>
-<%= f.input :photo , label_html: { class: 'form' } %>
-<%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
-<%= f.input :is_public %>
-<%= f.submit 'Save list' %>
-<% end %>
-<br>
-<h3>Time to add new places!</h3>
-<%= render 'listplaces/form', list: @list, list_place: @list_place %>
-</div>
-<div class="col-lg-6">
+      <%= simple_form_for(@list, method: :patch) do |f| %>
+      <%= f.input :description, placeholder: 'Describe this list' , label_html: { class: 'form' }, label: false %>
+      <%= f.input :photo , label: 'list photo', label_html: { class: 'form' } %>
+      <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
+      <%= f.input :is_public %>
+      <%= f.submit 'Save list' %>
+      <% end %>
+      <br>
+      <h3>Time to add new places!</h3>
+      <%= render 'listplaces/form', list: @list, list_place: @list_place %>
+    </div>
+    <div class="col-lg-6">
+      <div class="container">
+        <% @list.list_places.each_with_index do |lp, index| %>
+
+        <div class="row">
 
 
-<% @list.list_places.each_with_index do |lp, index| %>
-<p><%=lp.place.name%></p>
-<p><%=lp.place.address%></p>
-<p> comment: <%= lp.comments%></p>
-<p><%= render 'listplaces/delete', list_place: lp, list: @list%></p>
-<br>
-<% end %>
-</div>
-</div>
-</div>
+          <div class="col-lg-6">
+            <p><%=lp.place.name%></p>
+            <p><%=lp.place.address%></p>
+            <p> comment: <%= lp.comments%></p>
+            <p><%= render 'listplaces/delete', list_place: lp, list: @list%></p>
+          </div>
+          <div class="col-lg-6">
+            <%= cl_image_tag lp.place.photo, crop: :fill, class: 'place-image' %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<%= javascript_pack_tag 'form/autocomplete' %>
+  <%= javascript_pack_tag 'form/autocomplete' %>
 
 
 
