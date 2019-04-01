@@ -20,11 +20,11 @@
       <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes'%>
       <% end %>
     </p>
-    <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div>
+    <!-- <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div> -->
 
 
   <% @list.places.each do |place| %>
-  <div><p><%= place.name %> -
+  <div class="form"> <p><%= place.name %> -
     <%= place.address %></p>
     <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
     <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>

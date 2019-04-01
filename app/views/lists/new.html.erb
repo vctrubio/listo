@@ -4,20 +4,20 @@
     <h1>Create a list</h1>
 
     <%= simple_form_for(@list) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.input :is_public %>
+    <%= f.input :name , label_html: { class: 'form' } %>
+    <%= f.input :description , label_html: { class: 'form' } %>
+    <%= f.input :photo , label_html: { class: 'form' } %>
+    <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
+    <%= f.input :is_public, label_html: { class: 'form' } %>
 
     <div class = "list-newplace-container" >
-      <strong><p>Add a new place</p></strong>
+      <strong><p><br>Add a new place</p></strong>
       <%= f.simple_fields_for :list_places do |h| %>
       <%= h.simple_fields_for :place do |j| %>
-      <%= j.input :name, :input_html => { :id => "autocomplete" }%>
-      <%= j.input :address, :input_html => { :id => "full_address" } %>
-      <%= j.input :latitude, :input_html => { :id => "latitude" } , as: :hidden%>
-      <%= j.input :longitude, :input_html => { :id => "longitude" } , as: :hidden%>
+      <%= j.input :name, label_html: { class: 'form' }, :input_html => { :id => "autocomplete" }%>
+      <%= j.input :address, label_html: { class: 'form' }, :input_html => { :id => "full_address" } %>
+      <%= j.input :latitude, label_html: { class: 'form' },  :input_html => { :id => "latitude" } , as: :hidden%>
+      <%= j.input :longitude, label_html: { class: 'form' }, :input_html => { :id => "longitude" } , as: :hidden%>
       <%= j.input :photo %>
       <%= j.input :photo_cache, as: :hidden %>
       <% end %>

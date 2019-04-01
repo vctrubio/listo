@@ -38,11 +38,17 @@
 
 
 #form-button{
-  color: $my-green;
+  color: white;
+
 }
 
 .list-container-form{
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.form{
+margin: 10px;
+border-bottom: 1px solid $my-green;
 }

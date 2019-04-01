@@ -8,7 +8,7 @@
     <p><strong>Bio:  </strong>  <%=@user.bio %></p>
     <p><strong>Social Media:  </strong>  <%=@user.instagram%> <%=@user.facebook%> <%=@user.twitter%></p>
     <p><strong>Personal Website: </strong>  <%=@user.website %></p>
-    <p><%= cl_image_tag(current_user.photo.url, width: 300, height: 300, crop: :fill) unless current_user.photo.url.nil? %></p>
+    <p><%= cl_image_tag(@user.photo.url, width: 300, height: 300, crop: :fill) unless @user.photo.url.nil? %></p>
 
     <%= link_to "Edit user", edit_user_path %>
 
