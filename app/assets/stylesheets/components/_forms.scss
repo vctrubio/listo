@@ -1,3 +1,8 @@
+.container-headline{
+  text-align:center;
+}
+
+
 .inner-form-container {
   padding: 15px;
   // border: 1px solid #0294A5;
@@ -33,11 +38,29 @@
 
 
 #form-button{
-  color: $my-green;
+  color: white;
+
 }
 
 .list-container-form{
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.form{
+margin: 10px;
+justify-content: start;
+}
+
+.form-list-show{
+  border-bottom: 1px solid $my-green !important;
+}
+
+.form-control{
+  border: transparent;
+  border-bottom: 1px solid $my-green !important;
+  font-weight: bold;
+  text-align: left;
+  padding: 0 !important;
 }
