@@ -55,6 +55,9 @@ justify-content: start;
 
 .form-list-show{
   border-bottom: 1px solid $my-green !important;
+      display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
 }
 
 .form-control{
@@ -63,4 +66,8 @@ justify-content: start;
   font-weight: bold;
   text-align: left;
   padding: 0 !important;
+}
+
+.delete-link{
+  margin:10px;
 }
