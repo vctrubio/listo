@@ -6,9 +6,7 @@ class ListsController < ApplicationController
     if params[:query].present?
       sql_query = "\
       name ILIKE :query \
-      OR likes::text ILIKE :query \
       OR description ILIKE :query \
-      OR is_public::text ILIKE :query \
       "
       @lists = List.where(sql_query, query: "%#{params[:query]}%")
       # @lists = policy_scope(List).where(sql_query, query: "%#{params[:query]}%")

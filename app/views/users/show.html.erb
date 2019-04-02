@@ -1,82 +1,120 @@
 <div class = "list-container user-profile-container user-wrapper">
-  <h2>My profile</h2>
+  <div class="container body">
 
-  <div class = "user-profile-inner-container d-inline-flex">
+    <!-- first section contains profile photo and bio section -->
+    <div class="row justify-content-center section top-section">
 
-    <p><strong>Username:  </strong>  <%=@user.username %></p>
-    <p><strong>Name:  </strong>  <%=@user.full_name %></p>
-    <p><strong>Bio:  </strong>  <%=@user.bio %></p>
-    <p><strong>Social Media:  </strong>  <%=@user.instagram%> <%=@user.facebook%> <%=@user.twitter%></p>
-    <p><strong>Personal Website: </strong>  <%=@user.website %></p>
-    <p><%= cl_image_tag(@user.photo.url, width: 300, height: 300, crop: :fill) unless @user.photo.url.nil? %></p>
+      <!-- profile picture -->
+      <div class="col-12 col-sm-5">
+        <%= cl_image_tag(@user.photo.url, width: 300, height: 300, crop: :fill) unless @user.photo.url.nil? %>
+      </div>
 
-    <%= link_to "Edit user", edit_user_path %>
-
-  <div><%= render 'follow_form' if user_signed_in? %></div>
-</div>
-  <div class="container">
-  <div class="row">
-    <% @user.lists.each do |list| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <%= link_to "", list_path(list)%>
-      <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
-        <%= link_to "", list_path(list), class: 'card-link' %>
-        <div class = "card-text-bottom">
-          <div class="card-avatar"></div>
-          <div class="card-content" style="">
-            <%= list.name %>
+      <!-- bio section -->
+      <div class="col-12 col-sm-7">
+        <!-- name, username and edit button -->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 center title">
+              <p class="name"><strong><%=@user.full_name.titleize if @user.full_name %></strong></p>
+            </div>
+            <div class="col-12 center title" >
+              <p class="handle">@<%=@user.username %></p>
+            </div>
           </div>
-          <div class="card-likes">
-            <span class="glyphicon glyphicon-heart"><% if list.favourites.nil? %> 0 Likes <% else %>
-              <%= list.favourites.count %> <%= (list.favourites.count) == 1 ? 'Like' : 'Likes'%>
-              <% end %>
-            </span>
+
+          <div class="row justify-content-center bio-box">
+            <div class="col-6">
+              <p><strong>Bio:  </strong>  <%=@user.bio %></p>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li class="no-bullets"><i class="fab fa-facebook-square"></i>   <%= @user.facebook %></li>
+                <li class="no-bullets"><i class="fab fa-instagram"></i>   <%= @user.instagram %></li>
+                <li class="no-bullets"><i class="fab fa-twitter"></i>   <%= @user.twitter %></li>
+                <li class="no-bullets"><i class="fas fa-globe"></i>   <%= @user.website %></li>
+              </ul>
+            </div>
           </div>
         </div>
-
+        <div class="follow"><%= render 'follow_form' if user_signed_in? %></div>
+        <div class="follow">
+          <% if @user.id == current_user.id %>
+          <%= link_to "Edit Profile", edit_user_path %>
+          <% end %>
+        </div>
       </div>
     </div>
-    <% end %>
 
-  </div>
-</div>
+    <!-- second section contains lists that are owned by user and lists that are liked/followed by user -->
+    <div class="row justify-content-center section">
 
- <br><br><br><br>
-
-
-
-<div class="container headline-container">
-  <strong><p>My favorites</p></strong>
-  <div class="row">
-    <% @user.favourites.each do |fav| %>
-    <% list = fav.list%>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <%= link_to "", list_path(list)%>
-      <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
-        <%= link_to "", list_path(list), class: 'card-link' %>
-        <div class = "card-text-bottom">
-          <div class="card-avatar"></div>
-          <div class="card-content" style="">
-            <%= list.name %>
-          </div>
-          <div class="card-likes">
-            <span class="glyphicon glyphicon-heart"><% if list.favourites.nil? %> 0 Likes <% else %>
-              <%= list.favourites.count %> <%= (list.favourites.count) == 1 ? 'Like' : 'Likes'%>
-              <% end %>
-            </span>
+      <!-- lists owned by user -->
+      <div class="col-12 list-section">
+        <div class="container headline-container">
+        <strong><p>My Lists</p></strong>
+          <div class="row">
+            <% @user.lists.each do |list| %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <%= link_to "", list_path(list)%>
+                <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
+                  <%= link_to "", list_path(list), class: 'card-link' %>
+                  <div class = "card-text-bottom">
+                    <div class="card-avatar">
+                    </div>
+                    <div class="card-content" style="">
+                      <%= list.name %>
+                    </div>
+                    <div class="card-likes">
+                      <span class="glyphicon glyphicon-heart"><% if list.favourites.nil? %> 0 Likes <% else %>
+                        <%= list.favourites.count %> <%= (list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+                        <% end %>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
+      </div>
 
+      <!-- lists followed/liked by user -->
+      <div class="col-12 list-section">
+        <div class="container headline-container">
+          <strong><p>My Favorites</p></strong>
+          <div class="row">
+            <% @user.favourites.each do |fav| %>
+            <% list = fav.list%>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <%= link_to "", list_path(list)%>
+                <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
+                  <%= link_to "", list_path(list), class: 'card-link' %>
+                  <div class = "card-text-bottom">
+                    <div class="card-avatar">
+                    </div>
+                    <div class="card-content" style="">
+                      <%= list.name %>
+                    </div>
+                    <div class="card-likes">
+                      <span class="glyphicon glyphicon-heart"><% if list.favourites.nil? %> 0 Likes <% else %>
+                        <%= list.favourites.count %> <%= (list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+                        <% end %>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-    <% end %>
+
+    <!-- third section contains map -->
+    <div class="row justify-content-center section">
+      <div class="col-6">
+        <h3>MAP</h3>
+      </div>
+    </div>
   </div>
 </div>
-
-
-  <!-- </div> -->
-</div>
-
-
-
-
