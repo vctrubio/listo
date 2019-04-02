@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   before_action :find_list, only: [:show, :edit, :update, :destroy]
   def index
     # @lists = List.all
+    @list = List.new()
     if params[:query].present?
       sql_query = "\
       name ILIKE :query \
@@ -41,16 +42,21 @@ class ListsController < ApplicationController
     # raise
     if @list.save
       # raise
-      redirect_to list_path(@list)
+      redirect_to edit_list_path(@list)
     else
-      render :new
+      render 'lists/index'
     end
   end
 
   def update
+    @list.update(list_params)
+    redirect_to list_path(@list)
   end
 
   def edit
+    @list = List.find(params[:id])
+    @list_place = ListPlace.new()
+    @list_place.build_place
   end
 
   def destroy

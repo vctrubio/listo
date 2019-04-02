@@ -3,7 +3,7 @@
 
   <% if !current_page?(root_path) && !current_page?(new_user_session_path) && !current_page?(new_user_registration_path) && !current_page?(new_user_password_path ) %>
     <div class="search-bar">
-      <%= form_tag lists_path, method: :get do %>
+      <%= form_tag root_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
           placeholder: "Search for a list"
@@ -19,9 +19,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "create a list", new_list_path, class: "nav-link nav-link-create-list" %>
-        </li>
+
+      <li class="nav-item">
+        <%= link_to "create a list", "", class: "nav-link nav-link-create-list", "data-toggle" => "modal", 'data-target' => '#exampleModal' %>
+      </li>
         <li class="nav-item active nav-link">
           <%= current_user.username || current_user.email %>
         </li>
@@ -34,10 +35,16 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "login", new_user_session_path, class: "nav-link" %>
-        </li>
+      <li class="nav-item">
+        <%= link_to "login", new_user_session_path, class: "nav-link" %>
+      </li>
       <% end %>
     </ul>
   </div>
 </div>
+
+<%= render 'shared/modal' %>
+
+
+
+
