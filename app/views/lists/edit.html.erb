@@ -1,2 +1,47 @@
-<h1>Lists#edit</h1>
-<p>Find me in app/views/lists/edit.html.erb</p>
+<div class="container" id = "edit-container">
+  <div class="row">
+    <div class="col-lg-6" id = "left-part">
+      <h1><%= @list.name %></h1>
+
+      <%= simple_form_for(@list, method: :patch) do |f| %>
+      <%= f.input :description, placeholder: 'Describe this list' , label_html: { class: 'form' }, label: false %>
+      <%= f.input :photo , label: 'Please select a picture for your list', label_html: { class: 'form' } %>
+      <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
+      <%= f.input :is_public %>
+      <%= f.submit 'Save list' %>
+      <% end %>
+      <br>
+      <h3><%= @list.list_places.nil? ? "Add another place!" : "Add a new place!"  %></h3>
+      <%= render 'listplaces/form', list: @list, list_place: @list_place %>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="container">
+        <% @list.list_places.each_with_index do |lp, index| %>
+
+        <div class="row" id = "place-div">
+
+
+          <div class="col-lg-6">
+            <p><%=lp.place.name%></p>
+            <p><%=lp.place.address%></p>
+            <p> comment: <%= lp.comments%></p>
+            <p><%= render 'listplaces/delete', list_place: lp, list: @list%></p>
+          </div>
+          <div class="col-lg-6">
+            <%= cl_image_tag lp.place.photo, crop: :fill, class: 'place-image' %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <%= javascript_pack_tag 'form/autocomplete' %>
+
+
+
+
+
+
