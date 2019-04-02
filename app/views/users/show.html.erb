@@ -10,10 +10,10 @@
       </div>
 
       <!-- bio section -->
-      <div class="col-12 col-sm-7">
+      <div class="col-12 col-sm-7 bio-section">
         <!-- name, username and edit button -->
         <div class="container">
-          <div class="row justify-content-center">
+          <div class="row">
             <div class="col-12 center title">
               <p class="name"><strong><%=@user.full_name.titleize if @user.full_name %></strong></p>
             </div>
@@ -22,11 +22,11 @@
             </div>
           </div>
 
-          <div class="row justify-content-center bio-box">
-            <div class="col-6">
-              <p><strong>Bio:  </strong>  <%=@user.bio %></p>
+          <div class="row bio-box">
+            <div class="col-12">
+              <p><%= @user.bio %></p>
             </div>
-            <div class="col-6">
+            <div class="col-12">
               <ul>
                 <li class="no-bullets"><i class="fab fa-facebook-square"></i>   <%= @user.facebook %></li>
                 <li class="no-bullets"><i class="fab fa-instagram"></i>   <%= @user.instagram %></li>
