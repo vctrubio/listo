@@ -35,14 +35,30 @@
 .list-show-container{
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  min-width: 60%''
+  padding: 0px;
+  width: 55vw;
+  flex-grow: .6;
 }
 
+.title-show-container{
+    // display: flex;
+  // flex-direction: column;
+  padding:10px;
+  position:relative;
+  border-bottom: 1px rgba(2, 48, 165, .4);
+}
+
+.inner-show-container{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right:20px
+}
 
 .map-lists-container{
   width: 45vw;
   flex: display;
+  flex-grow: .4;
 }
 
 #map {
