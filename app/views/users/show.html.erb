@@ -15,7 +15,7 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 center title">
-              <p class="name"><strong><%=@user.full_name.titleize %></strong></p>
+              <p class="name"><strong><%=@user.full_name.titleize if @user.full_name %></strong></p>
             </div>
             <div class="col-12 center title" >
               <p class="handle">@<%=@user.username %></p>
