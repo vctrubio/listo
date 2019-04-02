@@ -1,15 +1,16 @@
 <div class = "list-show-wrapper">
   <div class="list-show-container">
-    <div class="title-show-container">
+    <div class="title-show-container" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= @list.photo.url.nil? ? "placeholder" : cl_image_path(@list.photo.url, width: 700, height: 500, crop: :scale) %>')">
     <h1><%= @list.name %></h1>
     <br>
-    <p><%= @list.description %></p>
-    <p><% @list.is_public %></p>
     <div>
 
-        <p>List created by: <%= link_to (@list.user.username || @list.user.email), user_path(@list.user) %></p>
+        <p>By: <%= link_to (@list.user.username || @list.user.email), user_path(@list.user) %></p>
 
     </div>
+    <p><%= @list.description %></p>
+    <p><% @list.is_public %></p>
+
 
     <!-- button that shows 'like' or 'unlike' depending on relationship to current user -->
     <% if !@list.favourites.nil? %>
@@ -33,14 +34,7 @@
       <% end %>
     </p>
 
-    <!-- button to delete the list - only visible if the current user owns the list -->
-    <div class='delete-link form-group'>
-      <% if @list.user_id == current_user.id %>
-        <%= link_to 'Delete List', list_path(@list),
-              method: :delete,
-              data: { confirm: "Are you sure?" } , class: 'btn btn-info' %>
-      <% end %>
-    </div>
+
    </div>
     <!-- list image -->
    <!--  <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div> -->
@@ -55,6 +49,23 @@
       </div>
     <% end %>
   </div>
+  <!-- button to delete the list - only visible if the current user owns the list -->
+
+   <div class="edit">
+      <% if @list.user_id == current_user.id %>
+        <%= link_to 'Edit List', edit_list_path(@list),class: 'btn btn-info' %>
+              <% end %>
+   </div>
+
+
+
+    <div class='delete-link form-group'>
+      <% if @list.user_id == current_user.id %>
+        <%= link_to 'Delete List', list_path(@list),
+              method: :delete,
+              data: { confirm: "Are you sure?" } , class: 'btn btn-info' %>
+      <% end %>
+    </div>
   </div>
 
   <div class = 'map-lists-container'>
