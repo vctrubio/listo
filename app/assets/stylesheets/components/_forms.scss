@@ -55,6 +55,9 @@ justify-content: start;
 
 .form-list-show{
   border-bottom: 1px solid $my-green !important;
+      display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
 }
 
 .form-control{

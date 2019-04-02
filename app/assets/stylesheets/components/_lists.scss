@@ -33,7 +33,6 @@
 }
 
 .list-show-container{
-  display: flex;
   flex-direction: column;
   padding: 0px;
   width: 55vw;
@@ -51,6 +50,30 @@
   margin-bottom: 50px;
   color:white !important;
   height: 60vh;
+}
+
+.list-title-info{
+  flex-direction: row;
+  display:flex;
+  justify-content: space-between; a{
+    color:white;
+    text-decoration: none; &:hover{
+      color: black;
+    }
+  }
+}
+
+.list-description{
+
+}
+
+.like-list{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px; a{
+    margin: 0 10px 0;
+  }
+
 }
 
 .inner-show-container{
@@ -90,3 +113,24 @@ justify-content: space-around;
   justify-content:space-around;
 }
 
+.centered-photo{
+ margin: 0 auto;
+}
+
+.list-place-title{
+  display:flex;
+ }
+ .address-list-show{
+  color: gray !important;
+  font-size: .75rem;
+  letter-spacing: .02rem;
+ }
+
+ .list-info{
+  justify-content:space-between;;
+ }
+
+ .buttons-list-show{
+  display:flex;
+  color:gray;
+ }

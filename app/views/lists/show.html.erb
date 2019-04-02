@@ -3,17 +3,17 @@
     <div class="title-show-container" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= @list.photo.url.nil? ? "placeholder" : cl_image_path(@list.photo.url, width: 700, height: 500, crop: :scale) %>')">
     <h1><%= @list.name %></h1>
     <br>
-    <div>
+    <div class="list-title-info">
 
         <p>By: <%= link_to (@list.user.username || @list.user.email), user_path(@list.user) %></p>
 
-    </div>
-    <p><%= @list.description %></p>
+
+
     <p><% @list.is_public %></p>
 
 
     <!-- button that shows 'like' or 'unlike' depending on relationship to current user -->
-    <% if !@list.favourites.nil? %>
+    <div class="like-list"> <% if !@list.favourites.nil? %>
       <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
       <% if pre_like %>
         <%= link_to list_favourite_path(@list, pre_like), method: :delete  do %>
@@ -33,27 +33,28 @@
       <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes' %>
       <% end %>
     </p>
-
-
+    </div>
+   </div>
+   <div class="list-description"><p><%= @list.description %></p></div>
    </div>
     <!-- list image -->
    <!--  <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div> -->
 
     <!-- the collection of places that are included in the list -->
     <div class="inner-show-container">
-    <% @list.places.each do |place| %>
-      <div class="form form-list-show"> <h3><strong><%= place.name %></strong></h3>
-        <p><%= place.address %></p>
-        <p> <%= cl_image_tag place.photo, height: 300, width: 400, crop: :fill %></p>
+    <% @list.places.each_with_index do |place, index| %>
+      <div class="form form-list-show"> <div class="list-place-title"><h3><strong> <%=  (index+1).to_s+ ". " + place.name  %></strong></h3></div>
+       <div class="list-info"><div class="address-list-show"><p><%= place.address %></p></div></div>
+        <div class="centered-photo"><p> <%= cl_image_tag place.photo, height: 300, width: 500, crop: :scale %></p></div>
         <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
       </div>
     <% end %>
   </div>
   <!-- button to delete the list - only visible if the current user owns the list -->
-
-   <div class="edit">
+<div class="buttons-list-show">
+   <div class="edit delete-link">
       <% if @list.user_id == current_user.id %>
-        <%= link_to 'Edit List', edit_list_path(@list),class: 'btn btn-info' %>
+        <%= link_to 'Edit List', edit_list_path(@list) %>
               <% end %>
    </div>
 
@@ -63,8 +64,9 @@
       <% if @list.user_id == current_user.id %>
         <%= link_to 'Delete List', list_path(@list),
               method: :delete,
-              data: { confirm: "Are you sure?" } , class: 'btn btn-info' %>
+              data: { confirm: "Are you sure?" } %>
       <% end %>
+    </div>
     </div>
   </div>
 
