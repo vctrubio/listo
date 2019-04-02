@@ -1,12 +1,23 @@
-<!-- <footer class="fixed-bottom"> -->
-<!-- <br><br><br> -->
-<div class="footer" <%= ("id=footer-list-show" if current_page?(list_path(@list))) if @list %> >
-  <div class="footer-copyright">
-    © 2019 lista
-  </div>
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-  </div>
-</div>
+<% if !current_page?(new_list_path) %>
+ <div class="footer" <%= ("id=footer-list-show" if current_page?(list_path)) if @list %> >
+   <div class="footer-copyright">
+     © 2019 lista
+   </div>
+   <div class="footer-links">
+     <a href="#"><i class="fab fa-facebook"></i></a>
+     <a href="#"><i class="fab fa-twitter"></i></a>
+     <a href="#"><i class="fab fa-instagram"></i></a>
+   </div>
+ </div>
+<% else %>
+ <div class="footer">
+   <div class="footer-copyright">
+     © 2019 lista
+   </div>
+   <div class="footer-links">
+     <a href="#"><i class="fab fa-facebook"></i></a>
+     <a href="#"><i class="fab fa-twitter"></i></a>
+     <a href="#"><i class="fab fa-instagram"></i></a>
+   </div>
+ </div>
+<% end %>
