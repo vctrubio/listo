@@ -1,3 +1,4 @@
+<% if current_page?(root_path) && !params[:query].present? %>
 <div class="home-banner" style="background-image: linear-gradient(-90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 50%), url('<%= image_path 'LISTA-BANNER-1.jpg' %>');">
   <div class="banner-content">
     <h1>share your favorite places</h1>
@@ -11,6 +12,7 @@
     <% end %>
   </div>
 </div>
+<% end %>
 
 <div class="container">
   <div class="row">
