@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :favourites, only: [:new, :create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :relationships, only: [:create, :destroy]
+  # delete 'lists/:id', to: 'lists#destroy', as: 'delete_list'
 end

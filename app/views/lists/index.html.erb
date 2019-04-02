@@ -3,11 +3,10 @@
     <h1>share your favorite places</h1>
   </div>
   <div class="banner-search">
-    <%= form_tag lists_path, method: :get do %>
+    <%= form_tag root_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
-        # class: "form-control",
-        placeholder: "Search a list"
+        placeholder: "Search for a list"
       %>
     <% end %>
   </div>
@@ -17,7 +16,6 @@
   <div class="row">
     <% @lists.each do |list| %>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <%= link_to "", list_path(list)%>
       <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
         <%= link_to "", list_path(list), class: 'card-link' %>
         <div class = "card-text-bottom">
