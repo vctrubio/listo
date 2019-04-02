@@ -7,7 +7,7 @@
       <%= j.input :longitude, label_html: { class: 'form' }, :input_html => { :id => "longitude" } , as: :hidden%>
 
   <%= form.input :comments, placeholder: 'Add a comment for this place', as: :text , label: false%>
-  <%= j.input :photo, label: 'place photo' %>
+  <%= j.input :photo, label: 'Select a nice pic' %>
       <%= j.input :photo_cache, as: :hidden %>
 <% end %>
   <%= form.submit 'Add new place' %>
