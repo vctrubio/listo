@@ -7,13 +7,23 @@ height: auto;
   height: 100vh;
   position: sticky;
   top: 0;
-  padding-right: 30px;
+  padding-right: 70px;
+  border-right: 1px solid lightgrey;
+}
+
+#right-part {
+  padding-left: 70px;
+}
+
+#add-a-place {
+  margin-top: 50px;
 }
 
 #edit-container {
-  margin-top: 30px;
+  margin-top: 70px;
 }
 
 #place-div {
   border-bottom: 1px solid $my-green;
+  margin-bottom: 30px;
 }

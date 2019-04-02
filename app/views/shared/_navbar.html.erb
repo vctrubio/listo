@@ -21,7 +21,7 @@
       <% if user_signed_in? %>
 
       <li class="nav-item">
-        <%= link_to "create a list", "", class: "nav-link nav-link-create-list", "data-toggle" => "modal", 'data-target' => '#exampleModal' %>
+        <%= link_to "Create a list", "", class: "nav-link nav-link-create-list", "data-toggle" => "modal", 'data-target' => '#exampleModal' %>
       </li>
         <li class="nav-item active nav-link">
           <%= current_user.username || current_user.email %>

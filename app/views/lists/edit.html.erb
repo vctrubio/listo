@@ -5,27 +5,25 @@
 
       <%= simple_form_for(@list, method: :patch) do |f| %>
       <%= f.input :description, placeholder: 'Describe this list' , label_html: { class: 'form' }, label: false %>
-      <%= f.input :photo , label: 'Please select a picture for your list', label_html: { class: 'form' } %>
+      <%= f.input :photo , label: 'Please select a picture for your list:' %>
       <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
       <%= f.input :is_public %>
-      <%= f.submit 'Save list' %>
+      <div class = 'text-right'><%= f.submit 'Save list', class: 'btn-info' if @list.places.exists?%></div>
       <% end %>
-      <br>
-      <h3><%= @list.list_places.nil? ? "Add another place!" : "Add a new place!"  %></h3>
-      <%= render 'listplaces/form', list: @list, list_place: @list_place %>
+      <div id = "add-a-place">
+        <h3 class = 'text-left'><%= @list.list_places.exists? ? "Add another place:" : "Add a new place!"%></h3>
+        <%= render 'listplaces/form', list: @list, list_place: @list_place %>
+      </div>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6" id = "right-part">
       <div class="container">
         <% @list.list_places.each_with_index do |lp, index| %>
-
         <div class="row" id = "place-div">
-
-
           <div class="col-lg-6">
-            <p><%=lp.place.name%></p>
+            <h6><%=lp.place.name%></h6>
             <p><%=lp.place.address%></p>
-            <p> comment: <%= lp.comments%></p>
+            <p><%= '"' + lp.comments + '"'%></p>
             <p><%= render 'listplaces/delete', list_place: lp, list: @list%></p>
           </div>
           <div class="col-lg-6">
@@ -38,7 +36,7 @@
   </div>
 </div>
 
-  <%= javascript_pack_tag 'form/autocomplete' %>
+<%= javascript_pack_tag 'form/autocomplete' %>
 
 
 
