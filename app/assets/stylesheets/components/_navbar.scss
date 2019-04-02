@@ -1,13 +1,20 @@
+#italic-hl {
+  // color: $my-green;
+  font-style: italic;
+}
+
+#banner-headline-hl {
+  color: white;
+  font-style: italic;
+}
+
 #navbar-banner-lewagon{
   background-color: transparent;
   opacity: 100;
   position: absolute;
   min-width: 100%;
-  border-bottom: none !important;
+  box-shadow: none;
   span{
-    color: white;
-  }
-  p{
     color: white;
   }
   .nav-link{
@@ -15,32 +22,36 @@
   }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
 }
 
 .navbar-lewagon {
   display: flex;
-  box-shadow: 0px 1px 1px -1px #111; //0px 15px 10px -15px #111;
-
   background: white;
+  box-shadow: 0px 1px 1px -1px #111; //0px 15px 10px -15px #111;
   // border-bottom: solid 1px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  .nav-link-create-list{
-    color: $my-green !important;
+  justify-content: space-between;
+  a {
+    margin-right: 20px; &:hover {
+    color: black;
+    transition-delay: 30ms;
+    text-decoration: none;
+    }
   }
-
+  .navbar-brand img {
+    width: 40px;
+  }
   .search-bar {
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
     flex-grow: .7;
     form {
       width: 100%;
@@ -55,79 +66,25 @@
       width: 100%;
     }
   }
-}
-
-
-.nav-link-create-list{
-    color: $my-green !important; &:hover {
-      color: rgba (2, 148, 165, 0.5);
+  .navbar-collapse {
+    flex-grow: 0;
+    .nav-link-create-list{
+      // color: $my-green !important;
+      &:hover {
+        color: rgba (2, 148, 165, 0.5);
+      }
+    }
+    .nav-item{
+      // color: $my-green;
+    }
+    .nav-item-active{
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+      margin:20px;
+    }
+    .dropdown-menu{
+      background: white;
     }
   }
-
-
-.navbar-lewagon {
-  justify-content: space-between;
-  a {
-   // display: inline;
-   margin-right: 20px; &:hover {
-   color: black;
-   transition-delay: 30ms;
-   text-decoration: none;
-}
-   }
-
-}
-
-
-  // Change the color to the light blue, make the text white and create a very light border on the botto
-
-
-
-.nav-item-active{
-justify-content: space-between;
-display: flex;
-align-items: center;
-margin:20px;
-}
-
-.nav-item{
-  color: $my-green;
-}
-
-
-/* Right section */
-.navbar-wagon-right {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-decoration: none;
-  color: black;
-}
-
-
-.dropdown-menu{
-  background: white;
-}
-
-
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 60px;
-}
-
-#italic-hl {
-  color: $my-green;
-  font-style: italic;
-}
-
-#banner-headline-hl {
-  color: white;
-  font-style: italic;
 }
