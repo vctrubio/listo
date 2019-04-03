@@ -24,14 +24,19 @@ const initMapbox = () => {
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
+
+    const my_markers = [];
+
     markers.forEach((marker) => {
       //var el = document.createElement('div');
-      const mk = new mapboxgl.Marker({color: '#3bb2d0'})
-      mk.getElement().id = "markero";
+      const mk = new mapboxgl.Marker({color: '#0294A5'})
+      mk.getElement().id = "marker-opaque";
       mk.setLngLat([ marker.lng, marker.lat ]);
       mk.addTo(map);
-
+      my_markers.push(mk);
     });
+
+    console.log(my_markers);
 
     fitMapToMarkers(map, markers);
 
@@ -42,6 +47,8 @@ const initMapbox = () => {
       //console.log(index);
       place.addEventListener("mouseover", (event) => {
         const currentMarker = markers[index];
+        const my_currentMarker = my_markers[index];
+        my_currentMarker.getElement().id = "";
         map.easeTo({
           center: [currentMarker.lng, currentMarker.lat],
           //bearing: 90,
@@ -55,6 +62,8 @@ const initMapbox = () => {
 
       place.addEventListener("mouseout", (event) => {
         fitMapToMarkers(map, markers);
+        const my_currentMarker = my_markers[index];
+        my_currentMarker.getElement().id = "marker-opaque";
       });
 
     });
