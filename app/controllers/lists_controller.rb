@@ -22,9 +22,12 @@ class ListsController < ApplicationController
     @markers = @places.map do |place|
       {
         lat: place.latitude,
-        lng: place.longitude
+        lng: place.longitude,
+        place_id: place.id,
+        place_name: place.name
       }
     end
+
   end
 
   def new

@@ -2,26 +2,57 @@ import mapboxgl from 'mapbox-gl';
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
+
   const fitMapToMarkers = (map, markers) => {
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
     map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
   };
 
+  const fitMaptoMarker = (map, marker) => {
+    const bounds = new mapboxgl.LngLatBounds();
+    marker => bounds.extend([ marker.lng, marker.lat ]);
+    map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+  };
+
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10'
-  });
-  const markers = JSON.parse(mapElement.dataset.markers);
-  markers.forEach((marker) => {
-    new mapboxgl.Marker()
-    .setLngLat([ marker.lng, marker.lat ])
-    .addTo(map);
-  });
-  fitMapToMarkers(map, markers);
-}
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v10'
+    });
+
+    const markers = JSON.parse(mapElement.dataset.markers);
+    markers.forEach((marker) => {
+      new mapboxgl.Marker()
+      .setLngLat([ marker.lng, marker.lat ])
+      .addTo(map);
+    });
+
+    fitMapToMarkers(map, markers);
+
+    var places = document.querySelectorAll('.form-list-show');
+    //console.log(places);
+
+    places.forEach((place, index) => {
+      //console.log(index);
+      place.addEventListener("mouseover", (event) => {
+        const currentMarker = markers[index];
+        map.easeTo({
+          center: [currentMarker.lng, currentMarker.lat],
+          //bearing: 90,
+          zoom: 13,
+          speed: 0.6
+          //pitch: 40
+        })
+        // map.setCenter([currentMarker.lng, currentMarker.lat]);
+        //map.setCenter(currentMarker);
+      });
+
+    });
+
+  };
 };
 
 export { initMapbox };
