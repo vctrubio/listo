@@ -4,8 +4,15 @@ class ListPlacesController < ApplicationController
     @list_place = ListPlace.new(listplace_params)
     @list_place.list = @list
     #@list_place.place = Place.new(place_params)
+
     @list_place.save
-    redirect_to edit_list_path(@list)
+
+
+    respond_to do |format|
+      format.html { redirect_to edit_list_path(@list) }
+      format.js  # <-- will render `app/views/reviews/create.js.erb`
+    end
+
   end
 
   def destroy
