@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_181307) do
+ActiveRecord::Schema.define(version: 2019_04_03_181503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 2019_03_29_181307) do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.string "data"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_maps_on_user_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -89,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_03_29_181307) do
     t.string "facebook"
     t.string "instagram"
     t.string "website"
+    t.string "linkedin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -98,4 +107,5 @@ ActiveRecord::Schema.define(version: 2019_03_29_181307) do
   add_foreign_key "list_places", "lists"
   add_foreign_key "list_places", "places"
   add_foreign_key "lists", "users"
+  add_foreign_key "maps", "users"
 end
