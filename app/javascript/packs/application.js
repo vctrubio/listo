@@ -5,10 +5,11 @@ import "bootstrap";
 //import autocomplete from './form/autocomplete';
 import { initMapbox } from './plugins/init_mapbox';
 
-
 //insert();
 //autocomplete();
 initMapbox();
+
+
 
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 // initUpdateNavbarOnScroll();

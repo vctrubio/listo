@@ -8,28 +8,18 @@
       <%= f.input :photo , label: 'Please select a picture for your list:' %>
       <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
       <%= f.input :is_public %>
-      <div class = 'text-right'><%= f.submit 'Save list', class: 'btn-info' if @list.places.exists?%></div>
+      <div class = 'text-right'><%= f.submit 'Save list', class: 'btn-info'%></div>
       <% end %>
       <div id = "add-a-place">
-        <h3 class = 'text-left'><%= @list.list_places.exists? ? "Add another place:" : "Add a new place!"%></h3>
-        <%= render 'listplaces/form', list: @list, list_place: @list_place %>
+        <h3 class = 'text-left'><%= @list.list_places.exists? ? "Add another place:" : "Add your first place:"%></h3>
+        <%= render 'list_places/form', list: @list, list_place: @list_place %>
       </div>
     </div>
 
     <div class="col-lg-6" id = "right-part">
-      <div class="container">
+      <div class="container" id = "places">
         <% @list.list_places.each_with_index do |lp, index| %>
-        <div class="row" id = "place-div">
-          <div class="col-lg-6">
-            <h6><%=lp.place.name%></h6>
-            <p><%=lp.place.address%></p>
-            <p><%= '"' + lp.comments + '"'%></p>
-            <p><%= render 'listplaces/delete', list_place: lp, list: @list%></p>
-          </div>
-          <div class="col-lg-6">
-            <%= cl_image_tag lp.place.photo, crop: :fill, class: 'place-image' %>
-          </div>
-        </div>
+        <%= render 'list_places/show', list: @list, lp: lp %>
         <% end %>
       </div>
     </div>

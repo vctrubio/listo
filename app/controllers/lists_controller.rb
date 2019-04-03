@@ -1,14 +1,16 @@
 class ListsController < ApplicationController
   before_action :find_list, only: [:show, :edit, :update, :destroy]
   def index
-    # @lists = List.all
+    # @lists = ListPlace.all
     @list = List.new()
     if params[:query].present?
       sql_query = "\
-      name ILIKE :query \
-      OR description ILIKE :query \
+      lists.name ILIKE :query \
+      OR lists.description ILIKE :query \
+      OR places.address ILIKE :query \
       "
-      @lists = List.where(sql_query, query: "%#{params[:query]}%")
+      # @lists = List.where(sql_query, query: "%#{params[:query]}%")
+      @lists = List.joins(:places).where(sql_query, query: "%#{params[:query]}%")
       # @lists = policy_scope(List).where(sql_query, query: "%#{params[:query]}%")
     else
       @lists = List.all
@@ -59,7 +61,7 @@ class ListsController < ApplicationController
 
   def destroy
     @list.destroy
-    redirect_to lists_path
+    redirect_to root_path
   end
 
   private
