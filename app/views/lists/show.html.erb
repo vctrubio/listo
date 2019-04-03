@@ -18,7 +18,7 @@
 
 
     <!-- button that shows 'like' or 'unlike' depending on relationship to current user -->
-    <div class="like-list"> <% if !@list.favourites.nil? %>
+    <div class="like-list" id="like-button"> <% if !@list.favourites.nil? %>
       <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
       <% if pre_like %>
         <%= link_to list_favourite_path(@list, pre_like), method: :delete  do %>
