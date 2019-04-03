@@ -6,9 +6,9 @@ class FavouritesController < ApplicationController
     if already_favourited?
       flash[:notice] = "You can't favourite more than once"
     else
-      @list.favourites.create(user_id: current_user.id)
+      @favourite = @list.favourites.create(user_id: current_user.id)
     end
-    redirect_to list_path(@list)
+    return
   end
 
   def destroy
@@ -17,7 +17,7 @@ class FavouritesController < ApplicationController
     else
       @favourite.destroy
     end
-    redirect_to list_path(@list)
+    # redirect_to list_path(@list)
   end
 
   private

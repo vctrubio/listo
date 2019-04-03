@@ -18,24 +18,23 @@
 
 
     <!-- button that shows 'like' or 'unlike' depending on relationship to current user -->
-    <div class="like-list"> <% if !@list.favourites.nil? %>
-      <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
-      <% if pre_like %>
-        <%= link_to list_favourite_path(@list, pre_like), method: :delete  do %>
-          <i class="fas fa-heart"></i>
-        <% end %>
+    <div class="like-list" id="like-container">
+      <% if !@list.favourites.nil? %>
+        <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
+
+        <% if pre_like %>
+        <%= render 'shared/dislike', list: @list, pre_like: pre_like %>
         <% else %>
-        <%= link_to list_favourites_path(@list), method: :post do%>
-          <i class="far fa-heart"></i>
-        <% end %>
+          <%= render 'shared/like', list: @list %>
       <% end %>
+
       <% else %>
       <%= button_to 'Like', list_favourites_path(@list), method: :post %>
     <% end %>
 
     <!-- shows the current number of likes that the list has -->
     <p><% if @list.favourites.nil? %> 0 Likes <% else %>
-      <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes' %>
+      <div id="like-count"> <%= @list.favourites.count %> </div>
       <% end %>
     </p>
     </div>
