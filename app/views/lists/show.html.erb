@@ -34,7 +34,7 @@
 
     <!-- shows the current number of likes that the list has -->
     <p><% if @list.favourites.nil? %> 0 Likes <% else %>
-      <%= @list.favourites.count %> <%= (@list.favourites.count) == 1 ? 'Like' : 'Likes' %>
+      <div id="like-count"> <%= @list.favourites.count %> </div>
       <% end %>
     </p>
     </div>
