@@ -1,0 +1,11 @@
+<div class="row" id = "place-div">
+  <div class="col-lg-6">
+    <h6><%=lp.place.name%></h6>
+    <p><%=lp.place.address%></p>
+    <p><%= '"' + lp.comments + '"'%></p>
+    <p><%= render 'list_places/delete', list_place: lp, list: list%></p>
+  </div>
+  <div class="col-lg-6">
+    <%= cl_image_tag lp.place.photo, crop: :fill, class: 'place-image' %>
+  </div>
+</div>

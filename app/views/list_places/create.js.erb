@@ -1,0 +1,31 @@
+
+
+// function refreshForm(listPlaceHTML) {
+//   const newListForm = document.getElementById('new_list_place');
+//   console.log(newListForm);
+//   console.log(listPlaceHTML);
+//   newListForm.innerHTML = listPlaceHTML;
+// }
+
+function refreshForm() {
+
+  //const inputs = document.querySelectorAll('.form-control');
+  const inputs = document.getElementById('autocomplete');
+  inputs.value = "";
+  const inputs2 = document.getElementById('list_place_comments');
+  console.log(inputs2);
+  inputs2.value = "";
+}
+
+function addListPlace(listPlaceHTML) {
+  const places = document.getElementById('places');
+  places.insertAdjacentHTML('beforeend', listPlaceHTML);
+}
+
+addListPlace('<%= j render "list_places/show", list: @list, lp: @list_place%>');
+refreshForm();
+
+window.scrollTo(0,document.body.scrollHeight);
+//refreshForm('<%= j render "list_places/form", list: @list, list_place: ListPlace.new()%>');
+
+
