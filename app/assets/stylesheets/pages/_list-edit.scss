@@ -4,7 +4,9 @@ height: auto;
 }
 
 #left-part {
-  height: 100vh;
+  //padding-top: 10vh;
+  margin-top: 10vh;
+  height: 80vh;
   position: sticky;
   top: 0;
   padding-right: 70px;
@@ -12,6 +14,8 @@ height: auto;
 }
 
 #right-part {
+  margin-top: 10vh;
+  //padding-top: 10vh;
   padding-left: 70px;
 }
 
@@ -20,7 +24,7 @@ height: auto;
 }
 
 #edit-container {
-  margin-top: 70px;
+
 }
 
 #place-div {

@@ -24,6 +24,8 @@ function addListPlace(listPlaceHTML) {
 
 addListPlace('<%= j render "list_places/show", list: @list, lp: @list_place%>');
 refreshForm();
+
+window.scrollTo(0,document.body.scrollHeight);
 //refreshForm('<%= j render "list_places/form", list: @list, list_place: ListPlace.new()%>');
 
 
