@@ -3,12 +3,27 @@
 }
 
 .photo {
+  width: 300px;
+  height: 300px;
+  padding: 0;
+  margin-right: 20px;
+  margin-left: -20px;
+  display: inline-block;
+  float: left;
+  img{
+  border: 2px solid #eee;
   border-radius: 5px;
-  border: 1px solid #eee;
+  }
 }
 
 .section {
   margin: 15px;
+}
+
+.bio-section {
+  // margin-left:
+  // margin-right:
+  // padding-left: 50px;
 }
 
 .top-section {
@@ -17,17 +32,8 @@
   border-bottom: 2px solid #eee;
 }
 
-.bio-box {
-  padding: 25px;
-  border: 1px solid #eee;
-  border-radius: 4px;
-}
-
-.center {
-  text-align: center;
-}
-
 .name {
+  padding-top: 30px;
   font-size: 1.9rem;
   margin-bottom: -5px;
 }
@@ -39,6 +45,30 @@
 
 .no-bullets {
   list-style-type: none;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  display: inline;
+  float: left;
+}
+
+i {
+display: inline;
+float: left;
+margin: 2px;
+}
+
+li {
+  display: inline-block;
+}
+.clickable {
+  cursor:pointer;
+  outline:none;
+  color: black;
+  display: inline;
+  float: left;
 }
 
 .follow {
@@ -53,3 +83,4 @@
 h3 {
   text-align: center;
 }
+
