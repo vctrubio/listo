@@ -8,7 +8,7 @@
       <%= f.input :photo , label: 'Please select a picture for your list:' %>
       <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
       <%= f.input :is_public %>
-      <div class = 'text-right'><%= f.submit 'Save list', class: 'btn-info' if @list.places.exists?%></div>
+      <div class = 'text-right'><%= f.submit 'Save list', class: 'btn-info'%></div>
       <% end %>
       <div id = "add-a-place">
         <h3 class = 'text-left'><%= @list.list_places.exists? ? "Add another place:" : "Add your first place:"%></h3>
