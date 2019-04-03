@@ -5,7 +5,7 @@
     <div class="row justify-content-center section top-section">
 
       <!-- profile picture -->
-      <div class="col-12 col-sm-5">
+      <div class="photo col-12 col-sm-5">
         <%= cl_image_tag(@user.photo.url, width: 300, height: 300, crop: :fill) unless @user.photo.url.nil? %>
       </div>
 
@@ -29,11 +29,21 @@
             <div class="col-12">
               <ul>
                 <!-- would be better code to make a helper method instead of doing ruby calculations in the view -->
+                <% if @user.facebook.present? %>
                 <li><a href="<%= "http://www.facebook.com/" + @user.facebook %>"> <i class="clickable fab fa-facebook-square"></i></a></li>
+                <% end %>
+                <% if @user.instagram.present? %>
                 <li><a href="<%= "http://www.instagram.com/" + @user.instagram %>"> <i class="clickable fab fa-instagram"></i></a></li>
+                <% end %>
+                <% if @user.twitter.present? %>
                 <li><a href="<%= "http://www.twitter.com/" + @user.twitter %>"> <i class="clickable fab fa-twitter"></i></a></li>
+                <% end %>
+                <% if @user.linkedin.present? %>
                 <li><a href="<%= "http://www.linkedin.com/in/" + @user.linkedin %>"> <i class="clickable fab fa-linkedin"></i></a></li>
+                <% end %>
+                <% if @user.website.present? %>
                 <li><a href="<%= @user.website %>"><i class="clickable fas fa-globe-americas"></i></a></li>
+                <% end %>
               </ul>
             </div>
           </div>
