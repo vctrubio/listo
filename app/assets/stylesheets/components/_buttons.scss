@@ -1,5 +1,6 @@
 .btn{
 color: white;
+width: 130px;
 }
 
 .btn-info{
@@ -37,3 +38,18 @@ color: white;
   height: 40px;
   border: 1px solid grey;
 }
+
+
+// a.btn-link::after{
+//     content: '';
+//     display: block;
+//     width: 0;
+//     height: 2px;
+//     background: #000;
+//     transition: width .3s;
+// }
+
+// a.btn-link:hover::after {
+//     width: 100%;
+//     transition: width .3s;
+// }

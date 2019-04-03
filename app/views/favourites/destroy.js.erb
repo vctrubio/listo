@@ -1,0 +1,4 @@
+var likeButton = document.querySelector('#dislike-button');
+var likeContainer = document.getElementById('like-container');
+likeButton.remove();
+likeContainer.insertAdjacentHTML("afterbegin", `<%= render 'shared/like', list: @list%>`);
