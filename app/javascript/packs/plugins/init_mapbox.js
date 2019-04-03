@@ -25,9 +25,12 @@ const initMapbox = () => {
 
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
-      new mapboxgl.Marker()
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
+      //var el = document.createElement('div');
+      const mk = new mapboxgl.Marker({color: '#3bb2d0'})
+      mk.getElement().id = "markero";
+      mk.setLngLat([ marker.lng, marker.lat ]);
+      mk.addTo(map);
+
     });
 
     fitMapToMarkers(map, markers);
@@ -42,12 +45,16 @@ const initMapbox = () => {
         map.easeTo({
           center: [currentMarker.lng, currentMarker.lat],
           //bearing: 90,
-          zoom: 13,
+          zoom: 14,
           speed: 0.6
           //pitch: 40
         })
         // map.setCenter([currentMarker.lng, currentMarker.lat]);
         //map.setCenter(currentMarker);
+      });
+
+      place.addEventListener("mouseout", (event) => {
+        fitMapToMarkers(map, markers);
       });
 
     });
