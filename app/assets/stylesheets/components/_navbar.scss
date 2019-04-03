@@ -37,17 +37,24 @@
 .navbar-lewagon {
   display: flex;
   background: white;
-  box-shadow: 0px 1px 1px -1px #111; //0px 15px 10px -15px #111;
+  box-shadow: 0px 1px 1px -1px #c1c1c1bf; //0px 15px 10px -15px #111;
   // border-bottom: solid 1px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
   justify-content: space-between;
   a {
-    margin-right: 20px; &:hover {
+    margin-right: 20px;
+  }
+
+
+  a.nav-link {
+    &:hover {
     color: black;
     transition-delay: 30ms;
     text-decoration: none;
+    border-bottom: 4px #0294A5;
     }
-  }
+    }
+
   .navbar-brand img {
     width: 40px;
   }
@@ -72,6 +79,7 @@
       color: $my-green !important;
       &:hover {
         color: rgba (2, 148, 165, 0.5);
+        border-bottom: 4px #0294A5;
       }
     }
     .nav-item{
@@ -87,4 +95,14 @@
       background: white;
     }
   }
+}
+
+
+a.navbar-brand{
+  &:hover {
+    color: black;
+    transition-delay: 30ms;
+    text-decoration: none;
+    border-bottom: 4px #0294A5 !important;
+    }
 }
