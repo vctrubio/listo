@@ -30,29 +30,31 @@
               <ul>
                 <!-- would be better code to make a helper method instead of doing ruby calculations in the view -->
                 <% if @user.facebook.present? %>
-                <li><a href="<%= "http://www.facebook.com/" + @user.facebook %>"> <i class="clickable fab fa-facebook-square"></i></a></li>
+                <li><a href="<%= "http://www.facebook.com/" + @user.facebook %>" target="_blank"> <i class="clickable fab fa-facebook-square"></i></a></li>
                 <% end %>
                 <% if @user.instagram.present? %>
-                <li><a href="<%= "http://www.instagram.com/" + @user.instagram %>"> <i class="clickable fab fa-instagram"></i></a></li>
+                <li><a href="<%= "http://www.instagram.com/" + @user.instagram %>" target="_blank"> <i class="clickable fab fa-instagram"></i></a></li>
                 <% end %>
                 <% if @user.twitter.present? %>
-                <li><a href="<%= "http://www.twitter.com/" + @user.twitter %>"> <i class="clickable fab fa-twitter"></i></a></li>
+                <li><a href="<%= "http://www.twitter.com/" + @user.twitter %>" target="_blank"> <i class="clickable fab fa-twitter"></i></a></li>
                 <% end %>
                 <% if @user.linkedin.present? %>
-                <li><a href="<%= "http://www.linkedin.com/in/" + @user.linkedin %>"> <i class="clickable fab fa-linkedin"></i></a></li>
+                <li><a href="<%= "http://www.linkedin.com/in/" + @user.linkedin %>" target="_blank"> <i class="clickable fab fa-linkedin"></i></a></li>
                 <% end %>
                 <% if @user.website.present? %>
-                <li><a href="<%= @user.website %>"><i class="clickable fas fa-globe-americas"></i></a></li>
+                <li><a href="<%= "http://" + @user.website %>" target="_blank"><i class="clickable fas fa-globe-americas"></i></a></li>
                 <% end %>
               </ul>
             </div>
+            <div class="follow">
+              <div><%= render 'follow_form' if user_signed_in? %></div>
+              <div>
+                <% if @user.id == current_user.id %>
+                  <div> <%= link_to "Edit Profile", edit_user_path, class: 'btn-link' %></div>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="follow"><%= render 'follow_form' if user_signed_in? %></div>
-        <div class="follow">
-          <% if @user.id == current_user.id %>
-          <div> <%= link_to "Edit Profile", edit_user_path, class: 'btn-link' %></div>
-          <% end %>
         </div>
       </div>
     </div>
@@ -63,7 +65,9 @@
       <!-- lists owned by user -->
       <div class="col-12 list-section">
         <div class="container headline-container">
-          <strong><p>My Lists</p></strong>
+
+        <strong><p id='mylist'>My Lists</p></strong>
+
           <div class="row">
             <% @user.lists.each do |list| %>
             <div class="col-xs-12 col-sm-6 col-md-4">
@@ -114,7 +118,7 @@
       <!-- lists followed/liked by user -->
       <div class="col-12 list-section">
         <div class="container headline-container">
-          <strong><p>My Favorites</p></strong>
+          <strong><p id='myfavs'>My Favorites</p></strong>
           <div class="row">
             <% @user.favourites.each do |fav| %>
             <% list = fav.list%>
