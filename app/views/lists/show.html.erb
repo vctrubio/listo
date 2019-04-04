@@ -14,32 +14,37 @@
 
 
 
-    <p><% @list.is_public %></p>
+       <p><% @list.is_public %></p>
 
 
-    <!-- button that shows 'like' or 'unlike' depending on relationship to current user -->
-    <div class="like-list list-heart">
-      <div id="like-container-<%="#{@list.id}"%>">
-      <% if !@list.favourites.nil? %>
-        <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
+      <!-- button that shows 'like' or 'unlike' depending on relationship to current user -->
+      <div class="like-list list-heart">
+        <div id="like-container-<%="#{@list.id}"%>">
+          <% if !@list.favourites.nil? %>
+          <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
 
-        <% if pre_like %>
-        <%= render 'shared/dislike', list: @list, pre_like: pre_like %>
-        <% else %>
-          <%= render 'shared/like', list: @list %>
-      <% end %>
+          <% if pre_like %>
+            <%= render 'shared/dislike', list: @list, pre_like: pre_like %>
+          <% else %>
+            <%= render 'shared/like', list: @list %>
+          <% end %>
 
-      <% else %>
-      <%= button_to 'Like', list_favourites_path(@list), method: :post %>
-    <% end %>
-    </div>
+          <% else %>
+            <%= button_to 'Like', list_favourites_path(@list), method: :post %>
+          <% end %>
+      </div>
     <!-- shows the current number of likes that the list has -->
-    <p><% if @list.favourites.empty? %> 0 Likes <% else %>
-      <div id="like-count-<%=  @list.id %>"> <%= @list.favourites.count %> </div>
-      <% end %>
-    </p>
+        <p><% if @list.favourites.empty? %> 0 Likes <% else %>
+        <div id="like-count-<%=  @list.id %>"> <%= @list.favourites.count %> </div>
+          <% end %>
+         </p>
     </div>
+    <!-- Add the share button here -->
+     <!-- <br><div><input type="hidden" id="input-url" value="Copied!">
+     <button class="btn-copy btn-info">Share this list</button></div> -->
+
    </div>
+
    </div>
     <!-- list image -->
    <!--  <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div> -->
