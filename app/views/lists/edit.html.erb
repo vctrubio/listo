@@ -11,7 +11,7 @@
       <div class = 'text-right'><%= f.submit 'Save list', class: 'btn-info'%></div>
       <% end %>
       <div id = "add-a-place">
-        <h3 class = 'text-left'><%= @list.list_places.exists? ? "Add another place:" : "Add your first place:"%></h3>
+        <h3 class = 'text-left'><%= "Add a new place:"%></h3>
         <%= render 'list_places/form', list: @list, list_place: @list_place %>
       </div>
     </div>
