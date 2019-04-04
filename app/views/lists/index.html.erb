@@ -4,10 +4,10 @@
     <h1>share your favorite places</h1>
   </div>
   <div class="banner-search">
-    <%= form_tag root_path, method: :get do %>
+    <%= form_tag lists_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
-        placeholder: "Search for a list"
+        placeholder: "Search for a place, city or country"
       %>
     <% end %>
   </div>
