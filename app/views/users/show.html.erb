@@ -63,28 +63,49 @@
       <!-- lists owned by user -->
       <div class="col-12 list-section">
         <div class="container headline-container">
-        <strong><p>My Lists</p></strong>
+          <strong><p>My Lists</p></strong>
           <div class="row">
             <% @user.lists.each do |list| %>
-              <div class="col-xs-12 col-sm-6 col-md-4">
-                <%= link_to "", list_path(list)%>
-                <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
-                  <%= link_to "", list_path(list), class: 'card-link' %>
-                  <div class = "card-text-bottom">
-                    <div class="card-avatar">
-                    </div>
-                    <div class="card-content" style="">
-                      <%= list.name %>
-                    </div>
-                    <div class="card-likes">
-                      <span class="glyphicon glyphicon-heart"><% if list.favourites.nil? %> 0 Likes <% else %>
-                        <%= list.favourites.count %> <%= (list.favourites.count) == 1 ? 'Like' : 'Likes'%>
-                        <% end %>
-                      </span>
-                    </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <%= link_to "", list_path(list)%>
+              <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
+                <%= link_to "", list_path(list), class: 'card-link' %>
+                <div class = "card-text-bottom">
+                  <div class="card-avatar">
                   </div>
+                  <div class="card-content" style="">
+                    <%= list.name %>
+
+
+                  <div class="card-likes">
+                    <div class="card-heart-position" id="like-container-<%= "#{list.id}"%>">
+                      <% if !list.favourites.nil? %>
+                      <% pre_like = list.favourites.find { |like| like.user_id == current_user.id} %>
+
+                      <% if pre_like %>
+                      <%= render 'shared/dislike', list: list, pre_like: pre_like %>
+                      <% else %>
+                      <%= render 'shared/like', list: list %>
+                      <% end %>
+
+                      <% else %>
+                      <%= render 'shared/like', list: list %>
+                      <% end %>
+                    </div>
+                    <!-- shows the current number of likes that the list has -->
+                    <% if list.favourites.empty? %>
+                    0
+                    <% else %>
+                    <div id="like-count-<%= list.id %>"> <%= list.favourites.count%> </div>
+                    <% end %>
+
+
+
+                  </div>
+                 </div>
                 </div>
               </div>
+            </div>
             <% end %>
           </div>
         </div>
@@ -97,25 +118,46 @@
           <div class="row">
             <% @user.favourites.each do |fav| %>
             <% list = fav.list%>
-              <div class="col-xs-12 col-sm-6 col-md-4">
-                <%= link_to "", list_path(list)%>
-                <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
-                  <%= link_to "", list_path(list), class: 'card-link' %>
-                  <div class = "card-text-bottom">
-                    <div class="card-avatar">
-                    </div>
-                    <div class="card-content" style="">
-                      <%= list.name %>
-                    </div>
-                    <div class="card-likes">
-                      <span class="glyphicon glyphicon-heart"><% if list.favourites.nil? %> 0 Likes <% else %>
-                        <%= list.favourites.count %> <%= (list.favourites.count) == 1 ? 'Like' : 'Likes'%>
-                        <% end %>
-                      </span>
-                    </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <%= link_to "", list_path(list)%>
+              <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
+                <%= link_to "", list_path(list), class: 'card-link' %>
+                <div class = "card-text-bottom">
+                  <div class="card-avatar">
                   </div>
+                  <div class="card-content" style="">
+                    <%= list.name %>
+
+
+                  <div class="card-likes">
+                    <div class="card-heart-position" id="like-container-<%= "#{list.id}"%>">
+                      <% if !list.favourites.nil? %>
+                      <% pre_like = list.favourites.find { |like| like.user_id == current_user.id} %>
+
+                      <% if pre_like %>
+                      <%= render 'shared/dislike', list: list, pre_like: pre_like %>
+                      <% else %>
+                      <%= render 'shared/like', list: list %>
+                      <% end %>
+
+                      <% else %>
+                      <%= render 'shared/like', list: list %>
+                      <% end %>
+                    </div>
+                    <!-- shows the current number of likes that the list has -->
+                    <% if list.favourites.empty? %>
+                    0
+                    <% else %>
+                    <div id="like-count-<%= list.id %>"> <%= list.favourites.count%> </div>
+                    <% end %>
+
+
+
+                  </div>
+                 </div>
                 </div>
               </div>
+            </div>
             <% end %>
           </div>
         </div>
