@@ -29,7 +29,7 @@
 .top-section {
   margin-bottom: 45px;
   padding-bottom: 45px;
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid $my-green;
 }
 
 .name {
@@ -72,12 +72,20 @@ li {
 }
 
 .follow {
-  text-align: center;
   margin-top: 10px;
+  padding-left: 15px;
 }
 
 .list-section {
   margin-bottom: 30px;
+}
+
+#mylist {
+  font-size: 1.3em;
+}
+
+#myfavs {
+  font-size: 1.3em;
 }
 
 h3 {
