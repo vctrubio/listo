@@ -6,6 +6,7 @@
     <p><%= render 'list_places/delete', list_place: lp, list: list%></p>
   </div>
   <div class="col-lg-6">
-    <%= cl_image_tag lp.place.photo, crop: :fill, class: 'place-image' %>
+    <%= cl_image_tag lp.place.photo, crop: :scale, class: 'place-image' %>
+    <!-- <p><%=lp.place.photo%></p> -->
   </div>
 </div>

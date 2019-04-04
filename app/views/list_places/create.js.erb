@@ -13,8 +13,9 @@ function refreshForm() {
   const inputs = document.getElementById('autocomplete');
   inputs.value = "";
   const inputs2 = document.getElementById('list_place_comments');
-  console.log(inputs2);
   inputs2.value = "";
+  const inputs3 = document.getElementById('list_place_place_attributes_photo');
+  inputs3.value = "";
 }
 
 function addListPlace(listPlaceHTML) {
@@ -22,7 +23,17 @@ function addListPlace(listPlaceHTML) {
   places.insertAdjacentHTML('beforeend', listPlaceHTML);
 }
 
+// window.setTimeout( () => {
+//   addListPlace('<%= j render "list_places/show", list: @list, lp: @list_place%>');
+//   console.log("<%= @list_place.place.name %>");
+//   console.log("<%= @list_place.place.photo %>");
+//   console.log("<%= @list_place.place.photo.nil? %>");
+// }, 1000);
+
+console.log(<%=@list_place.place.photo%>);
+
 addListPlace('<%= j render "list_places/show", list: @list, lp: @list_place%>');
+
 refreshForm();
 
 window.scrollTo(0,document.body.scrollHeight);
