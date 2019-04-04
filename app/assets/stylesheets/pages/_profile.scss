@@ -11,8 +11,9 @@
   display: inline-block;
   float: left;
   img{
-  border: 2px solid #eee;
+  // border: 2px solid #eee;
   border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
   }
 }
 
@@ -29,7 +30,7 @@
 .top-section {
   margin-bottom: 45px;
   padding-bottom: 45px;
-  border-bottom: 2px solid $my-green;
+  border-bottom: 2px solid rgba(2, 148, 165, 0.5);
 }
 
 .name {
@@ -63,12 +64,38 @@ margin: 2px;
 li {
   display: inline-block;
 }
+
 .clickable {
   cursor:pointer;
   outline:none;
   color: black;
   display: inline;
   float: left;
+    &:hover {
+    text-decoration: none;
+    color: rgba(2, 148, 165, 1);
+  }
+}
+
+.clickable-grey {
+  cursor:pointer;
+  outline:none;
+  color: gray;
+  display: inline;
+  float: left;
+  &:hover {
+    text-decoration: none;
+    color: rgba(2, 148, 165, 0.8);
+  }
+}
+
+#clickable a{
+  outline:none;
+  color: black;
+    &:hover {
+    text-decoration: none;
+    color: rgba(2, 148, 165, 1);
+  }
 }
 
 .follow {
