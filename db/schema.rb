@@ -46,14 +46,6 @@ ActiveRecord::Schema.define(version: 2019_04_03_181503) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
-  create_table "maps", force: :cascade do |t|
-    t.string "data"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_maps_on_user_id"
-  end
-
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -107,5 +99,4 @@ ActiveRecord::Schema.define(version: 2019_04_03_181503) do
   add_foreign_key "list_places", "lists"
   add_foreign_key "list_places", "places"
   add_foreign_key "lists", "users"
-  add_foreign_key "maps", "users"
 end

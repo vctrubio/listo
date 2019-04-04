@@ -11,6 +11,11 @@
   position: relative;
 }
 
+
+.card a{
+  color: #FB7268 !important;
+}
+
 #card-custom-attributes{
  border-radius: 3px;
  border: none;
@@ -41,12 +46,23 @@
   width: 100%;
   padding: 5px;
   background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p{
+    margin: 0;
+  }
 }
 .card-likes{
 // justify-content: flex-end;
-position:absolute;
-bottom: 4px;
-right: 3px;
+display: flex;
+align-items: center;
+}
+
+.card-heart-position{
+  margin-right: 5px;
+  z-index: 100;
 }
 
 #font-likes{
@@ -83,7 +99,7 @@ right: 3px;
   bottom: 0;
   right: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 3;
   background: black;
   opacity: 0;
 }
