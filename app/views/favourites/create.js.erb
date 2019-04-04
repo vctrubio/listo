@@ -1,7 +1,10 @@
 var likeButton = document.querySelector('#like-button');
-var likeContainer = document.getElementById('like-container');
-likeButton.remove();
+var likeContainer = document.getElementById('like-container-<%=  @list.id %>');
+// likeButton.remove();
+likeContainer.innerHTML = "";
 likeContainer.insertAdjacentHTML("afterbegin", `<%= render 'shared/dislike', list: @list, pre_like: @favourite %>`);
 
-var counterContainer =document.getElementById('like-count');
+var counterContainer =document.getElementById('like-count-<%=  @list.id %>');
+// var count = counterContainer.innerText;
+// var newCount = +count + 1
 counterContainer.innerHTML = '<%= @list.favourites.count %>'

@@ -4,6 +4,7 @@
     <h1>share your favorite places</h1>
   </div>
   <div class="banner-search">
+
     <%= form_tag lists_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
@@ -22,14 +23,36 @@
         <%= link_to "", list_path(list), class: 'card-link' %>
         <div class = "card-text-bottom">
           <div class="card-avatar"></div>
-          <div class="card-content" style="">
-            <%= list.name %>
-          </div>
-          <div class="card-likes">
-            <span class="glyphicon glyphicon-heart"><% if list.favourites.nil? %> 0 Likes <% else %>
-              <%= list.favourites.count %> <%= (list.favourites.count) == 1 ? 'Like' : 'Likes'%>
+          <div class="card-content">
+            <p><%= list.name %></p>
+            <div class="card-likes">
+              <div class="card-heart-position" id="like-container-<%= "#{list.id}"%>">
+                <% if !list.favourites.nil? %>
+                <% pre_like = list.favourites.find { |like| like.user_id == current_user.id} %>
+
+                <% if pre_like %>
+                <%= render 'shared/dislike', list: list, pre_like: pre_like %>
+                <% else %>
+                <%= render 'shared/like', list: list %>
+                <% end %>
+
+                <% else %>
+                <%= render 'shared/like', list: list %>
+                <% end %>
+             </div>
+                <!-- shows the current number of likes that the list has -->
+            <p><% if list.favourites.empty? %>
+                  0
+                <% else %>
+                <div id="like-count-<%= list.id %>"> <%= list.favourites.count%> </div>
               <% end %>
-            </span>
+            </p>
+
+
+            </div>
+
+
+
           </div>
         </div>
       </div>

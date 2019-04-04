@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" <%= "id=navbar-banner-lewagon" if current_page?(root_path) || current_page?(lists_path) %> >
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon"  <%= "id=navbar-banner-lewagon" if current_page?(root_path) || current_page?(lists_path) %> >
   <%= link_to root_path, class: "navbar-brand" do %> <span>lista</span> <% end %>
 
   <% if !current_page?(root_path) && !current_page?(lists_path) && !current_page?(new_user_session_path) && !current_page?(new_user_registration_path) && !current_page?(new_user_password_path ) %>

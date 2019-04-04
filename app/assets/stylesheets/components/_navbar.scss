@@ -15,7 +15,9 @@
   min-width: 100%;
   box-shadow: none;
   span{
-    color: white;
+    color: $my-green; &:hover{
+      color:gray !important;
+    }
   }
   .nav-link{
     color: white;
@@ -45,10 +47,19 @@
     margin-right: 20px;
   }
 
+ a#navbar-lewagon-hover-border {
+  &:hover{
+    border-bottom: solid 1px rgba(100,50,50,1) !important;
+  }
+ }
+
+
+
+
 
   a.nav-link {
     &:hover {
-    color: black;
+    color: gray !important;
     transition-delay: 30ms;
     text-decoration: none;
     border-bottom: 4px #0294A5;
@@ -97,10 +108,14 @@
   }
 }
 
+.navbar-brand{
+color: $my-green !important;
+}
 
 a.navbar-brand{
+  color: #0294A5
   &:hover {
-    color: black;
+    color: gray;
     transition-delay: 30ms;
     text-decoration: none;
     border-bottom: 4px #0294A5 !important;

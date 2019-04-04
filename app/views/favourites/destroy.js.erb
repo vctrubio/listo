@@ -1,7 +1,8 @@
 var likeButton = document.querySelector('#dislike-button');
-var likeContainer = document.getElementById('like-container');
-likeButton.remove();
+var likeContainer = document.getElementById('like-container-<%=  @list.id %>');
+// likeButton.remove();
+likeContainer.innerHTML = "";
 likeContainer.insertAdjacentHTML("afterbegin", `<%= render 'shared/like', list: @list%>`);
 
-var counterContainer =document.getElementById('like-count');
+var counterContainer =document.getElementById('like-count-<%=  @list.id %>');
 counterContainer.innerHTML = '<%= @list.favourites.count %>'
