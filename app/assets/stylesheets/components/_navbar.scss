@@ -47,6 +47,12 @@
     margin-right: 20px;
   }
 
+  .navbar-brand span{
+    &:hover{
+      color:gray !important;
+    }
+  }
+
  a#navbar-lewagon-hover-border {
   &:hover{
     border-bottom: solid 1px rgba(100,50,50,1) !important;
