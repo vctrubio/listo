@@ -7,4 +7,5 @@ likeContainer.insertAdjacentHTML("afterbegin", `<%= render 'shared/dislike', lis
 var counterContainer =document.getElementById('like-count-<%=  @list.id %>');
 // var count = counterContainer.innerText;
 // var newCount = +count + 1
+console.log('like-count-<%=  @list.id %>');
 counterContainer.innerHTML = '<%= @list.favourites.count %>'
