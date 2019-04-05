@@ -22,6 +22,8 @@
   .nav-link{
     color: white;
   }
+   .search-bar {
+    flex-grow: .7 !important;}
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
@@ -75,7 +77,7 @@
     width: 40px;
   }
   .search-bar {
-    flex-grow: .7;
+    flex-grow: .42;
     form {
       width: 100%;
     }
