@@ -34,10 +34,10 @@
           <% end %>
       </div>
     <!-- shows the current number of likes that the list has -->
-        <p><% if @list.favourites.empty? %> 0 Likes <% else %>
-        <div id="like-count-<%=  @list.id %>"> <%= @list.favourites.count %> </div>
-          <% end %>
-         </p>
+
+        <div id="like-count-<%= @list.id %>"> <%= @list.favourites.count%> </div>
+
+         <!-- </p> -->
     </div>
     <!-- Add the share button here -->
      <!-- <br><div><input type="hidden" id="input-url" value="Copied!">
