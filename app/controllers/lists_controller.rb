@@ -1,5 +1,7 @@
 class ListsController < ApplicationController
   before_action :find_list, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show, :index]
+
   def index
     # @lists = ListPlace.alls
     if params[:query].present?
