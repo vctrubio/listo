@@ -11,7 +11,7 @@ class ListsController < ApplicationController
       OR places.address ILIKE :query \
       "
       # @lists = List.where(sql_query, query: "%#{params[:query]}%")
-      @lists = List.joins(:places).where(sql_query, query: "%#{params[:query]}%").to_a.where(is_public: true)
+      @lists = List.joins(:places).where(sql_query, query: "%#{params[:query]}%").where(is_public: true).to_a
       @lists.uniq!
 
       # @lists = policy_scope(List).where(sql_query, query: "%#{params[:query]}%")
