@@ -4,20 +4,29 @@ height: 80%;
 }
 
 #left-part {
-  //padding-top: 10vh;
-  margin-top: 10vh;
   height: 80vh;
-  position: sticky;
   top: 0;
-  padding-right: 70px;
+  padding-top: 5vh;
   border-right: 1px solid lightgrey;
 }
 
 #right-part {
-  margin-top: 10vh;
-  //padding-top: 10vh;
-  padding-left: 70px;
+  padding-top: 5vh;
 }
+
+@media(min-width: 992px) {
+  #left-part {
+    position: sticky;
+    padding-top: 10vh;
+    padding-right: 70px;
+  }
+
+  #right-part {
+    padding-top: 10vh;
+    padding-left: 70px;
+  }
+}
+
 
 #add-a-place {
   margin-top: 70px;
@@ -27,7 +36,16 @@ height: 80%;
 
 }
 
-#place-div {
-  border-bottom: 1px solid $my-green;
-  margin-bottom: 30px;
+@media(min-width: 768px) {
+  #place-div {
+    border-bottom: 1px solid $my-green;
+    margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 768px) {
+  #place-div {
+    border-top: 1px solid $my-green;
+    padding-top: 30px;
+  }
 }
