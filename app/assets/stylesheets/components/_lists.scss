@@ -104,6 +104,12 @@ color: #FB7268 !important;
   top: 0;
 }
 
+@media(max-width: 768px) {
+  .map-lists-container {
+    display: none;
+  }
+}
+
 .user-wrapper{
 display: flex;
 flex-direction: row;
