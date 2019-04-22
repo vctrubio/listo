@@ -23,20 +23,45 @@ function addListPlace(listPlaceHTML) {
   places.insertAdjacentHTML('beforeend', listPlaceHTML);
 }
 
-// window.setTimeout( () => {
-//   addListPlace('<%= j render "list_places/show", list: @list, lp: @list_place%>');
-//   console.log("<%= @list_place.place.name %>");
-//   console.log("<%= @list_place.place.photo %>");
-//   console.log("<%= @list_place.place.photo.nil? %>");
-// }, 1000);
-
 console.log(<%=@list_place.place.photo%>);
 
 addListPlace('<%= j render "list_places/show", list: @list, lp: @list_place%>');
 
+var photo = document.querySelector('#list_place_place_attributes_photo');
+
+var placeholders = document.querySelectorAll(".place-image");
+
+var placeholder = placeholders[placeholders.length - 1];
+
+if (photo.files[0]) {
+  var reader = new FileReader();
+  reader.onload = (event) => {
+    placeholder.src = event.target.result;
+  };
+  reader.readAsDataURL(photo.files[0]);
+}
+
 refreshForm();
 
 window.scrollTo(0,document.body.scrollHeight);
-//refreshForm('<%= j render "list_places/form", list: @list, list_place: ListPlace.new()%>');
+
+// refreshForm('<%= j render "list_places/form", list: @list, list_place: ListPlace.new()%>');
+
+// const addListenerToPhoto = () => {
+//  const photo = document.querySelector('#list_place_place_attributes_photo')
+//  photo.addEventListener("change", (event) => {
+//    const image = event.target.files[0];
+//    console.log("chnge event is triggered yoooo");
+//    const placeholders = document.querySelector("place-image");
+//    const placeholder = placeholders[placeholders.length - 1];
+//    const reader = new FileReader();
+//    reader.onload = (event) => {
+//      placeholder.src = event.target.result;
+//    };
+//    reader.readAsDataURL(image);
+//  });
+// };
+
+
 
 
