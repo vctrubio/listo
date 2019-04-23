@@ -1,9 +1,8 @@
 <div class="container" id = "edit-container">
   <div class="row justify-content-around">
     <div class="col-lg-6" id = "left-part">
-      <h1><%= @list.name %></h1>
-
       <%= simple_form_for(@list, method: :patch) do |f| %>
+      <%= f.input :name, label: false %>
       <%= f.input :description, placeholder: 'Describe this list' , label_html: { class: 'form' }, label: false %>
       <%= f.input :photo , label: 'Please select a picture for your list:' %>
       <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
