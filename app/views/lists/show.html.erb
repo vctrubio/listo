@@ -1,22 +1,16 @@
 <div class = "list-show-wrapper">
+
   <div class="list-show-container">
     <div class="title-show-container" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.6)), url('<%= @list.photo.url.nil? ? "placeholder" : cl_image_path(@list.photo.url, width: 800, height: 1000, crop: :scale) %>')">
-    <h1><%= @list.name %></h1>
-    <br>
+      <h1><%= @list.name %></h1>
+      <br>
+      <div class="list-description"><p><%= @list.description %></p></div>
+    </div>
 
-   <div class="list-description"><p><%= @list.description %></p></div>
-   </div>
-
-<div class="title-likes-container">
-   <div class="list-title-info">
-
-        <p>A list by: <%= link_to (@list.user.username || @list.user.email), user_path(@list.user) %></p>
-
-
-
-       <p><% @list.is_public %></p>
-
-
+    <div class="title-likes-container">
+     <div class="list-title-info">
+      <p>A list by: <%= link_to (@list.user.username || @list.user.email), user_path(@list.user) %></p>
+      <p><% @list.is_public %></p>
       <!-- button that shows 'like' or 'unlike' depending on relationship to current user -->
       <div class="like-list list-heart">
         <div id="like-container-<%="#{@list.id}"%>">
@@ -24,71 +18,67 @@
           <% pre_like = @list.favourites.find { |like| like.user_id == current_user.id} %>
 
           <% if pre_like %>
-            <%= render 'shared/dislike', list: @list, pre_like: pre_like %>
+          <%= render 'shared/dislike', list: @list, pre_like: pre_like %>
           <% else %>
-            <%= render 'shared/like', list: @list %>
+          <%= render 'shared/like', list: @list %>
           <% end %>
 
           <% else %>
-            <%= render 'shared/like', list: @list %>
+          <%= render 'shared/like', list: @list %>
           <% end %>
-      </div>
-    <!-- shows the current number of likes that the list has -->
-
+        </div>
+        <!-- shows the current number of likes that the list has -->
         <div id="like-count-<%= @list.id %>"> <%= @list.favourites.count%> </div>
-
-         <!-- </p> -->
-    </div>
-    <!-- Add the share button here -->
+        <!-- </p> -->
+      </div>
+      <!-- Add the share button here -->
      <!-- <br><div><input type="hidden" id="input-url" value="Copied!">
-     <button class="btn-copy btn-info">Share this list</button></div> -->
-
-   </div>
-
-   </div>
-    <!-- list image -->
+       <button class="btn-copy btn-info">Share this list</button></div> -->
+     </div>
+    </div>
+   <!-- list image -->
    <!--  <div><%= cl_image_tag @list.photo, height: 300, width: 400, crop: :fill %></div> -->
 
-    <!-- the collection of places that are included in the list -->
-    <div class="inner-show-container">
+   <!-- the collection of places that are included in the list -->
+   <div class="inner-show-container">
     <% @list.places.each_with_index do |place, index| %>
-      <div class="form form-list-show"> <div class="list-place-title"><h3><strong> <%=  (index+1).to_s+ ". " + place.name  %></strong></h3></div>
-       <div class="list-info"><div class="address-list-show"><p><%= place.address %></p></div></div>
-        <div class="centered-photo"><p> <%= cl_image_tag place.photo, height: 300, width: 500, crop: :fill %></p></div>
-        <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
-      </div>
-    <% end %>
+    <div class="form form-list-show"> <div class="list-place-title"><h3><strong> <%=  (index+1).to_s+ ". " + place.name  %></strong></h3></div>
+    <div class="list-info"><div class="address-list-show"><p><%= place.address %></p></div></div>
+    <div class="centered-photo"><p> <%= cl_image_tag place.photo, crop: :scale %></p></div>
+    <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
   </div>
-  <!-- button to delete the list - only visible if the current user owns the list -->
+  <% end %>
+</div>
+<!-- button to delete the list - only visible if the current user owns the list -->
 <% if current_user%>
 <div class="buttons-list-show">
-   <div class="edit delete-link">
-      <% if @list.user_id == current_user.id%>
-        <%= link_to 'Edit List', edit_list_path(@list) %>
-              <% end %>
-   </div>
+ <div class="edit delete-link">
+  <% if @list.user_id == current_user.id%>
+  <%= link_to 'Edit List', edit_list_path(@list) %>
+  <% end %>
+</div>
 
 
 
-    <div class='delete-link form-group'>
-      <% if @list.user_id == current_user.id %>
-        <%= link_to 'Delete List', list_path(@list),
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-      <% end %>
-    </div>
-    </div>
-    <% end %>
-  </div>
+<div class='delete-link form-group'>
+  <% if @list.user_id == current_user.id %>
+  <%= link_to 'Delete List', list_path(@list),
+  method: :delete,
+  data: { confirm: "Are you sure?" } %>
+  <% end %>
+</div>
+</div>
+<% end %>
+</div>
 
-  <div class = 'map-lists-container'>
-    <div
-    id="map"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
+<div class = 'map-lists-container'>
+  <div
+  id="map"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
 
-  </div>
+</div>
 </div>
 
 
