@@ -26,13 +26,11 @@ img[src] {
 @media(min-width: 992px) {
   #left-part {
     position: sticky;
-    padding-top: 10vh;
-    padding-right: 70px;
+    padding-right: 100px;
   }
 
   #right-part {
-    padding-top: 10vh;
-    padding-left: 70px;
+    padding-left: 100px;
   }
 }
 
