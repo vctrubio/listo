@@ -1,5 +1,5 @@
 const save = () => {
-  const form = document.getElementById("edit_list_104");
+  const form = document.querySelector('.edit_list')
   console.log("loaded save");
   document.getElementById("save-list-button").addEventListener("click", function () {
     console.log("click");
