@@ -2,14 +2,13 @@
 
     <!-- first section contains profile photo and bio section -->
     <div class="row justify-content-center section top-section">
-
       <!-- profile picture -->
-      <div class="photo col-12 col-sm-5">
+      <div class="photo col-sm-5">
         <%= cl_image_tag(@user.photo.url, width: 300, height: 300, crop: :fill) unless @user.photo.url.nil? %>
       </div>
 
       <!-- bio section -->
-      <div class="col-12 col-sm-7 bio-section">
+      <div class="bio-section">
         <!-- name, username and edit button -->
         <div class="container">
           <div class="row">
@@ -61,7 +60,7 @@
     <!-- second section contains lists that are owned by user and lists that are liked/followed by user -->
 
       <!-- lists owned by user -->
-      <div class="col-12 list-section">
+      <div class="list-section">
         <div class="container headline-container">
         <strong><p id='mylist'>My Lists</p></strong>
           <div class="row">
@@ -75,7 +74,7 @@
       </div>
 
       <!-- lists followed/liked by user -->
-      <div class="col-12 list-section">
+      <div class="list-section">
         <div class="container headline-container">
           <strong><p id='myfavs'>My Favorites</p></strong>
           <div class="row">
