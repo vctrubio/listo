@@ -6,10 +6,10 @@
   <div class="banner-search">
 
     <%= form_tag lists_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Search for a place, city or country"
-      %>
+    <%= text_field_tag :query,
+    params[:query],
+    placeholder: "Search for a place, city or country"
+    %>
     <% end %>
   </div>
 </div>
@@ -19,39 +19,7 @@
   <div class="row">
     <% @lists.each do |list| %>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
-        <%= link_to "", list_path(list), class: 'card-link' %>
-        <div class = "card-text-bottom">
-          <div class="card-avatar"></div>
-          <div class="card-content">
-            <p><%= list.name %></p>
-            <div class="card-likes">
-              <div class="card-heart-position" id="like-container-<%= "#{list.id}"%>">
-                <% if !list.favourites.nil? && current_user%>
-                <% pre_like = list.favourites.find { |like| like.user_id == current_user.id} %>
-
-                <% if pre_like %>
-                <%= render 'shared/dislike', list: list, pre_like: pre_like %>
-                <% else %>
-                <%= render 'shared/like', list: list %>
-                <% end %>
-
-                <% else %>
-                <%= render 'shared/like', list: list %>
-                <% end %>
-             </div>
-
-                <div id="like-count-<%= list.id %>"> <%= list.favourites.count%> </div>
-
-
-
-            </div>
-
-
-
-          </div>
-        </div>
-      </div>
+    <%= render 'shared/card', list: list %>
     </div>
     <% end %>
   </div>
