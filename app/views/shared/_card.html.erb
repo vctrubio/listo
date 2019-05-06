@@ -9,7 +9,7 @@
             </div>
 
             <% profile_placeholder = "https://bankwatch.org/wp-content/uploads/2018/03/Portrait_Placeholder-300x300.png" %>
-          <img src="<%=image_url current_user.photo.url || profile_placeholder %>" alt="" class="card-user">
+          <img src="<%=image_url list.user.photo.url || profile_placeholder %>" alt="" class="card-user">
 
             <div class="card-likes">
               <div class="card-heart-position" id="like-container-<%= "#{list.id}"%>">
