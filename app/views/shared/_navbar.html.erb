@@ -29,7 +29,7 @@
           <%= current_user.username || current_user.email %>
         </li>
 
-        <li class="nav-item dropdown ml-auto">
+        <li class="nav-item dropdown">
           <% profile_placeholder = "https://bankwatch.org/wp-content/uploads/2018/03/Portrait_Placeholder-300x300.png" %>
           <img src="<%=image_url current_user.photo.url || profile_placeholder %>" alt="" id="navbarDropdown" data-toggle="dropdown" aria-haspopup aria-expanded="false" class="avatar dropdown-toggle">
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -39,7 +39,7 @@
         </li>
 
       <% else %>
-      <li class="nav-item">
+      <li class="nav-item ml-auto">
         <%= link_to "login", new_user_session_path, class: "nav-link" %>
       </li>
       <% end %>
