@@ -24,6 +24,21 @@
   }
    .search-bar {
     flex-grow: .7 !important;}
+
+  /* change navbar background on collapse */
+  .navbar-collapse{
+  @media (max-width: 768px) {
+    background-color: #010209;
+    opacity: 0.85;
+  }}
+
+  // toggler for mobile is lighter
+
+  @media (max-width: 768px) {
+    .navbar-toggler{
+    background-color: #fff !important;
+    opacity:0.5;
+  }}
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
@@ -45,6 +60,7 @@
   // border-bottom: solid 1px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
   justify-content: space-between;
+
   a {
     margin-right: 20px;
   }
@@ -61,11 +77,8 @@
   }
  }
 
-
-
-
-
   a.nav-link {
+  color:black;
     &:hover {
     color: gray !important;
     transition-delay: 30ms;
@@ -118,6 +131,13 @@
 .navbar-brand{
 color: $my-green !important;
 }
+
+.navbar-nav{
+flex-direction: row;
+width: 100%;
+}
+
+
 
 // a.navbar-brand{
 //   color: #0294A5;
