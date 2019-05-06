@@ -49,9 +49,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 4;
+
 
   a{
     color: gray;
+
   }
 
   p{
@@ -64,10 +67,19 @@
     margin: 0;
     font-size: 16px;
     font-family: kano;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
+
+.card-name{
+      white-space: nowrap;
+    overflow: hidden;
+    margin-right:10px;
+}
+
+
 .card-likes{
-// justify-content: flex-end;
 display: flex;
 align-items: center;
 }
