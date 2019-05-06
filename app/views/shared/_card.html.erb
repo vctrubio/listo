@@ -3,7 +3,14 @@
         <div class = "card-text-bottom">
           <div class="card-avatar"></div>
           <div class="card-content">
-            <p><%= list.name %></p>
+            <div class ="card-name">
+            <h3><%= list.name %></h3>
+            <p><%= link_to list.user.username, user_path(list.user) %></p>
+            </div>
+
+            <% profile_placeholder = "https://bankwatch.org/wp-content/uploads/2018/03/Portrait_Placeholder-300x300.png" %>
+          <img src="<%=image_url current_user.photo.url || profile_placeholder %>" alt="" class="card-user">
+
             <div class="card-likes">
               <div class="card-heart-position" id="like-container-<%= "#{list.id}"%>">
                 <% if !list.favourites.nil? && current_user%>
