@@ -25,10 +25,11 @@
       </li>
 
       <% if user_signed_in? %>
-        <li class="nav-item active nav-link">
+        <li class="nav-item active nav-link ml-auto">
           <%= current_user.username || current_user.email %>
         </li>
-        <li class="nav-item dropdown">
+
+        <li class="nav-item dropdown ml-auto">
           <% profile_placeholder = "https://bankwatch.org/wp-content/uploads/2018/03/Portrait_Placeholder-300x300.png" %>
           <img src="<%=image_url current_user.photo.url || profile_placeholder %>" alt="" id="navbarDropdown" data-toggle="dropdown" aria-haspopup aria-expanded="false" class="avatar dropdown-toggle">
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -36,6 +37,7 @@
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
+
       <% else %>
       <li class="nav-item">
         <%= link_to "login", new_user_session_path, class: "nav-link" %>
