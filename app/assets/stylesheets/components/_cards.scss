@@ -61,6 +61,8 @@
     margin: 0;
     font-size: 12px;
     opacity: .7;
+        overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   h3{
