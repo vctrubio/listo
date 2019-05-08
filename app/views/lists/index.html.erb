@@ -15,8 +15,19 @@
 </div>
 <% end %>
 
+
+
 <div class="container">
+
+
+
   <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4"> </div>
+    <div class="col-xs-12 col-sm-6 col-md-4"> </div>
+    <div class="col-xs-12 col-sm-6 col-md-4" id = "sort-button">
+      <%= render 'shared/dropdown-sort'%>
+    </div>
+
     <% @lists.each do |list| %>
     <div class="col-xs-12 col-sm-6 col-md-4 colx">
     <%= render 'shared/card', list: list %>
