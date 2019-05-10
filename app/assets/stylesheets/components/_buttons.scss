@@ -36,7 +36,31 @@ width: 130px;
 .btn-create{
   color: $my-green;
   height: 40px;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
+}
+
+.btn-simple{
+  color: black;
+  height: 40px;
+  border: 1px solid lightgrey;
+}
+
+#btn-group-id{
+  width:100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#sort-by-label {
+  width: 50%;
+}
+
+#sort-by-dropdown {
+  width: 50%;
+}
+
+#current-sort-by {
+  width: 100%;
 }
 
 .btn-copy{
