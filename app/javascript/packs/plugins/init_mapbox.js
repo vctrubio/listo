@@ -50,10 +50,10 @@ const initMapbox = () => {
         const my_currentMarker = my_markers[index];
         my_currentMarker.getElement().id = "";
         map.easeTo({
-          center: [currentMarker.lng, currentMarker.lat],
+          center: [currentMarker.lng, currentMarker.lat]
           //bearing: 90,
-          zoom: 14,
-          speed: 0.6
+          //,zoom: 14,
+          //speed: 0.6
           //pitch: 40
         })
         // map.setCenter([currentMarker.lng, currentMarker.lat]);
