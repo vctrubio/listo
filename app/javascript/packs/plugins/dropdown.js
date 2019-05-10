@@ -1,3 +1,5 @@
+import sortList from './sort_list';
+
 const dropdown = () => {
 
   var items = document.querySelectorAll('.dropdown-item');
@@ -6,8 +8,11 @@ const dropdown = () => {
   items.forEach((item) => {
     item.addEventListener('click', (event) => {
       label.innerText = event.currentTarget.innerText;
+      sortList(event.currentTarget.innerText);
     });
   });
-}
+};
 
+//sortList("Likes");
 dropdown();
+

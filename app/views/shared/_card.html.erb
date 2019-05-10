@@ -5,7 +5,7 @@
           <div class="card-content">
             <div class ="card-name">
             <h3><%= list.name %></h3>
-            <p><%= link_to list.user.username, user_path(list.user) %></p>
+            <p id = "card-author"><%= link_to list.user.username, user_path(list.user) %></p>
             </div>
 
             <% profile_placeholder = "https://bankwatch.org/wp-content/uploads/2018/03/Portrait_Placeholder-300x300.png" %>
