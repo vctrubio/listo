@@ -11,6 +11,10 @@ const sortList = (criteria) => {
     idCriteria = "#card-author";
     orderFunc = (x,y) => {return [y,x]};
     break;
+  case "Date":
+    idCriteria = "#card-date";
+    orderFunc = (x,y) => {return [x,y]};
+    break;
   default:
     idCriteria = ".like-count";
     orderFunc = (x,y) => {return [x,y]};
