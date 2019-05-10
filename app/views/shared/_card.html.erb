@@ -9,8 +9,9 @@
             <p hidden id = "card-date"><%= list.created_at%></p>
             </div>
 
-            <% profile_placeholder = "https://bankwatch.org/wp-content/uploads/2018/03/Portrait_Placeholder-300x300.png" %>
-          <img src="<%=image_url list.user.photo.url || profile_placeholder %>" alt="" class="card-user">
+          <% if not list.user.photo.blank? %>
+          <img src="<%=image_url list.user.photo.url%>" alt="" class="card-user">
+          <% end %>
 
             <div class="card-likes">
               <div class="card-heart-position" id="like-container-<%= "#{list.id}"%>">
