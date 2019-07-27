@@ -18,6 +18,10 @@ class PlacesController < ApplicationController
   def destroy
   end
 
+  def index
+    @places = Place.all
+  end
+
   private
 
   def find_place

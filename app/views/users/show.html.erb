@@ -36,9 +36,6 @@
                 <% if @user.twitter.present? %>
                 <li><a href="<%= "http://www.twitter.com/" + @user.twitter %>" target="_blank"> <i class="clickable fab fa-twitter"></i></a></li>
                 <% end %>
-                <% if @user.linkedin.present? %>
-                <li><a href="<%= "http://www.linkedin.com/in/" + @user.linkedin %>" target="_blank"> <i class="clickable fab fa-linkedin"></i></a></li>
-                <% end %>
                 <% if @user.website.present? %>
                 <li><a href="<%= "http://" + @user.website %>" target="_blank"><i class="clickable fas fa-globe-americas"></i></a></li>
                 <% end %>

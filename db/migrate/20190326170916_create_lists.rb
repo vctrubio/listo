@@ -5,7 +5,6 @@ class CreateLists < ActiveRecord::Migration[5.2]
       t.text :description
       t.integer :likes
       t.references :user, foreign_key: true
-      t.boolean :is_public
 
       t.timestamps
     end

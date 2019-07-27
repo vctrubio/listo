@@ -2,14 +2,16 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create your first list</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Create a Workshop!</h5>
       </div>
       <div class="modal-body">
         <%= simple_form_for(List.new) do |form| %>
-        <%= form.input :name, as: :text, label: 'List name:' %>
+        <%= form.input :name, as: :text, label: 'Give it a name:', placeholder: "Hell's Kitchen, Ricky's Bar" %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn-info "><%= form.button :submit %></button>
+        <button type="button" class="btn-info ">
+              <%= form.button :submit, "Start!" %>
+</button>
         <% end %>
       </div>
     </div>

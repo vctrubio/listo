@@ -3,20 +3,19 @@
     <div class="col-lg-6" id = "left-part">
       <%= simple_form_for(@list, method: :patch) do |f| %>
       <%= f.input :name, label: false, input_html: { id: :list_name_edit }, required: false%>
-      <%= f.input :description, placeholder: 'Describe this list' , label_html: { class: 'form' }, label: false %>
+      <%= f.input :description, placeholder: 'Describe your passion' , label_html: { class: 'form' }, label: false %>
       <%= f.input :photo , label: 'Please select a picture for your list:' %>
       <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
-      <%= f.input :is_public %>
     <% end %>
 
 
       <div id = "add-a-place">
-        <h3 class = 'text-left'><%= "Add a new place:"%></h3>
+        <h3 class = 'text-left'><%= "Add a Class:"%></h3>
         <%= render 'list_places/form', list: @list, list_place: @list_place %>
       </div>
 
       <div class = 'text-right'>
-       <button class = 'text-right btn-info' id="save-list-button">Save list</button>
+       <button class = 'text-right btn-info' id="save-list-button">Save Workshop</button>
       </div>
 
 

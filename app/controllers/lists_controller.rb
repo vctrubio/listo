@@ -11,13 +11,13 @@ class ListsController < ApplicationController
       OR places.address ILIKE :query \
       "
       # @lists = List.where(sql_query, query: "%#{params[:query]}%")
-      @lists = List.joins(:places).where(sql_query, query: "%#{params[:query]}%").where(is_public: true).to_a
+      @lists = List.joins(:places).where(sql_query, query: "%#{params[:query]}%").to_a
       @lists.uniq!
 
       # @lists = policy_scope(List).where(sql_query, query: "%#{params[:query]}%")
     else
       # @lists = List.all
-      @lists = List.all.where(is_public: true)
+      @lists = List.all
       @upvoted = List.where()
       # @lists = policy_scope(List).order(created_at: :desc)
     end
@@ -80,6 +80,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :description, :is_public, :photo, list_places_attributes: [:comments, places_attributes: [:name, :address, :photo, :latitude, :longitude]]) # , places_attributes: [:places, :name, :address])
+    params.require(:list).permit(:name, :description, :photo, list_places_attributes: [:comments, places_attributes: [:name, :address, :photo, :latitude, :longitude]]) # , places_attributes: [:places, :name, :address])
   end
 end

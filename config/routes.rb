@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :favourites
   end
 
-  resources :places, only: [:show, :update, :edit, :destroy]
+  resources :places, only: [:show, :update, :edit, :destroy, :index]
 
   #resources :listplaces, only: [:new, :create, :destroy]
   resources :favourites, only: [:new, :create, :destroy]
