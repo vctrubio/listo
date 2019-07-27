@@ -1,8 +1,8 @@
 
 <div class = "list-container">
   <div class="lists-container" >
-    <h1>Create a list</h1>
 
+<h2>Lets create a Workshop</h2>
     <%= simple_form_for(@list) do |f| %>
     <%= f.input :name , label_html: { class: 'form' } %>
     <%= f.input :description , label_html: { class: 'form' } %>
@@ -10,7 +10,7 @@
     <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
 
     <div class = "list-newplace-container" >
-      <strong><p><br>Add a new place</p></strong>
+      <strong><p><br>Now add Lessons!</p></strong>
       <%= f.simple_fields_for :list_places do |h| %>
       <%= h.simple_fields_for :place do |j| %>
       <%= j.input :name, label_html: { class: 'form' }, :input_html => { :id => "autocomplete" }%>
@@ -24,7 +24,7 @@
       <% end %>
 
       <% forms = (1..10).map { render "lists/form" , f: f  } %>
-      <button type='button' id="insertForm" data-forms="<%= forms.join('$$$$$') %>">Add a new place
+      <button type='button' id="insertForm" data-forms="<%= forms.join('$$$$$') %>">Add Lesson
       </button>
 
       <br>
