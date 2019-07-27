@@ -3,7 +3,9 @@ const save = () => {
   console.log("loaded save");
   document.getElementById("save-list-button").addEventListener("click", function () {
     console.log("click");
+    location.reload(true);
     form.submit();
+
   });
 }
 

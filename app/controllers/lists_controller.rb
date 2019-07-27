@@ -80,6 +80,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :description, :photo, list_places_attributes: [:comments, places_attributes: [:name, :address, :photo, :latitude, :longitude]]) # , places_attributes: [:places, :name, :address])
+       params.require(:list).permit(:name, :description, :photo, :photo_cache, list_places_attributes: [:comments, places_attributes: [:name, :address, :photo, :latitude, :longitude, :photo_cache]]) # , places_attributes: [:places, :name, :address])
   end
 end
