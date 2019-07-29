@@ -59,7 +59,8 @@
       <!-- lists owned by user -->
       <div class="list-section">
         <div class="container headline-container">
-        <strong><p id='mylist'>My Lists</p></strong>
+          <% if !(@user.lists.nil?) %>
+          <strong><p id='mylist'>Workshop's On Offer</p></strong>
           <div class="row">
             <% @user.lists.each do |list| %>
             <div class="col-xs-12 col-sm-6 col-md-4">
@@ -67,13 +68,14 @@
             </div>
             <% end %>
           </div>
+          <% end %>
         </div>
       </div>
 
       <!-- lists followed/liked by user -->
       <div class="list-section">
         <div class="container headline-container">
-          <strong><p id='myfavs'>My Favorites</p></strong>
+          <strong><p id='myfavs'> <%= @user.username.capitalize %>'s Favorites</p></strong>
           <div class="row">
             <% @user.favourites.each do |fav| %>
             <% list = fav.list%>
