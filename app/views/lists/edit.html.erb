@@ -3,14 +3,14 @@
     <div class="col-lg-6" id = "left-part">
       <%= simple_form_for(@list, method: :patch) do |f| %>
       <%= f.input :name, label: false, input_html: { id: :list_name_edit }, required: false%>
-      <%= f.input :description, placeholder: 'Describe your passion' , label_html: { class: 'form' }, label: false %>
-      <%= f.input :photo , label: 'Please select a picture for your list:' %>
+      <%= f.input :description, placeholder: 'What do you do?' , label_html: { class: 'form' }, label: false %>
+      <%= f.input :photo , label: 'Add a cover photo:' %>
       <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
     <% end %>
 
 
       <div id = "add-a-place">
-        <h3 class = 'text-left'><%= "Add a Class:"%></h3>
+        <h3 class = 'text-left'><%= "Start by adding classes:"%></h3>
         <%= render 'list_places/form', list: @list, list_place: @list_place %>
       </div>
 

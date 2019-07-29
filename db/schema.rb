@@ -39,10 +39,9 @@ ActiveRecord::Schema.define(version: 2019_04_24_211600) do
     t.text "description"
     t.integer "likes"
     t.bigint "user_id"
-    t.boolean "is_public"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
+    t.string "photo", default: "https://res.cloudinary.com/vvrruubb69e/image/upload/v1554225663/product-default.jpg"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
@@ -56,7 +55,7 @@ ActiveRecord::Schema.define(version: 2019_04_24_211600) do
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
+    t.string "photo", default: "https://res.cloudinary.com/vvrruubb69e/image/upload/v1554225663/product-default.jpg"
     t.float "latitude"
     t.float "longitude"
   end
@@ -82,14 +81,13 @@ ActiveRecord::Schema.define(version: 2019_04_24_211600) do
     t.string "username"
     t.string "location"
     t.boolean "is_admin"
-    t.string "photo"
+    t.string "photo", default: "https://res.cloudinary.com/vvrruubb69e/image/upload/v1554225663/product-default.jpg"
     t.string "bio"
     t.string "full_name"
     t.string "twitter"
     t.string "facebook"
     t.string "instagram"
     t.string "website"
-    t.string "linkedin"
     t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

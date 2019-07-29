@@ -1,44 +1,53 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag ("logo.png") %>
-    <% end %>
+<div class="navbar navbar-expand navbar-light navbar-lewagon my-nav-bar">
 
-  <span class="navbar-title">Hobby Horse</span>
-
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-        <%= link_to "Create", "", class: "nav-link nav-link-create-list", "data-toggle" => "modal", 'data-target' => '#exampleModal' %>
-        </li>
-        <li class="nav-item ">
-          <%= link_to "FIND", places_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= cl_image_tag (current_user.photo), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "My Reservations", "#", class: "dropdown-item" %>
-            <%= link_to "Get Credits", "#", class: "dropdown-item" %>
-            <%= link_to "My account", user_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item active">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-           <li class="nav-item">
-          <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
-        </li>
+      <div class="flex-one">
+      <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag ("logo.png") %>
       <% end %>
-    </ul>
-  </div>
+      </div>
+
+      <div class="collapse navbar-collapse flex-two" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+            <% if user_signed_in? %>
+               <li class="nav-item" id="nav-find">
+                <%= link_to "Find", places_path, class: "nav-link" %>
+               </li>
+                  <li class="nav-item" id="nav-post">
+                    <%= link_to "Post", places_path, class: "nav-link nav-link-create-list", "data-toggle" => "modal", 'data-target' => '#exampleModal' %>
+                  </li>
+                     <li class="nav-item" id="nav-search">
+                          <%= link_to "Search", "#", class: "nav-link" %>
+                     </li>
+                        <li class="nav-item" id="nav-profile">
+                          <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
+                        </li>
+      </div>
+      <div class="nav-restrain dropdown flex-one">
+                             <%= cl_image_tag ("https://res.cloudinary.com/vvrruubb69e/image/upload/v1564309926/HH.png"), class: "hh-logo dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                              <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                               </div>
+      </div>
+         </ul>
+
+      <% else %>
+         <ul>
+             <div class="loged-out flex-one">
+                  <div class="nav-restrain">
+                    <li class="hh-logo" id="box-shadow-nav">
+                      <img width="200px" src="./assets/HH.jpg" alt="Happy Horse">
+                    </li>
+                 <li class="nav-item active">
+                   <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                 </li>
+                    <li class="nav-item">
+                   <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+                 </li>
+               </div>
+            </div>
+         </ul>
+      <% end %>
+
 </div>
 
 

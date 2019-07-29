@@ -1,0 +1,38 @@
+.classpass{
+display: flex;
+inline-block: true;
+}
+
+.cone {
+  height: 250px;
+  width:175px;
+  // max-width: 250px;
+  background-size: cover !important;
+  background-position: center;
+  color: black;
+  background-color: red;
+  position: relative;
+  // border-bottom: solid gray 1px;
+  // box-shadow: 1px 1px #888888;
+  position: relative;
+  margin: 50px;
+}
+
+.ctwo{
+  background-color: blue;
+}
+
+.cthree{
+  background-color: yellow;
+}
+
+.cfour{
+  background-color: white;
+}
+
+.c-bttns{
+  background-color: grey;
+}
+
+.c-credentials{
+}
