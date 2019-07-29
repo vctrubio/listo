@@ -10,10 +10,10 @@
   <div class="form-inputs">
      <%= f.input :username,
                 required: true,
+                autofocus: true,
                 input_html: { autocomplete: "new-username" }, label_html: { class: 'form' } %>
     <%= f.input :email,
                 required: true,
-                autofocus: true,
                 input_html: { autocomplete: "email" }, label_html: { class: 'form' }%>
 
     <%= f.input :password,

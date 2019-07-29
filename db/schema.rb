@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_24_211600) do
+ActiveRecord::Schema.define(version: 2019_07_29_163530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2019_04_24_211600) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo", default: "https://res.cloudinary.com/vvrruubb69e/image/upload/v1554225663/product-default.jpg"
+    t.string "category"
+    t.integer "rating"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
@@ -58,6 +60,12 @@ ActiveRecord::Schema.define(version: 2019_04_24_211600) do
     t.string "photo", default: "https://res.cloudinary.com/vvrruubb69e/image/upload/v1554225663/product-default.jpg"
     t.float "latitude"
     t.float "longitude"
+    t.datetime "start_time"
+    t.time "length"
+    t.string "description"
+    t.string "title"
+    t.integer "capacity"
+    t.integer "price"
   end
 
   create_table "relationships", force: :cascade do |t|

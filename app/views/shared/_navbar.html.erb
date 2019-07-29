@@ -27,27 +27,29 @@
                               <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                                </div>
-      </div>
+
          </ul>
 
       <% else %>
-         <ul>
-             <div class="loged-out flex-one">
-                  <div class="nav-restrain">
-                    <li class="hh-logo" id="box-shadow-nav">
-                      <img width="200px" src="./assets/HH.jpg" alt="Happy Horse">
-                    </li>
+
+        <div class="loged-out flex-two">
+            <div class="nav-restrain">
+                <li class="hh-logo" id="box-shadow-nav">
+                    <img width="200px" src="./assets/HH.jpg" alt="Happy Horse">
+                  </li>
+            </div>
+            <div class="flex-two">
                  <li class="nav-item active">
                    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
                  </li>
-                    <li class="nav-item">
+                  <li class="nav-item">
                    <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
                  </li>
-               </div>
-            </div>
-         </ul>
+                 </div>
+          </div>
+        </div>
       <% end %>
-
+        </div>
 </div>
 
 

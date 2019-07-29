@@ -26,7 +26,7 @@ class ListPlacesController < ApplicationController
   private
 
   def listplace_params
-    params.require(:list_place).permit(:comments, place_attributes: [:name, :address, :photo, :latitude, :longitude])
+    params.require(:list_place).permit(:comments, place_attributes: [:name, :address, :photo, :latitude, :longitude, :phone, :city, :start_time, :length, :capacity, :description, :title, :price])
   end
 end
 
