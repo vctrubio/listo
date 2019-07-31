@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'lists#index'
-  resources :users, param: :slug, only: [:show, :new, :create, :update, :edit, :destroy] do
+  resources :users, param: :slug, only: [:show, :index, :new, :create, :update, :edit, :destroy] do
     member do
       get :following, :followers
     end

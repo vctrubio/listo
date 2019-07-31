@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   def new
   end
 
+  def index
+    @users = User.all
+  end
+
   def create
     #User.create(slug: to_slug(:username))
   end

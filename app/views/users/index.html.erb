@@ -1,0 +1,14 @@
+
+<div class="container">
+  <h1>Search Setting</h1>
+  <h2>this will be used to search for users, live feed of activities, search for coupouns/offers</h2>
+
+  <div class="avatar">
+    <% @users.each do |user| %>
+    <div class="avatar">
+      <%= cl_image_tag (user.photo) %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

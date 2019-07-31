@@ -7,25 +7,26 @@
       </div>
 
       <div class="collapse navbar-collapse flex-two" id="navbarSupportedContent">
-         <ul class="navbar-nav mr-auto">
+         <ul class="navbar-nav mr-auto topnav">
             <% if user_signed_in? %>
-               <li class="nav-item" id="nav-find">
-                <%= link_to "Find", places_path, class: "nav-link" %>
+               <li class="nav-item nav-click">
+                <%= link_to "Find", places_path, class: "nav-link navred" %>
                </li>
-                  <li class="nav-item" id="nav-post">
-                    <%= link_to "Post", places_path, class: "nav-link nav-link-create-list", "data-toggle" => "modal", 'data-target' => '#exampleModal' %>
+                  <li class="nav-item nav-click" >
+                    <%= link_to "Post", places_path, class: "nav-link navyellow nav-link-create-list", "data-toggle" => "modal", 'data-target' => '#exampleModal' %>
                   </li>
-                     <li class="nav-item" id="nav-search">
-                          <%= link_to "Search", "#", class: "nav-link" %>
+                     <li class="nav-item nav-click" >
+                          <%= link_to "Search", users_path, class: "nav-link navgreen" %>
                      </li>
-                        <li class="nav-item" id="nav-profile">
-                          <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
+                        <li class="nav-item nav-click" >
+                          <%= link_to "Profile", user_path(current_user), class: "nav-link navblue" %>
                         </li>
       </div>
 
       <div class="nav-restrain dropdown flex-one">
                              <%= cl_image_tag ("https://res.cloudinary.com/vvrruubb69e/image/upload/v1564309926/HH.png"), class: "hh-logo dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                               <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                 <%= link_to "Reservations", "#", method: :delete, class: "dropdown-item" %>
                                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                                </div>
 
@@ -39,15 +40,16 @@
                     <img width="200px" src="./assets/HH.jpg" alt="Happy Horse">
                   </li>
             </div>
-            <div class="flex-two">
+
+          </div>
+             <div class="flex-one">
                  <li class="nav-item active">
                    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
                  </li>
                   <li class="nav-item">
                    <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
                  </li>
-                 </div>
-          </div>
+            </div>
         </div>
       <% end %>
         </div>

@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_163530) do
 
   create_table "list_places", force: :cascade do |t|
     t.text "comments"
+    t.string "attendence"
     t.bigint "list_id"
     t.bigint "place_id"
     t.datetime "created_at", null: false

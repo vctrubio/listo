@@ -1,8 +1,11 @@
 <div class="row" id = "place-div">
   <div class="col-lg-6">
-    <h6><%=lp.place.name%></h6>
-    <p><%=lp.place.address%></p>
-    <p><%= '"' + lp.comments + '"'%></p>
+    <h6><%=lp.place.title%></h6>
+    <p><%=lp.place.name%></p>
+    <p><%=lp.comments %></p>
+    <p><%=lp.place.capacity%></p>
+    <p><%=lp.place.price%></p>
+    <p><%=lp.place.start_time%></p>
     <p><%= render 'list_places/delete', list_place: lp, list: list%></p>
   </div>
   <div class="col-lg-6">
