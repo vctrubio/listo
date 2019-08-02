@@ -15,4 +15,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     redirect_to new_user_session_path
   end
+
+
 end

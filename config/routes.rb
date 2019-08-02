@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   root to: 'lists#index'
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+
   resources :users, param: :slug, only: [:show, :index, :new, :create, :update, :edit, :destroy] do
     member do
       get :following, :followers
     end
   end
+
   resources :lists, only: [ :index, :show, :create, :edit, :new, :update ] do
     resources :list_places, only: [:create, :destroy]
     resources :favourites
@@ -20,5 +22,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   delete 'lists/:id', to: 'lists#destroy', as: 'delete_list'
 
+  resources :reservations, only: [:show, :edit, :create, :destroy]
+  resources :notifications, only: [:index, :show]
 
 end
