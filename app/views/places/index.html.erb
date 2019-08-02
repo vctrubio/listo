@@ -10,7 +10,7 @@
         <%= cl_image_tag p.photo, height: 250, width: 250, crop: :fill %>
         <div class="card-product-infos">
                 <h2><%= p.title %></h2>
-                <p><%= p.address %> <strong> @ <%= p.start_time %> </strong> with <%= p.capacity %> ppl</p>
+                <p><%= p.address %> <strong> @ <%= p.start_time.strftime('%I:%M %p %Y-%m-%d ') %> </strong> with <%= p.capacity %> ppl</p>
                 <p>4:icons: <strong>sign up</strong>, share, reviews, user:avatar </p>
         </div>
       </div>

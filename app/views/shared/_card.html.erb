@@ -12,7 +12,6 @@
           <% if not list.user.photo.blank? %>
           <img src="<%=image_url list.user.photo.url%>" alt="" class="card-user">
           <% end %>
-
             <div class="card-likes">
               <div class="card-heart-position" id="like-container-<%= "#{list.id}"%>">
                 <% if !list.favourites.nil? && current_user%>
@@ -29,6 +28,7 @@
                 <% end %>
               </div>
               <div class = "like-count" id="like-count-<%= list.id %>"> <%= list.favourites.count%> </div>
+
             </div>
           </div>
         </div>

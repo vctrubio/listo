@@ -49,21 +49,20 @@
         <p> <%= @list.list_places.find_by(place_id: place.id).comments%></p>
         </div>
           <div class="row">
-            <div class="in-line">
+            <div class="in-line-icons">
               <i class="far fa-calendar-plus"> <%= place.start_time%> </i>
-              <i class="fas fa-hourglass-end"> <%= place.length %> :hrs</i>
+              <i class="fas fa-hourglass-end"> <%= place.length.strftime('%I') %> :hrs</i>
               <i class="fas fa-users"> <%= place.capacity %> ppl</i>
               <i class="fas fa-dollar-sign"> <%= place.price %></i>
+              <strong class="sign-up">Sign UP</strong>
             </div>
            </div>
       </div>
-           <div class="row sign-up">
-            <%= link_to "Sign up", "#" %>
-          </div>
   </div>
   <% end %>
 </div>
 <!-- button to delete the list - only visible if the current user owns the list -->
+
 <% if current_user%>
 <div class="buttons-list-show">
  <div class="edit delete-link">

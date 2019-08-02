@@ -15,12 +15,24 @@
 
 .sign-up{
   background-color: #FA000B;
-  padding: 10px;
-  text-align: center;
-  line-height: 1.2;
+  text-decoration: none;
   font-family: 'Saira Stencil One', cursive;
-  font-size: 24px;
+  font-size: 18px;
   border-radius: 2px;
+  justify-content: space-around;
+  a{
+      color: white !important;
+      text-align: center;
+  }
 }
 
+.in-line-icons{
+  display: flex;
+  a{
 
+  justify-content: space-around;
+  vertical-align: center;
+  text-align: center;
+
+  }
+}

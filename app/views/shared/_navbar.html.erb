@@ -19,7 +19,7 @@
                           <%= link_to "Search", users_path, class: "nav-link navgreen" %>
                      </li>
                         <li class="nav-item nav-click" >
-                          <%= link_to "Profile", user_path(current_user), class: "nav-link navblue" %>
+                          <%= link_to current_user.username.capitalize, user_path(current_user), class: "nav-link navblue" %>
                         </li>
       </div>
 
@@ -27,32 +27,36 @@
                              <%= cl_image_tag ("https://res.cloudinary.com/vvrruubb69e/image/upload/v1564309926/HH.png"), class: "hh-logo dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                               <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                                  <%= link_to "Reservations", "#", method: :delete, class: "dropdown-item" %>
+                                  <%= link_to "Credits", "#", method: :delete, class: "dropdown-item" %>
                                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                                </div>
 
          </ul>
 
-      <% else %>
+                  <% else %>
 
-        <div class="loged-out flex-two">
-            <div class="nav-restrain">
-                <li class="hh-logo" id="box-shadow-nav">
-                    <img width="200px" src="./assets/HH.jpg" alt="Happy Horse">
-                  </li>
-            </div>
 
-          </div>
-             <div class="flex-one">
-                 <li class="nav-item active">
-                   <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-                 </li>
-                  <li class="nav-item">
-                   <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
-                 </li>
-            </div>
-        </div>
-      <% end %>
-        </div>
+                    <div class="loged-out">
+                      <ul>
+                        <div class="nav-restrain  flex-two">
+                            <li class="hh-logo center-aling" id="box-shadow-nav">
+                                <img width="200px" src="/assets/HH.jpg" alt="Happy Horse">
+                              </li>
+                        </div>
+
+                         <div class="flex-one">
+                             <li class="nav-item active">
+                               <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                             </li>
+                              <li class="nav-item">
+                               <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+                             </li>
+                        </div>
+                      </ul>
+
+                    </div>
+                 <% end %>
+      </div>
 </div>
 
 
