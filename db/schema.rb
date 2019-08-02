@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_163530) do
+ActiveRecord::Schema.define(version: 2019_08_02_110935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 2019_07_29_163530) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "actor_id"
+    t.datetime "read_at"
+    t.string "action"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -79,6 +90,15 @@ ActiveRecord::Schema.define(version: 2019_07_29_163530) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "place_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_reservations_on_place_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -107,4 +127,6 @@ ActiveRecord::Schema.define(version: 2019_07_29_163530) do
   add_foreign_key "list_places", "lists"
   add_foreign_key "list_places", "places"
   add_foreign_key "lists", "users"
+  add_foreign_key "reservations", "places"
+  add_foreign_key "reservations", "users"
 end

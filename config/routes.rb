@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'lists#index'
+
+  devise_for :users
   resources :users, param: :slug, only: [:show, :index, :new, :create, :update, :edit, :destroy] do
     member do
       get :following, :followers
@@ -18,4 +19,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :relationships, only: [:create, :destroy]
   delete 'lists/:id', to: 'lists#destroy', as: 'delete_list'
+
+
 end
