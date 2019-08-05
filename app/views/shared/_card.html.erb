@@ -1,35 +1,30 @@
-      <div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
-        <%= link_to "", list_path(list), class: 'card-link' %>
-        <div class = "card-text-bottom">
-          <div class="card-avatar"></div>
-          <div class="card-content">
-            <div class ="card-name">
-            <h3><%= list.name %></h3>
-            <p id = "card-author"><%= link_to list.user.username, user_path(list.user) %></p>
-            <p hidden id = "card-date"><%= list.created_at%></p>
-            </div>
-
-          <% if not list.user.photo.blank? %>
-          <img src="<%=image_url list.user.photo.url%>" alt="" class="card-user">
-          <% end %>
-            <div class="card-likes">
-              <div class="card-heart-position" id="like-container-<%= "#{list.id}"%>">
-                <% if !list.favourites.nil? && current_user%>
-                <% pre_like = list.favourites.find { |like| like.user_id == current_user.id} %>
-
-                <% if pre_like %>
-                <%= render 'shared/dislike', list: list, pre_like: pre_like %>
-                <% else %>
-                <%= render 'shared/like', list: list %>
-                <% end %>
-
-                <% else %>
-                <%= render 'shared/like', list: list %>
-                <% end %>
-              </div>
-              <div class = "like-count" id="like-count-<%= list.id %>"> <%= list.favourites.count%> </div>
-
-            </div>
-          </div>
-        </div>
+<div class="card" id = "card-custom-attributes" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('<%= list.photo.url.nil? ? "placeholder" : cl_image_path(list.photo.url, width: 400, height: 500, crop: :fill) %>')" >
+  <%= link_to "", list_path(list), class: 'card-link' %>
+  <div class = "card-text-bottom">
+    <div class="card-content">
+      <div class ="card-name">
+        <h3><%= list.name %></h3>
+        <p id = "card-author"><%= link_to list.user.username, user_path(list.user) %></p>
+        <p hidden id = "card-date"><%= list.created_at%></p>
       </div>
+      <div class="card-likes">
+        <div class="card-heart-position" id="like-container-<%= "#{list.id}"%>">
+          <% if !list.favourites.nil? && current_user%>
+          <% pre_like = list.favourites.find { |like| like.user_id == current_user.id} %>
+
+          <% if pre_like %>
+          <%= render 'shared/dislike', list: list, pre_like: pre_like %>
+          <% else %>
+          <%= render 'shared/like', list: list %>
+          <% end %>
+
+          <% else %>
+          <%= render 'shared/like', list: list %>
+          <% end %>
+        </div>
+        <div class = "like-count" id="like-count-<%= list.id %>"> <%= list.favourites.count%> </div>
+
+      </div>
+    </div>
+  </div>
+</div>

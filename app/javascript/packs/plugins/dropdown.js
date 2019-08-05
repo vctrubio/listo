@@ -13,6 +13,5 @@ const dropdown = () => {
   });
 };
 
-//sortList("Likes");
 dropdown();
 
