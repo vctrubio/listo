@@ -1,8 +1,8 @@
 <%= simple_form_for([ list, list_place], remote: true) do |form| %>
 
   <%= form.simple_fields_for :place do |j| %>
-      <%= j.input :title, label: "Name your Class:",placeholder: "Workout With Lexy's Sister", as: :text, label_html: { class: 'form' }%>
-      <%= form.input :comments, placeholder: "Workshop's goal", as: :text , label: "Description", label_html: { class: 'form' }%>
+      <%= j.input :title, label: "Name your Class:",placeholder: "Workout With Lexy's Sister", as: :string, label_html: { class: 'form' }, required: true%>
+      <%= form.input :comments, placeholder: "Workshop's goal", as: :text , label: "Description", label_html: { class: 'form' }, :input_html => {:rows => 1}, required: true%>
       <%= j.input :name, placeholder: 'Where can we find it?', label: "Location", label_html: { class: 'form' }, :input_html => { :id => "autocomplete" }%>
       <%= j.input :address, label_html: { class: 'form' }, :input_html => { :id => "full_address" } , as: :hidden%>
       <%= j.input :latitude, label_html: { class: 'form' },  :input_html => { :id => "latitude" } , as: :hidden%>
@@ -11,10 +11,8 @@
    <div class="place-setting">
       <h3>Prices and Capacity</h3>
       <div class="place-pricecapacity">
-        <div class="row">
-          <%= j.input :start_time, label: "Select a Date:", label_html: { class: 'form' }%>
-        <%= j.input :length, label: "Duration:",as: :integer, label_html: { class: 'form' }%>
-        </div>
+          <%= j.input :start_time, as: :string, label: "Select a Date:", label_html: { class: 'form' }%>
+        <%= j.input :length, as: :numeric, label: "Duration:",as: :integer, label_html: { class: 'form' }%>
         <div class="row">
           <%= j.input :capacity, label: "Capacity:"%>
           <%= j.input :price, label: "And Price:"%>
@@ -22,7 +20,7 @@
 
       </div>
    </div>
-  <%= j.input :photo, required: true, label: 'Last, it needs a photo to upload!' %>
+  <%= j.input :photo, required: true, label: 'Last, it needs a photo to upload!', :label_html => { :class => 'input-label' } %>
   <%= j.input :photo_cache,required: true, as: :hidden %>
 <% end %>
     <div class = 'text-left'><%= form.submit 'Add to workshop!', class: 'btn-info' %> </div>

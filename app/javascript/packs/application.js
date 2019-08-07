@@ -6,12 +6,13 @@ import "bootstrap";
 import { initMapbox } from './plugins/init_mapbox';
 //import { sortList } from './plugins/sort_list';
 import {textareaResize} from './input/textarea-resize'
+import {showFile} from './input/file_input_helper'
 //insert();
 //autocomplete();
 initMapbox();
 //sortList();
 textareaResize()
-
+showFile()
 
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 // initUpdateNavbarOnScroll();

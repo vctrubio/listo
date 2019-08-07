@@ -77,11 +77,11 @@ justify-content: start;
   margin:10px;
 }
 
-textarea.form-control, textarea.form-control:focus {
+textarea.form-control, textarea.form-control:focus, input.form-control:focus {
   resize: none;
   outline: none !important;
   box-shadow: none;
-
+  overflow:none;
 }
 
 .form-control.invalid {
@@ -89,3 +89,29 @@ textarea.form-control, textarea.form-control:focus {
 }
 
 
+input.file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+label.file {
+  background-color: $info;
+  padding:: 0.5rem;
+  border-radius: 0.2rem;
+  color: $white;
+
+}
+
+label.file:hover {
+  background-color: darken( $info, 10% );
+  cursor: pointer;
+
+}
+
+label.file:focus {
+  outline: 0.4rem dotted #100;
+}

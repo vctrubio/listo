@@ -36,15 +36,13 @@ const initMapbox = () => {
       my_markers.push(mk);
     });
 
-    console.log(my_markers);
+
 
     fitMapToMarkers(map, markers);
 
-    var places = document.querySelectorAll('.form-list-show');
-    //console.log(places);
+    let places = document.querySelectorAll('.form-list-show');
 
     places.forEach((place, index) => {
-      //console.log(index);
       place.addEventListener("mouseover", (event) => {
         const currentMarker = markers[index];
         const my_currentMarker = my_markers[index];
