@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import $ from "jquery";
 
 export default class extends Controller {
-  static targets = [ "reasonInput", "alertWarning", "endDate", "startDate", "submitButton" ]
+  static targets = [ ]
 
   connect() {
     this.element.setAttribute('novalidate', true)
@@ -19,7 +19,6 @@ export default class extends Controller {
 
   onBlur = (event) => {
     this.validateField(event.target)
-
   }
 
 

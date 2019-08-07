@@ -1,7 +1,7 @@
 <div class="container" id = "edit-container">
   <div class="row justify-content-around">
     <div class="col-lg-6" id = "left-part">
-      <%= simple_form_for(@list, method: :patch) do |f| %>
+      <%= simple_form_for(@list, method: :patch,  html: {type: "html", controller: "hello"}) do |f| %>
       <%= f.input :name, label: false, input_html: { id: :list_name_edit }, required: true%>
       <%= f.input :description, placeholder: 'What do you do?' , label_html: { class: 'form' }, label: false %>
       <%= f.input :photo , label: 'Add a cover photo:' %>
