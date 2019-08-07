@@ -1,20 +1,8 @@
 
 <div class="container">
-
-<h1>Sign UP to ongoing classes</h1>
-
-
+  <h1>Sign UP to ongoing classes</h1>
   <div class="container">
-    <% @places.each do |p| %>
-      <div class="card-product">
-        <%= cl_image_tag p.photo, height: 250, width: 250, crop: :fill %>
-        <div class="card-product-infos">
-                <h2><%= p.title %></h2>
-                <p><%= p.address %> <strong> @ <%= p.start_time.strftime('%I:%M %p %Y-%m-%d ') %> </strong> with <%= p.capacity %> ppl</p>
-                <p>4:icons: <strong>sign up</strong>, share, reviews, user:avatar </p>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'place-cards' %>
   </div>
 </div>
 

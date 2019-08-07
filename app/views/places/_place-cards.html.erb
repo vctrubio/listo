@@ -1,0 +1,29 @@
+ <div class="row">
+  <% @places.each do |p| %>
+  <div class="col">
+    <div class="card">
+      <div class="card-img" style="background: url('<%= p.photo.url.nil? ? "placeholder" : cl_image_path(p.photo.url, crop: :fill) %>')no-repeat center center; background-size: cover;" >
+        <div class="places-container-likesHeart">
+          <i class="far fa-heart"></i>
+        </div>
+      </div>
+      <div class="places-container-cardInfo">
+        <div class="places-container-cardTitle">
+         <div class="places-text-cardTitle">
+          <!-- max size for title should be 80 characters -->
+           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula.
+         </div>
+        </div>
+        <div class="places-container-cardDescription">
+          <%= p.description %>
+          <!-- max size for the description should be 200 characters -->
+         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu
+        </div>
+        <div class="places-container-cardData">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
