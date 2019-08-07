@@ -6,7 +6,7 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for(List.new) do |form| %>
-        <%= form.input :name, as: :text, label: 'Give it a name:', placeholder: "Hell's Kitchen, Ricky's Bar" %>
+        <%= form.input :name, as: :text, :input_html => {:rows => 1}, label: 'Give it a name:', placeholder: "Hell's Kitchen, Ricky's Bar" %>
         <%= form.input :category, label: "Select a best fit:", as: :radio_buttons, collection: ['Art', 'Business Skills', 'Crafts', 'Dance', 'Drinks and Tasting', 'Food', 'Health and Beauty', 'Languages', 'Mindfulness and Wellbeing', 'Music', 'Photography', 'Technology', 'Sports','Other'], wrapper: :vertical_collection_inline %>
       </div>
       <div class="modal-footer">
