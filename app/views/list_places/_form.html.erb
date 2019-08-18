@@ -1,9 +1,20 @@
-<%= simple_form_for([ list, list_place], remote: true) do |form| %>
+<%= simple_form_for([ list, list_place], remote: true, html: {data: {controller: "submit2"}}) do |form| %>
 
   <%= form.simple_fields_for :place do |j| %>
-      <%= j.input :title, label: "Name your Class:",placeholder: "Workout With Lexy's Sister", as: :string, label_html: { class: 'form' }, required: true%>
-      <%= form.input :comments, placeholder: "Workshop's goal", as: :text , label: "Description", label_html: { class: 'form' }, :input_html => {:rows => 1}, required: true%>
-      <%= j.input :name, placeholder: 'Where can we find it?', label: "Location", label_html: { class: 'form' }, :input_html => { :id => "autocomplete" }%>
+      <%= j.input :title, label: "Name your Class:",placeholder: "Workout With Lexy's Sister", as: :string, label_html: { class: 'form' }, input_html: {class: "count-char"}, required: true, maxlength: "50"%>
+      <div class="form-helper-info">
+        <span class="form-helper-error" data-error="Be sure to field out this field"></span>
+        <span class="form-helper-number" data-charLimit="50" id="counter-list_place_place_attributes_title"></span>
+      </div>
+      <%= form.input :comments, placeholder: "Workshop's goal", as: :text , label: "Description", label_html: { class: 'form' }, :input_html => {:rows => 1, class: "count-char"}, required: true, maxlength: "200"%>
+      <div class="form-helper-info">
+        <span class="form-helper-error" data-error="Be sure to field out this field"></span>
+        <span class="form-helper-number" data-charLimit="200" id="counter-list_place_comments"></span>
+      </div>
+      <%= j.input :name, placeholder: 'Where can we find it?', label: "Location", label_html: { class: 'form' }, :input_html => { :id => "autocomplete" }, required: true%>
+      <div class="form-helper-info">
+        <span class="form-helper-error" data-error="Be sure to field out this field"></span>
+      </div>
       <%= j.input :address, label_html: { class: 'form' }, :input_html => { :id => "full_address" } , as: :hidden%>
       <%= j.input :latitude, label_html: { class: 'form' },  :input_html => { :id => "latitude" } , as: :hidden%>
       <%= j.input :longitude, label_html: { class: 'form' }, :input_html => { :id => "longitude" } , as: :hidden%>
@@ -11,17 +22,30 @@
    <div class="place-setting">
       <h3>Prices and Capacity</h3>
       <div class="place-pricecapacity">
-          <%= j.input :start_time, as: :string, label: "Select a Date:", label_html: { class: 'form' }%>
-        <%= j.input :length, as: :numeric, label: "Duration:",as: :integer, label_html: { class: 'form' }%>
-        <div class="row">
-          <%= j.input :capacity, label: "Capacity:"%>
-          <%= j.input :price, label: "And Price:"%>
+        <%= j.input :start_time, as: :string, label: "Select a Date:", label_html: { class: 'form' },  required: true%>
+        <div class="form-helper-info">
+          <span class="form-helper-error" data-error="Be sure to field out this field"></span>
+        </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-sm-4 d-flex justify-content-center align-items-center">
+                <%= j.input :length, as: :tel, label: "Duration:", input_html: {class: ""}, required: true%>
+            </div>
+            <div class="col-sm-4  d-flex justify-content-center align-items-center">
+            <%= j.input :capacity, input_html: {class: "only-numeric"}, as: :tel, label: "Capacity:", required: true%>
+            </div>
+            <div class="col-sm-4  d-flex justify-content-center align-items-center">
+              <%= j.input :price, as: :tel,  input_html: {class: "only-numeric"},  label: "Price in USD:",  required: true%>
+            </div>
           </div>
-
       </div>
    </div>
-  <%= j.input :photo, required: true, label: 'Last, it needs a photo to upload!', :label_html => { :class => 'input-label' } %>
-  <%= j.input :photo_cache,required: true, as: :hidden %>
+   <div class="d-flex flex-column  align-items-center justify-content-center mt-2">
+    <h6>lastly, the class needs a cover photo</h6>
+    <%= j.input :photo, required: true, label: 'Upload class cover photo!', :label_html => { :class => 'input-label' } %>
+    <%= j.input :photo_cache,required: true, as: :hidden, data: {target: "submit2.photoInput"} %>
+   </div>
 <% end %>
-    <div class = 'text-left'><%= form.submit 'Add to workshop!', class: 'btn-info' %> </div>
+    <h6 class="text-center">When you're form is filled out, add the class to preview it before saving it.</h6>
+    <div class = 'text-center mt-2'><%= form.submit 'Add class to workshop!', class: 'btn-info' %> </div>
+    <div class="diveder">.</div>
 <% end %>

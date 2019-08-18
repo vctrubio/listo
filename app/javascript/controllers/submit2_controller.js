@@ -5,10 +5,12 @@ export default class extends Controller {
   static targets = [ ]
 
   connect() {
+    this.checkFileInputs()
     this.element.setAttribute('novalidate', true)
     this.element.addEventListener('blur', this.onBlur, true)
     this.element.addEventListener('submit', this.onSubmit)
     this.element.addEventListener('ajax:beforeSend', this.onSubmit)
+    this.element.addEventListener('ajax:success', this.addCount)
   }
 
   disconnect () {
@@ -17,41 +19,17 @@ export default class extends Controller {
     this.element.removeEventListener('ajax:beforeSend', this.onSubmit)
   }
 
-  verifyRadio(form) {
-    const radioButtons = form.getElementsByClassName('form-check')
-    if (Array.from(radioButtons).some(this.isChecked)) {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  createWarning(apendAfterThis) {
-    const div = document.createElement('div')
-    const li = document.createElement('li')
-    const text = document.createTextNode("Don't forget to select a category!");
-     li.classList.add('fas', 'fa-arrow-down')
-     div.classList.add('category-alert', 'text-center')
-     div.id = "place-category-warning"
-    div.appendChild(text)
-    div.appendChild(li)
-    apendAfterThis.insertAdjacentElement('afterend', div)
-
-  }
-
-  removeWarning() {
-    const warning = document.getElementById('place-category-warning')
-
-    warning.remove()
-  }
 
 
-  isChecked(field) {
-    return field.children[0].checked
+  addCount() {
+    const counter = document.getElementById('right-part')
+    counter.dataset.count + 1
   }
 
   onBlur = (event) => {
     this.validateField(event.target)
+    this.removeWarning()
+
   }
 
 
@@ -61,19 +39,65 @@ export default class extends Controller {
       this.firstInvalidField.focus()
     }
 
-    if (!this.verifyRadio(this.element)) {
+
+
+    if (this.validateEmpty([document.getElementById('list_place_place_attributes_start_time')])) {
       event.preventDefault()
-      const legend = this.element.getElementsByTagName('legend')[0]
-      const fieldSet = legend.parentNode.getElementsByClassName('form-check-input')
-      this.createWarning(legend)
-      Array.from(fieldSet).forEach( (e) => {
-        e.addEventListener('click', (r) => {
-          this.removeWarning()
-        })
-      })
+    }
+
+
+    if (!this.validateFileInputs()) {
+
+      event.preventDefault()
     }
 
   }
+
+  removeWarning() {
+    const warning = document.getElementById('list-place-warning')
+    if (warning) {
+      warning.remove()
+    }
+  }
+
+
+  checkFileInputs() {
+    this.getFileLabels.forEach( (label) => {
+      const input = label.nextSibling
+      if (input.files) {
+        if (input.files.length > 0 ) {
+          const name = input.value.split(/\\|\//).pop();
+          const truncated = name.length > 20
+          ? name.substr(name.length - 20)
+          : name;
+          label.innerHTML = truncated;
+        }
+      }
+    })
+
+
+  }
+
+
+
+  validateFileInputs() {
+    let isValid = true
+    this.getFileLabels.forEach((label) => {
+      if (!this.validateInput(label)) isValid = false
+    })
+    return isValid
+  }
+
+  validateInput(label) {
+    const input = label.nextSibling
+    if (input.files.length == 0 ) {
+      label.classList.add("invalid")
+      return false
+    } else {
+      return true
+    }
+  }
+
 
   validateForm () {
     let isValid = true
@@ -104,7 +128,11 @@ export default class extends Controller {
         field.focus
       }
       if (errors > 0) {
+        console.log('Their are errors!')
+        console.log(errors)
         return false
+      } else if (errors == 0) {
+        return true
       }
     })
   }
@@ -117,6 +145,10 @@ export default class extends Controller {
 
   shouldValidateField (field) {
     return !field.disabled && !['file', 'reset', 'submit', 'button'].includes(field.type)
+  }
+
+  get getFileLabels() {
+   return Array.from(this.element.querySelectorAll('label.file'))
   }
 
   get formFields () {

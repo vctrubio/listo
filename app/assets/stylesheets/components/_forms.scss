@@ -67,11 +67,7 @@ justify-content: start;
   padding: 0 !important;
 }
 
-#list_name_edit{
-  border-bottom: 0px !important;
-  font-size: 40px;
-  color: black;
-}
+
 
 .delete-link{
   margin:10px;
@@ -114,4 +110,36 @@ label.file:hover {
 
 label.file:focus {
   outline: 0.4rem dotted #100;
+}
+
+label.file.invalid {
+  background-color: $danger;
+  cursor: pointer;
+}
+
+.flatpickr-input {
+  background-color: transparent !important;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.form-helper-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invalid + .form-helper-info > .form-helper-error:before {
+  color: $red;
+  content: attr(data-error);
+
+}
+
+.form-control-label {
+  margin-top: 0.6rem;
+}
+
+.place-setting {
+  margin-top: 1rem;
 }
