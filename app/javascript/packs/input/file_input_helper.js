@@ -16,23 +16,25 @@ export const showFile = () => {
 
 export const durationHelper = () => {
   const input = document.getElementById('list_place_place_attributes_length')
-  input.addEventListener('keydown', (e) => {
-    const key = e.keyCode
+  if (input) {
+    input.addEventListener('keydown', (e) => {
+      const key = e.keyCode
 
-    if (
-    // alphabet
-    key >= 65 && key <= 90 ||
-    // spacebar
-    key == 32
+      if (
+      // alphabet
+      key >= 65 && key <= 90 ||
+      // spacebar
+      key == 32
 
-    ) {
-      e.preventDefault()
-    return false
+      ) {
+        e.preventDefault()
+      return false
+    }
+    if (input.value.length > 4) {
+      input.value = input.value.substring(0,4)
+    }
+  } )
   }
-  if (input.value.length > 4) {
-    input.value = input.value.substring(0,4)
-  }
-} )
 }
 
 export function toHtmlNumericInput(useCommaAsDecimalSeparator) {

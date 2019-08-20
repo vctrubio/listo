@@ -1,33 +1,57 @@
- <div class="row">
+"" <div class="row">
   <% @places.each do |p| %>
   <div class="col">
     <div class="card mt-2">
-      <div class="card-img" style="background: url('<%= p.photo.url.nil? ? "placeholder" : cl_image_path(p.photo.url, crop: :fill) %>')no-repeat center center; background-size: cover;" >
-        <div class="places-container-likesHeart">
-          <i class="far fa-heart"></i>
+        <div class="card-container-location">
+          Country: Monte Negro City: Podgorica
         </div>
-      </div>
-      <div class="places-container-cardInfo">
-        <div class="places-container-cardTitle">
-         <div class="places-text-cardTitle">
-          <h6 class="text-center">
-            <%= p.title %>
-          </h6>
+         <div class="card-img" style="background: url('<%= p.photo.url.nil? ? "placeholder" : cl_image_path(p.photo.url, crop: :fill) %>')no-repeat center center; background-size: cover;" ></div>
+         <div class="card-container-title">
+            Lorem ipsum dolor sit amet, consectetuer adipiscin
          </div>
-        </div>
-        <div class="places-container-cardDescription">
-          <%= p.description %>
-        </div>
-        <div class="places-container-cardData">
-          <%= p.name %>
-        </div>
-        <div>
-          <%= p.capacity %>
-        </div>
-        <div class="btn btn-danger w-100">
-          Reserve
-        </div>
-      </div>
+         <div class="card-container-info">
+            <div class="d-flex flex-column justify-content-between">
+                <div class="card-content-infoCard">
+                    duration: 24 hours
+                </div>
+                <div class="card-content-infoCard">
+                    capacity: 100 people
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-between h-100">
+                <div class="card-content-infoCard">
+                    category: cooking
+                </div>
+                <div class="card-content-infoCard">
+                    cost: 1000 credits
+                </div>
+            </div>
+         </div>
+         <div class="card-container-infoFooter">
+            <div class="card-container-clickableInfo">
+              <div class="card-container-footerInfo">
+                <i class=" text-danger far fa-heart"></i>
+                like
+              </div>
+              <div class="card-container-footerInfo">
+                <i class=" text-danger far fa-share-square"></i>
+                like
+              </div>
+              <div class="card-container-footerInfo">
+                <i class=" text-danger far fa-paper-plane"></i>
+                contact host
+              </div>
+            </div>
+            <div class="card-container-reviews">
+              <div class="card-container-footerInfo">
+                <i class=" text-info far fa-star"></i>
+                4.9
+              </div>
+            </div>
+         </div>
+         <div class="btn btn-danger btn-lg btn-block w-100">
+           reserve
+         </div>
     </div>
   </div>
   <% end %>

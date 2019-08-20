@@ -23,7 +23,10 @@ export default class extends Controller {
 
   addCount() {
     const counter = document.getElementById('right-part')
-    counter.dataset.count + 1
+    const stringNum = counter.dataset.count
+    let num = parseInt(stringNum)
+    const newNum = (num += 1)
+    counter.dataset.count = newNum.toString()
   }
 
   onBlur = (event) => {
@@ -41,7 +44,7 @@ export default class extends Controller {
 
 
 
-    if (this.validateEmpty([document.getElementById('list_place_place_attributes_start_time')])) {
+    if (this.validateEmpty([document.getElementById('list_place_place_attributes_start_time'), document.getElementById('list_place_place_attributes_length') ])) {
       event.preventDefault()
     }
 

@@ -1,19 +1,23 @@
 export const validateCapacity = (input) => {
  const capacityInput = document.getElementById('list_place_place_attributes_capacity')
- capacityInput.addEventListener('change', (e) => {
+ if (capacityInput) {
+   capacityInput.addEventListener('change', (e) => {
     if (capacityInput.value.length > 2) {
       capacityInput.value = limitNumericValue(capacityInput.value,[1,0,0])
     }
- })
+  })
+ }
 }
 
 export const validatePrice = (input) => {
  const capacityInput = document.getElementById('list_place_place_attributes_price')
- capacityInput.addEventListener('change', (e) => {
+ if (capacityInput) {
+   capacityInput.addEventListener('change', (e) => {
     if (capacityInput.value.length > 3) {
       capacityInput.value = limitNumericValue(capacityInput.value,[1,0,0,0])
     }
- })
+  })
+ }
 }
 
   const limitNumericValue = (numericInputArray, numberLimits ) => {
