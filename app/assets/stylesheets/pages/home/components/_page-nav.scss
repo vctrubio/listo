@@ -1,0 +1,28 @@
+// name spacing guide:
+// name style: kebab case
+// first word is the parent page
+// second word is the type, a container, or a element
+// third is the name of the elemnt or contianer
+$index-size-searchAndFilter: 1.5rem;
+.index-container-searchAndFilter {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+    .index-container-filter {
+      display: flex;
+      justify-content: space-between;
+      font-size: $index-size-searchAndFilter;
+    }
+    .index-container-sort {
+      display: flex;
+      justify-content: space-between;
+      font-size: $index-size-searchAndFilter;
+    }
+    .index-container-map {
+      display: flex;
+      justify-content: space-between;
+      font-size: $index-size-searchAndFilter;
+    }
+}

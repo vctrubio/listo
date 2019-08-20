@@ -23,18 +23,18 @@ function addListPlace(listPlaceHTML) {
   places.insertAdjacentHTML('beforeend', listPlaceHTML);
 }
 
-console.log(<%=@list_place.place.photo%>);
+
 
 addListPlace('<%= j render "list_places/show", list: @list, lp: @list_place%>');
 
-var photo = document.querySelector('#list_place_place_attributes_photo');
+let photo = document.querySelector('#list_place_place_attributes_photo');
 
-var placeholders = document.querySelectorAll(".place-image");
+let placeholders = document.querySelectorAll(".place-image");
 
-var placeholder = placeholders[placeholders.length - 1];
+let placeholder = placeholders[placeholders.length - 1];
 
 if (photo.files[0]) {
-  var reader = new FileReader();
+  let reader = new FileReader();
   reader.onload = (event) => {
     placeholder.src = event.target.result;
   };

@@ -5,13 +5,17 @@
         <h5 class="modal-title" id="exampleModalLabel">Create a Workshop!</h5>
       </div>
       <div class="modal-body">
-        <%= simple_form_for(List.new) do |form| %>
-        <%= form.input :name, as: :text, label: 'Give it a name:', placeholder: "Hell's Kitchen, Ricky's Bar" %>
-        <%= form.input :category, label: "Select a best fit:", as: :radio_buttons, collection: ['Art', 'Business Skills', 'Crafts', 'Dance', 'Drinks and Tasting', 'Food', 'Health and Beauty', 'Languages', 'Mindfulness and Wellbeing', 'Music', 'Photography', 'Technology', 'Sports','Other'], wrapper: :vertical_collection_inline %>
+        <%= simple_form_for(List.new, html: {type: "html", data: {controller: "submit" }} ) do |form| %>
+        <%= form.input :name, as: :string, input_html: {class: "count-char"}, label: 'Give it a name:', placeholder: "Hell's Kitchen, Ricky's Bar", required: true, html:{ data: {charLimit: "50"}}, maxlength: "50" %>
+        <div class="form-helper-info">
+          <span class="form-helper-error" data-error="Be sure to field out this field"></span>
+          <span class="form-helper-number" data-charLimit="50" id="counter-list_name"></span>
+        </div>
+        <%= form.input :category, label: "Select a best fit:" , as: :radio_buttons, collection: ['Art', 'Business Skills', 'Crafts', 'Dance', 'Drinks and Tasting', 'Food', 'Health and Beauty', 'Languages', 'Mindfulness and Wellbeing', 'Music', 'Photography', 'Technology', 'Sports','Other'], wrapper: :vertical_collection_inline %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-info ">
-              <%= form.button :submit, "Start!" %>
+              <%= form.button :submit, "Start!", data: { disable_with: false } %>
         </button>
         <% end %>
       </div>

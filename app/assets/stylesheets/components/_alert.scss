@@ -4,3 +4,16 @@
   right: 16px;
   z-index: 1000;
 }
+
+
+.category-alert {
+      border: 0.1rem solid $warning;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 50%;
+      margin: 0.5rem auto;
+      padding: 0.2rem;
+      border-radius: 1rem;
+}
